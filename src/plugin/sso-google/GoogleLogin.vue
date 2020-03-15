@@ -1,9 +1,9 @@
 
 <template>
 		<div v-if="renderParams && !logoutButton" @click="handleClick" :id="id"></div>
-		<button v-else @click="handleClick" :id="id">
+		<div v-else @click="handleClick" :id="id">
 			<slot></slot>
-		</button>
+		</div>
 </template>
 
 <script>
