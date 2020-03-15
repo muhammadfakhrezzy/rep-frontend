@@ -72,7 +72,6 @@
                         with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-question-circle"></i>
                         <p>
                             Daily Quest
                             <font-awesome-icon icon="angle-left" class="right" />
@@ -95,7 +94,6 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-question-circle"></i>
                         <p>
                             Main Quest
                             <font-awesome-icon icon="angle-left" class="right" />
@@ -118,7 +116,6 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-question"></i>
                         <p>
                             Secret Quest
                             <font-awesome-icon icon="angle-left" class="right" />
