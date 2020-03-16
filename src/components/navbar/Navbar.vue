@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link" style="color: #fff">Home</a>
+                <router-link to="/dashboard" class="nav-link" style="color: #fff">Home</router-link>
             </li>
             </ul>
 
@@ -79,13 +79,35 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <router-link to="/daily" class="nav-link">
+                                    <font-awesome-icon icon="list" class="nav-icon" />
+                                    <p>List Quest</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/dailyComplete" class="nav-link">
+                                    <font-awesome-icon icon="tasks" class="nav-icon" />
+                                    <p>Mission Complete</p>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                        <p>
+                            Main Quest
+                            <font-awesome-icon icon="angle-left" class="right" />
+                        </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/layout/top-nav.html" class="nav-link">
                                     <font-awesome-icon icon="list" class="nav-icon" />
                                     <p>List Quest</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
                                     <font-awesome-icon icon="tasks" class="nav-icon" />
                                     <p>Mission Complete</p>
                                 </a>
@@ -95,7 +117,7 @@
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                         <p>
-                            Main Quest
+                            Extra Quest
                             <font-awesome-icon icon="angle-left" class="right" />
                         </p>
                         </a>
@@ -145,6 +167,13 @@
                         </a>
                     </li>
                     
+                    <li class="nav-header" style="text-align: center;">Qoutes of Today</li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="text-align: center">
+                            <p><q><i>Raih mimpimu setinggi-tingginya</i></q></p>
+                        </a>
+                    </li>
+
                     <li class="nav-header">Documentation</li>
                     <li class="nav-item">
                         <a href="https://adminlte.io/docs/3.0" class="nav-link">
