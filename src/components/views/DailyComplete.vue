@@ -51,35 +51,35 @@
                                         <tr>
                                             <td>1.</td>
                                             <td>Cermi</td>
-                                            <td>18-02-2020</td>
+                                            <td>2 minute ago</td>
                                             <td><span class="badge bg-success">verified</span></td>
                                             <td>2</td>
                                         </tr>
                                         <tr>
                                             <td>2.</td>
                                             <td>VLC</td>
-                                            <td>19-02-2020</td>
+                                            <td>1 hour ago</td>
                                             <td><span class="badge bg-success">verified</span></td>
                                             <td>1</td>
                                         </tr>
                                         <tr>
                                             <td>3.</td>
                                             <td>BBC</td>
-                                            <td>20-02-2020</td>
+                                            <td>20 hour ago</td>
                                             <td><span class="badge bg-success">verified</span></td>
                                             <td>1</td>
                                         </tr>
                                         <tr>
                                             <td>4.</td>
                                             <td>BBC</td>
-                                            <td>21-02-2020</td>
+                                            <td>1 day ago</td>
                                             <td><span class="badge bg-success">verified</span></td>
                                             <td>1</td>
                                         </tr>
                                         <tr>
                                             <td>5.</td>
                                             <td>BBC</td>
-                                            <td>01-02-2020</td>
+                                            <td>a week ago</td>
                                             <td><span class="badge bg-success">verified</span></td>
                                             <td>1</td>
                                         </tr>
