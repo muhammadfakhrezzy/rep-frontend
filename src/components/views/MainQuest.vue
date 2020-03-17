@@ -22,7 +22,7 @@
 
                             </div>
                             <router-link to="/dailyAbsensi" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -37,7 +37,7 @@
 
                             </div>
                             <router-link to="/dailybbc" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -52,7 +52,7 @@
 
                             </div>
                             <router-link to="/dailyvlc" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -67,7 +67,7 @@
 
                             </div>
                             <router-link to="/dailyshare" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -82,7 +82,7 @@
 
                             </div>
                             <router-link to="/dailycermi" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -97,7 +97,7 @@
 
                             </div>
                             <router-link to="/dailyltai" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>
@@ -112,7 +112,7 @@
 
                             </div>
                             <router-link to="/dailyltai" class="small-box-footer">
-                                Ambil Quest
+                                Take Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
                         </div>

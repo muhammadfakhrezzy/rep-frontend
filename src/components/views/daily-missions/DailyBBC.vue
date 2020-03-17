@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Email</label>
+                                                <label>Rinfo</label>
                                                 <input type="text" class="form-control" placeholder="iqbal@raharja.info" disabled>
                                             </div>
                                         </div>
