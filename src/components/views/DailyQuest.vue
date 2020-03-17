@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-orange">
                             <div class="inner">
                                 <h3>1 POIN</h3>
                                 <p>Absensi</p>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-orange">
                             <div class="inner">
                                 <h3>1 POIN</h3>
                                 <p>BBC</p>
@@ -36,14 +36,14 @@
                             <div class="icon">
 
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <router-link to="/dailybbc" class="small-box-footer">
                                 Ambil Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-orange">
                             <div class="inner">
                                 <h3>1 POIN</h3>
                                 <p>VLC</p>
@@ -51,14 +51,14 @@
                             <div class="icon">
 
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <router-link to="/dailyvlc" class="small-box-footer">
                                 Ambil Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-orange">
                             <div class="inner">
                                 <h3>1 POIN</h3>
                                 <p>Share Social Media</p>
@@ -66,14 +66,14 @@
                             <div class="icon">
 
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <router-link to="/dailyshare" class="small-box-footer">
                                 Ambil Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>2 POIN</h3>
                                 <p>Cermi</p>
@@ -81,14 +81,14 @@
                             <div class="icon">
 
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <router-link to="/dailycermi" class="small-box-footer">
                                 Ambil Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>2 POIN</h3>
                                 <p>LTAI</p>
@@ -96,10 +96,10 @@
                             <div class="icon">
 
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <router-link to="/dailyltai" class="small-box-footer">
                                 Ambil Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                 </div>

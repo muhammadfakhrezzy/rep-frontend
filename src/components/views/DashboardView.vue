@@ -17,7 +17,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="card card-widget widget-user">
+                            <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BF814D">
                                     <h3 class="widget-user-username">RANK 3</h3>
                                     <h5 class="widget-user-desc">Angga Widianto</h5>
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card card-widget widget-user">
+                            <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #E7AB30">
                                     <h3 class="widget-user-username">RANK 1</h3>
                                     <h5 class="widget-user-desc">Muhammad Iqbal</h5>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card card-widget widget-user">
+                            <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BFBFBF">
                                     <h3 class="widget-user-username">RANK 2</h3>
                                     <h5 class="widget-user-desc">Aditya Lityanian</h5>
