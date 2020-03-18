@@ -2,13 +2,17 @@
     <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Dashboard</h1>
-                    </div>
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark mb-1">Top Ranking</h1>
+                        </div>
+                    </div><!-- /.row -->
+                    <router-link to="/dailyrank" class="btn btn-warning mr-2">Daily Rank</router-link>
+                    <router-link to="/weeklyrank" class="btn btn-outline-info mr-2">Weekly Rank</router-link>
+                    <router-link to="/monthlyrank" class="btn btn-outline-success mr-2">Monthly Rank</router-link>
+                    <router-link to="/globalrank" class="btn btn-outline-success">Global Rank</router-link>
+                </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
 
@@ -16,21 +20,36 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-sm-12 mt-3">
+                            <h3 class="text-center">DAILY RANK</h3>
+                        </div>
                         <div class="col-md-4">
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BF814D">
-                                    <h3 class="widget-user-username">RANK 3</h3>
-                                    <h5 class="widget-user-desc">Angga Widianto</h5>
+                                    <h3 class="widget-user-username">RANK 2</h3>
+                                    <h5 class="widget-user-desc">Aditya Lityanian</h5>
                                 </div>
                                 <div class="widget-user-image">
-                                    <img src="@/assets/img/user5-128x128.jpg" class="img-circle elevation-2">
+                                    <img src="@/assets/img/user5-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2" data-toggle="modal" data-target="#modal-rank2">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                            <h5 class="description-header">876</h5>
-                                            <span class="description-text">POIN</span>
+                                                <h5 class="description-header">401</h5>
+                                                <span class="description-text">QUEST</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">931</h5>
+                                                <span class="description-text">POINT</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="description-block">
+                                                <h5 class="description-header">79</h5>
+                                                <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -44,16 +63,28 @@
                                     <h5 class="widget-user-desc">Muhammad Iqbal</h5>
                                 </div>
                                 <div class="widget-user-image">
-                                    <img src="@/assets/img/user1-128x128.jpg" class="img-circle elevation-2">
+                                    <img src="@/assets/img/user1-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="description-block">
-                                        <h5 class="description-header">1091</h5>
-                                        <span class="description-text">POIN</span>
+                                    <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">421</h5>
+                                                <span class="description-text">QUEST</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">1091</h5>
+                                                <span class="description-text">POINT</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="description-block">
+                                                <h5 class="description-header">82</h5>
+                                                <span class="description-text">LEVEL</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -65,16 +96,28 @@
                                     <h5 class="widget-user-desc">Aditya Lityanian</h5>
                                 </div>
                                 <div class="widget-user-image">
-                                    <img src="@/assets/img/user4-128x128.jpg" class="img-circle elevation-2">
+                                    <img src="@/assets/img/user4-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="description-block">
-                                        <h5 class="description-header">931</h5>
-                                        <span class="description-text">POIN</span>
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">349</h5>
+                                                <span class="description-text">QUEST</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">876</h5>
+                                                <span class="description-text">POINT</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="description-block">
+                                                <h5 class="description-header">76</h5>
+                                                <span class="description-text">LEVEL</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -87,9 +130,12 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-striped table-valign-middle">
                                         <thead>
-                                            <tr></tr>
-                                            <tr></tr>
-                                            <tr></tr>
+                                            <tr>
+                                                <th style="padding: 0; width: 7rem"></th>
+                                                <th style="padding: 0; width: 70%"></th>
+                                                <th style="padding: 0;"></th>
+                                                <th style="padding: 0"></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -98,7 +144,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Amin Bahrul Ulum
                                                 </td>
-                                                <td>822 POIN</td>
+                                                <td>822 POINT</td>
+                                                <td>LEVEL 74</td>
                                             </tr>
                                             <tr>
                                                 <td>05</td>
@@ -106,7 +153,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Fahri Tri Setio
                                                 </td>
-                                                <td>789 POIN</td>
+                                                <td>789 POINT</td>
+                                                <td>LEVEL 70</td>
                                             </tr>
                                             <tr>
                                                 <td>06</td>
@@ -114,7 +162,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Muhammad Zamrozi
                                                 </td>
-                                                <td>751 POIN</td>
+                                                <td>751 POINT</td>
+                                                <td>LEVEL 69</td>
                                             </tr>
                                             <tr>
                                                 <td>07</td>
@@ -122,7 +171,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Damar Pamungkas
                                                 </td>
-                                                <td>721 POIN</td>
+                                                <td>721 POINT</td>
+                                                <td>LEVEL 67</td>
                                             </tr>
                                             <tr>
                                                 <td>08</td>
@@ -130,7 +180,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Miftahul Fallah
                                                 </td>
-                                                <td>579 POIN</td>
+                                                <td>579 POINT</td>
+                                                <td>LEVEL 63</td>
                                             </tr>
                                             <tr>
                                                 <td>09</td>
@@ -138,7 +189,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Rifaldy Thoriq
                                                 </td>
-                                                <td>522 POIN</td>
+                                                <td>522 POINT</td>
+                                                <td>LEVEL 59</td>
                                             </tr>
                                             <tr>
                                                 <td>10</td>
@@ -146,7 +198,8 @@
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Muhammad Abdul Azis
                                                 </td>
-                                                <td>501 POIN</td>
+                                                <td>501 POINT</td>
+                                                <td>LEVEL 55</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -157,6 +210,24 @@
                 <!-- /.container-fluid -->
                 </div>
             <!-- /.content -->
+                <div class="modal fade" id="modal-rank2">
+                    <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">#Rank2 | Aditya Lityanian</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <font-awesome-icon icon="times" aria-hidden="true" />
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>One fine body&hellip;</p>
+                            </div>
+                            <div class="modal-footer justify-content-flexend">
+                                <button class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
     <!-- /.content-wrapper -->
 

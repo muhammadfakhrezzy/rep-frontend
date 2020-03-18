@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">Daily Quest 'Absensi'</h1>
+                        <h1 class="m-0 text-dark">Main Quest</h1>
                     </div>
                 </div>
             </div>
@@ -13,9 +13,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-warning">
+                        <div class="card card-olive">
                             <div class="card-header">
-                                <h3 class="card-title">Absensi</h3>
+                                <h3 class="card-title">Jurnal S5</h3>
                             </div>
                             <div class="card-body">
                                 <form role="form">
@@ -23,13 +23,13 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Quest</label>
-                                                <input type="text" class="form-control" placeholder="Absensi" disabled>
+                                                <input type="text" class="form-control" placeholder="Jurnal S5" disabled>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Quest Description</label>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control" placeholder="1721492355" disabled>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Link Pembuktian</label>
+                                                <label>Result</label>
                                                 <input type="text" class="form-control">
                                                 <p>*diwajibkan upload link menggunakan <a href="https://docs.google.com">https://docs.google.com</a> dan dipastikan privasi file adalah public</p>
                                             </div>
@@ -58,14 +58,6 @@
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
                         </div>
-
-                        <a href="#">
-                            <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">FAQ</h3>
-                                </div>
-                            </div>
-                        </a>
 
                     </div>
                 </div>

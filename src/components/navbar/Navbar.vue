@@ -41,146 +41,153 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133); min-height: 800px">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="../../assets/REP logo.png" class="brand-image img-circle elevation-3">
-                <span class="brand-text font-weight-light text-center" style="letter-spacing: 5px;" >REP</span>
-            </a>
+            <div class="brand-link" style="padding: .5rem 0; background-color: #rgb(104,162,137); border-color: #fff">
+                <img src="../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">
+            </div>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 mb-3 d-flex flex-column align-items-center">
+                <div class="user-panel mt-3 mb-3 d-flex flex-column align-items-center" style="border-color: #fff">
                     <div class="image" style="padding-left: 0">
-                    <img src="@/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" style="width: 3rem;">
+                        <router-link to="/profile">
+                            <img src="@/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" style="width: 3rem;">
+                        </router-link>
                     </div>
                     <div class="info mb-1">
-                    <a href="#" class="d-block">Muhammad Iqbal</a>
-                    <p style="color: #fff; margin-bottom: 0.2rem; text-align: center;">Are you ready ?</p>
-                    <a style="text-align: center; font-size: 13px;" class="d-block">
-                        <font-awesome-icon icon="circle" class="mr-1 text-success" />
-                        online
-                    </a>
+                        <router-link to="/profile" style="text-align: center" class="d-block text-white">Muhammad Iqbal</router-link>
+                        <p style="text-align: center; font-size: 13px;" class="d-block text-white">
+                            {{dateNow}}
+                        </p>
+                        <p style="color: #fff; margin-bottom: 0.2rem; text-align: center;">Are you ready ?</p>
                     </div>
                 </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                        <p>
-                            Daily Quest
-                            <font-awesome-icon icon="angle-left" class="right" />
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <router-link to="/daily" class="nav-link">
-                                    <font-awesome-icon icon="list" class="nav-icon" />
-                                    <p>List Quest</p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/dailyComplete" class="nav-link">
-                                    <font-awesome-icon icon="tasks" class="nav-icon" />
-                                    <p>Mission Complete</p>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                        <p>
-                            Main Quest
-                            <font-awesome-icon icon="angle-left" class="right" />
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <font-awesome-icon icon="list" class="nav-icon" />
-                                    <p>List Quest</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <font-awesome-icon icon="tasks" class="nav-icon" />
-                                    <p>Mission Complete</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                        <p>
-                            Extra Quest
-                            <font-awesome-icon icon="angle-left" class="right" />
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <font-awesome-icon icon="list" class="nav-icon" />
-                                    <p>List Quest</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <font-awesome-icon icon="tasks" class="nav-icon" />
-                                    <p>Mission Complete</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                        <p>
-                            Secret Quest
-                            <font-awesome-icon icon="angle-left" class="right" />
-                        </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <font-awesome-icon icon="list" class="nav-icon" />
-                                    <p>List Quest</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <font-awesome-icon icon="tasks" class="nav-icon" />
-                                    <p>Mission Complete</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                        <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
-                        <p>
-                            Ranking
-                        </p>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-header" style="text-align: center;">Qoutes of Today</li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="text-align: center">
-                            <p><q><i>Raih mimpimu setinggi-tingginya</i></q></p>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="pages/widgets.html" class="nav-link text-white">
+                            <font-awesome-icon :icon="['fas', 'user-circle']" class="nav-icon" />
+                            <p>
+                                My Overview
+                            </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                            <p>
+                                Daily Quests
+                                <font-awesome-icon icon="angle-left" class="right" />
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/daily" class="nav-link text-white">
+                                        <font-awesome-icon icon="list" class="nav-icon" />
+                                        <p>List Quest</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/dailyComplete" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Mission Complete</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                            <p>
+                                Main Quests
+                                <font-awesome-icon icon="angle-left" class="right" />
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="main" class="nav-link text-white">
+                                        <font-awesome-icon icon="list" class="nav-icon" />
+                                        <p>List Quest</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/maincomplete" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Mission Complete</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                            <p>
+                                Extra Quests
+                                <font-awesome-icon icon="angle-left" class="right" />
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/extra" class="nav-link text-white">
+                                        <font-awesome-icon icon="list" class="nav-icon" />
+                                        <p>List Quest</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/extracomplete" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Mission Complete</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                            <p>
+                                Secret Quests
+                                <font-awesome-icon icon="angle-left" class="right" />
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/secret" class="nav-link text-white">
+                                        <font-awesome-icon icon="list" class="nav-icon" />
+                                        <p>List Quest</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/secretcomplete" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Mission Complete</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/widgets.html" class="nav-link text-white">
+                            <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
+                            <p>
+                                All Ranking
+                            </p>
+                            </a>
+                        </li>
 
-                    <li class="nav-header">Documentation</li>
-                    <li class="nav-item">
-                        <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                        <font-awesome-icon icon="file" class="nav-icon" />
-                        <p>FAQ</p>
-                        </a>
-                    </li>
+                        <li class="nav-header text-white">Documentation</li>
+                        <li class="nav-item">
+                            <router-link to="/faq" class="nav-link text-white">
+                                <font-awesome-icon icon="question-circle" class="nav-icon" />
+                                <p>Help Center</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <router-link to="/faq" class="nav-link text-white">
+                                <p>Why REP ?</p>
+                            </router-link>
+                        </li>
+
                     </ul>
                 </nav>
             <!-- /.sidebar-menu -->
@@ -191,3 +198,16 @@
 <!-- ./wrapper -->
     </div>
 </template>
+
+<script>
+export default {
+    computed: {
+        dateNow() {
+            const d = new Date()
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()
+        }
+    }
+}
+</script>
