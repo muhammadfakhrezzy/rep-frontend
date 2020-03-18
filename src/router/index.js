@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import navbar from '@/components/navbar/Navbar'
 import login from '@/components/login/Login'
 import dashboardView from '@/components/views/DashboardView'
+
+
+import UserNavbar from '@/components/navbar/UserNavbar'
 
 import dailyList from '@/components/views/daily-quest/DailyList'
 import dailyComplete from '@/components/views/daily-quest/DailyComplete'
@@ -37,7 +39,7 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        component: navbar,
+        component: UserNavbar,
         children: [
             {
                 path: '/',

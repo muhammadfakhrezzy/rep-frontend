@@ -92,8 +92,8 @@
                         <div class="col-md-4">
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BFBFBF">
-                                    <h3 class="widget-user-username">RANK 2</h3>
-                                    <h5 class="widget-user-desc">Aditya Lityanian</h5>
+                                    <h3 class="widget-user-username">RANK 3</h3>
+                                    <h5 class="widget-user-desc">Angga Widianto</h5>
                                 </div>
                                 <div class="widget-user-image">
                                     <img src="@/assets/img/user4-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
