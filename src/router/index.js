@@ -1,37 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '@/components/login/Login'
-import dashboardView from '@/components/views/DashboardView'
 
+import UserNavbar from '@/components/user/navbar/UserNavbar'
+import UserOverview from '@/components/user/profile/UserOverview'
+import helpCenter from '@/components/user/help-center/HelpCenter'
+import whyRep from '@/components/user/why-rep/WhyRep'
 
-import UserNavbar from '@/components/navbar/UserNavbar'
+import rankDaily from '@/components/user/rank/RankDaily'
+import rankWeekly from '@/components/user/rank/RankWeekly'
+import rankMonthly from '@/components/user/rank/RankMonthly'
+import rankGlobal from '@/components/user/rank/RankGlobal'
+import rankAll from '@/components/user/rank/RankAll'
 
-import dailyList from '@/components/views/daily-quest/DailyList'
-import dailyComplete from '@/components/views/daily-quest/DailyComplete'
-import dailyAbsensi from '@/components/views/daily-quest/DailyAbsensi'
-import dailyBBC from '@/components/views/daily-quest/DailyBBC'
-import dailyCermi from '@/components/views/daily-quest/DailyCermi'
-import dailyLTAI from '@/components/views/daily-quest/DailyLTAI'
-import dailyShare from '@/components/views/daily-quest/DailyShare'
-import dailyVLC from '@/components/views/daily-quest/DailyVLC'
+import dailyList from '@/components/user/views/daily-quest/DailyList'
+import dailyComplete from '@/components/user/views/daily-quest/DailyComplete'
+import dailyAbsensi from '@/components/user/views/daily-quest/DailyAbsensi'
+import dailyBBC from '@/components/user/views/daily-quest/DailyBBC'
+import dailyCermi from '@/components/user/views/daily-quest/DailyCermi'
+import dailyLTAI from '@/components/user/views/daily-quest/DailyLTAI'
+import dailyShare from '@/components/user/views/daily-quest/DailyShare'
+import dailyVLC from '@/components/user/views/daily-quest/DailyVLC'
 
-import mainList from '@/components/views/main-quest/MainList'
-import mainComplete from '@/components/views/main-quest/MainComplete'
-import mainS6 from '@/components/views/main-quest/MainS6'
-import mainS5 from '@/components/views/main-quest/MainS5'
-import mainS4 from '@/components/views/main-quest/MainS4'
-import mainS3 from '@/components/views/main-quest/MainS3'
-import mainS2 from '@/components/views/main-quest/MainS2'
-import mainsNondit from '@/components/views/main-quest/MainNondit'
-import mainsDitlabmas from '@/components/views/main-quest/MainDitlabmas'
-import mainsScopus from '@/components/views/main-quest/MainScopus'
+import mainList from '@/components/user/views/main-quest/MainList'
+import mainComplete from '@/components/user/views/main-quest/MainComplete'
+import mainS6 from '@/components/user/views/main-quest/MainS6'
+import mainS5 from '@/components/user/views/main-quest/MainS5'
+import mainS4 from '@/components/user/views/main-quest/MainS4'
+import mainS3 from '@/components/user/views/main-quest/MainS3'
+import mainS2 from '@/components/user/views/main-quest/MainS2'
+import mainsNondit from '@/components/user/views/main-quest/MainNondit'
+import mainsDitlabmas from '@/components/user/views/main-quest/MainDitlabmas'
+import mainsScopus from '@/components/user/views/main-quest/MainScopus'
 
-import extraList from '@/components/views/extra-quest/ExtraList'
-import extraComplete from '@/components/views/extra-quest/ExtraComplete'
-import extraSpecial from '@/components/views/extra-quest/ExtraSpecial'
+import extraList from '@/components/user/views/extra-quest/ExtraList'
+import extraComplete from '@/components/user/views/extra-quest/ExtraComplete'
+import extraSpecial from '@/components/user/views/extra-quest/ExtraSpecial'
 
-import secretList from '@/components/views/secret-quest/SecretList'
-import secretComplete from '@/components/views/secret-quest/SecretComplete'
+import secretList from '@/components/user/views/secret-quest/SecretList'
+import secretComplete from '@/components/user/views/secret-quest/SecretComplete'
 
 
 Vue.use(VueRouter)
@@ -43,12 +50,46 @@ const routes = [
         children: [
             {
                 path: '/',
-                component: dashboardView
+                component: rankDaily
             },
-            {    
-                path: '/dashboard',
-                component: dashboardView
+            {
+                path: 'myoverview',
+                component: UserOverview
             },
+
+
+            {
+                path: 'helpcenter',
+                component: helpCenter
+            },
+            {
+                path: 'whyrep',
+                component: whyRep
+            },
+
+
+            // Ranking
+            {
+                path: 'dailyrank',
+                component: rankDaily
+            },
+            {
+                path: 'weeklyrank',
+                component: rankWeekly
+            },
+            {
+                path: 'monthlyrank',
+                component: rankMonthly
+            },
+            {
+                path: 'globalrank',
+                component: rankGlobal
+            },
+            {
+                path: 'allranking',
+                component: rankAll
+            },
+
 
             // Daily Quest
             {

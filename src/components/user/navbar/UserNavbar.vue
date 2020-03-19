@@ -44,7 +44,7 @@
         <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133); min-height: 800px">
             <!-- Brand Logo -->
             <div class="brand-link" style="padding: .5rem 0; background-color: #rgb(104,162,137); border-color: #fff">
-                <img src="../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">
+                <img src="../../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">
             </div>
 
             <!-- Sidebar -->
@@ -52,7 +52,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 mb-3 d-flex flex-column align-items-center" style="border-color: #fff">
                     <div class="image" style="padding-left: 0">
-                        <router-link to="/profile">
+                        <router-link to="/myoverview">
                             <img src="@/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" style="width: 3rem;">
                         </router-link>
                     </div>
@@ -71,12 +71,12 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link text-white">
-                            <font-awesome-icon :icon="['fas', 'user-circle']" class="nav-icon" />
-                            <p>
-                                My Overview
-                            </p>
-                            </a>
+                            <router-link to="/myoverview" class="nav-link text-white">
+                                <font-awesome-icon :icon="['fas', 'user-circle']" class="nav-icon" />
+                                <p>
+                                    My Overview
+                                </p>
+                            </router-link>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
@@ -167,23 +167,23 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link text-white">
-                            <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
-                            <p>
-                                All Ranking
-                            </p>
-                            </a>
+                            <router-link to="/allranking" class="nav-link text-white">
+                                <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
+                                <p>
+                                    All Ranking
+                                </p>
+                            </router-link>
                         </li>
 
                         <li class="nav-header text-white">Documentation</li>
                         <li class="nav-item">
-                            <router-link to="/faq" class="nav-link text-white">
+                            <router-link to="/helpcenter" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
                                 <p>Help Center</p>
                             </router-link>
                         </li>
                         <li class="nav-item mt-3">
-                            <router-link to="/faq" class="nav-link text-white">
+                            <router-link to="/whyrep" class="nav-link text-white">
                                 <p>Why REP ?</p>
                             </router-link>
                         </li>
