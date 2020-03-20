@@ -10,14 +10,15 @@
                 </a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <router-link to="/dashboard" class="nav-link" style="color: #fff">Home</router-link>
+                <router-link to="/" class="nav-link" style="color: #fff">Home</router-link>
             </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
+
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" style="color: #fff">
                     <font-awesome-icon :icon="['far', 'bell']" />
                     <span class="badge badge-warning navbar-badge">0</span>
@@ -27,10 +28,9 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item">...
                     </a>
-                    <!-- <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
                 </div>
-            </li>
+            </li> -->
+
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" style="color: #fff">
                     <font-awesome-icon icon="sign-out-alt" />
@@ -41,7 +41,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133); min-height: 800px">
+        <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133);">
             <!-- Brand Logo -->
             <div class="brand-link" style="padding: .5rem 0; background-color: #rgb(104,162,137); border-color: #fff">
                 <img src="../../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">

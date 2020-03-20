@@ -214,16 +214,65 @@
                     <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">#Rank2 | Aditya Lityanian</h4>
+                                <h4 class="modal-title">#Rank 2</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <font-awesome-icon icon="times" aria-hidden="true" />
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <p>One fine body&hellip;</p>
-                            </div>
-                            <div class="modal-footer justify-content-flexend">
-                                <button class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div class="modal-body p-0">
+                                <div class="card card-olive card-outline mb-0">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img src="../../../assets/img/user1-128x128.jpg" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                        </div>
+                                        <h3 class="profile-username text-center">Muhammad Iqbal</h3>
+                                        <p class="text-muted text-center">Sistem Informasi</p>
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item">
+                                                <b>Level</b>
+                                                <a class="float-right">76</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="card card-success mb-0 collapsed-card">
+                                                    <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
+                                                        <h3 class="card-title">Total Point</h3>
+                                                        <div class="card-tools">
+                                                            <a class="float-right">1082</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body px-2 py-0">
+                                                        <ul class="list-group list-group-unbordered">
+                                                            <li class="list-group-item">
+                                                                <b>BBC</b>
+                                                                <a class="float-right">230</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Cermi</b>
+                                                                <a class="float-right">165</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>LTAI</b>
+                                                                <a class="float-right">489</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>VLC</b>
+                                                                <a class="float-right">76</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Absensi</b>
+                                                                <a class="float-right">160</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Jurnal Scopus</b>
+                                                                <a class="float-right">1</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

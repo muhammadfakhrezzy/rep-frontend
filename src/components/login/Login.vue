@@ -48,6 +48,7 @@ export default {
                 access_token: googleUser.uc.access_token
             }
             console.log(accessToken)
+            this.$store.dispatch('ssoGoogle', accessToken)
         },
         onFailure(error) {
             console.log(error);
