@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <router-link to="/" class="nav-link" style="color: #fff">Home</router-link>
+                    <p class="nav-link mb-0" style="color: #fff">Admin Page</p>
                 </li>
             </ul>
 
@@ -80,72 +80,27 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.5)">Main Navigation</li>
-                        <li class="nav-item has-treeview">
+                        <li class="header mt-3 mb-1 text-white">Main Navigation</li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link text-white">
                                 <p>
-                                    Daily Quests
-                                    <font-awesome-icon icon="angle-left" class="right" />
+                                    Create Quest
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <router-link to="/daily" class="nav-link text-white">
-                                        <font-awesome-icon icon="list" class="nav-icon" />
-                                        <p>List Quest</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/dailyComplete" class="nav-link text-white">
-                                        <font-awesome-icon icon="tasks" class="nav-icon" />
-                                        <p>Mission Complete</p>
-                                    </router-link>
-                                </li>
-                            </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item">
                             <a href="#" class="nav-link text-white">
-                            <p>
-                                Main Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
-                            </p>
+                                <p>
+                                    Viewboard Admin
+                                </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <router-link to="main" class="nav-link text-white">
-                                        <font-awesome-icon icon="list" class="nav-icon" />
-                                        <p>List Quest</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/maincomplete" class="nav-link text-white">
-                                        <font-awesome-icon icon="tasks" class="nav-icon" />
-                                        <p>Mission Complete</p>
-                                    </router-link>
-                                </li>
-                            </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item">
                             <a href="#" class="nav-link text-white">
-                            <p>
-                                Extra Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
-                            </p>
+                                <p>
+                                    Extra Quests
+                                </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <router-link to="/extra" class="nav-link text-white">
-                                        <font-awesome-icon icon="list" class="nav-icon" />
-                                        <p>List Quest</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/extracomplete" class="nav-link text-white">
-                                        <font-awesome-icon icon="tasks" class="nav-icon" />
-                                        <p>Mission Complete</p>
-                                    </router-link>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
@@ -173,7 +128,7 @@
                             <router-link to="/allranking" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
-                                    All Ranking
+                                    Player Ranking
                                 </p>
                             </router-link>
                         </li>

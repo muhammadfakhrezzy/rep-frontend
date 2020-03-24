@@ -1,3 +1,14 @@
+<script>
+export default {
+    data() {
+        return {
+            name: this.$store.state.user.name,
+            photo: this.$store.state.user.photo
+        }
+    }
+}
+</script>
+
 <template>
     <div class="content-wrapper">
         <div class="content-header">
@@ -16,9 +27,9 @@
                         <div class="card card-olive card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img src="../../../assets/img/user1-128x128.jpg" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                    <img :src="photo" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                 </div>
-                                <h3 class="profile-username text-center">Muhammad Iqbal</h3>
+                                <h3 class="profile-username text-center">{{ name }}</h3>
                                 <p class="text-muted text-center">Sistem Informasi</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
@@ -83,10 +94,10 @@
                                         <a href="#activity" data-toggle="tab" class="nav-link active">Activity</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#timeline" data-toggle="tab" class="nav-link">Timeline</a>
+                                        <a href="#timeline" data-toggle="tab" class="nav-link">Progress</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#settings" data-toggle="tab" class="nav-link">Settings</a>
+                                        <a href="#settings" data-toggle="tab" class="nav-link">Edit</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,10 +107,10 @@
                                         <p>Activity</p>
                                     </div>
                                     <div class="tab-pane" id="timeline">
-                                        <p>Timeline</p>
+                                        <p>Progress</p>
                                     </div>
                                     <div class="tab-pane" id="settings">
-                                        <p>Settings</p>
+                                        <p>Edit My Overview</p>
                                     </div>
                                 </div>
                             </div>

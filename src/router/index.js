@@ -39,6 +39,7 @@ import extraSpecial from '@/components/user/views/extra-quest/ExtraSpecial'
 
 import secretList from '@/components/user/views/secret-quest/SecretList'
 import secretComplete from '@/components/user/views/secret-quest/SecretComplete'
+import store from '../store'
 
 
 Vue.use(VueRouter)
@@ -47,10 +48,11 @@ const routes = [
     {
         path: '/',
         component: UserNavbar,
+        meta: { user: true },
         children: [
             {
                 path: '/',
-                component: rankDaily
+                component: () => import('@/components/user/rank/RankDaily')
             },
             {
                 path: 'myoverview',
@@ -71,7 +73,7 @@ const routes = [
             // Ranking
             {
                 path: 'dailyrank',
-                component: rankDaily
+                component: () => import('@/components/user/rank/RankDaily')
             },
             {
                 path: 'weeklyrank',
@@ -199,6 +201,10 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: login
+    },
+    {
+        path: '/admin',
+        component: () => import('@/components/admin/navbar/AdminNavbar')
     }
 ]
 
@@ -206,6 +212,32 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+const waitForStorageToBeReady = async(to, from, next) => {
+    await store.restored
+    next()
+}
+router.beforeEach(waitForStorageToBeReady)
+
+router.beforeEach((to, from, next) => {
+	if(to.matched.some(record => record.meta.user)) {
+		if (store.state.token) {
+			next()
+			return
+		}
+		next('/login') 
+    }
+    else if(to.matched.some(record => record.meta.admin)){
+        if (store.state.token) {
+            next()
+            return
+        }
+        next('/login')
+    }
+	else {
+		next() 
+	}
 })
 
 export default router
