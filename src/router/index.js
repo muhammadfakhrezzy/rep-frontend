@@ -204,7 +204,13 @@ const routes = [
     },
     {
         path: '/admin',
-        component: () => import('@/components/admin/navbar/AdminNavbar')
+        component: () => import('@/components/admin/navbar/AdminNavbar'),
+        children: [
+            {
+                path: 'choose',
+                component: () => import('@/components/admin/views/ChooseDifficulty')
+            }
+        ]
     }
 ]
 

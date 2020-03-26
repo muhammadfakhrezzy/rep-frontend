@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import axios from 'axios'
 import router from '../router'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -44,9 +45,18 @@ export default new Vuex.Store({
         ssoGoogle({commit}, access) {
             commit('AUTH_LOAD')
             axios.post("https://dytlan.alphabetincubator.id/api/auth/callback/google", access)
-                .then(res => {
-                    commit('AUTH_SUCCESS', res.data.access_token)
-                    axios.defaults.headers.common["Authorization"] = 'Bearer ' + res.data.access_token
+                .then(response => {
+                    console.log(response)
+                    commit('AUTH_SUCCESS', response.data.access_token)
+                    axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'Welcome to REP',
+                        text: 'Login Successful',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
                     router.push('/')
                 })
                 .catch(error => {

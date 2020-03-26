@@ -1,3 +1,34 @@
+<style>
+    .hi-dropdown{
+        position: relative;
+    }
+    .hi-dropdown-content{
+        position: absolute;
+        top: 50%;
+        left: -85%;
+        transform: translateY(-50%);
+        display: none;
+        z-index: 1;
+    }
+    .hi-dropdown-content p{
+        cursor: pointer
+    }
+    .hi-dropdown:hover .hi-dropdown-content{
+        display: block;
+        animation: ani-logout .3s ease-out;
+    }
+    @keyframes ani-logout {
+        from {
+            transform: translateX(30%) translateY(-50%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0) translateY(-50%);
+            opacity: 1;
+        }
+    }
+</style>
+
 <template>
     <div class="wrapper">
         <!-- Navbar -->
@@ -31,11 +62,16 @@
                 </div>
             </li> -->
 
-            <li class="nav-item">
-                <a @click="logout()" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" style="color: #fff">
-                    <font-awesome-icon icon="sign-out-alt" />
-                </a>
-            </li>
+                <li class="nav-item">
+                    <div class="hi-dropdown">
+                        <a @click="logout()" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" style="color: #fff">
+                            <font-awesome-icon icon="sign-out-alt" />
+                        </a>
+                        <div class="hi-dropdown-content">
+                            <p @click="logout()" class="m-0 text-white">Logout</p>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     <!-- /.navbar -->
@@ -50,7 +86,7 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 mb-0 d-flex flex-column align-items-center" style="border-color: #fff; white-space: normal ">
+                <div class="user-panel mt-3 mb-0 d-flex flex-column align-items-center my-2" style="border-color: #fff; white-space: normal ">
                     <div class="image" style="padding-left: 0">
                         <router-link to="/myoverview">
                             <img :src="photo" class="img-circle elevation-2" alt="User Image" style="width: 3rem;">
@@ -80,7 +116,14 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="header mt-3 mb-1 text-white">Main Navigation</li>
+                        <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.7)">Main Navigation</li>
+                        <li class="nav-item">
+                            <router-link to="/admin/choose" class="nav-link text-white">
+                                <p>
+                                    Choose Difficulty
+                                </p>
+                            </router-link>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link text-white">
                                 <p>
@@ -95,34 +138,12 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link text-white">
-                                <p>
-                                    Extra Quests
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
-                            <p>
-                                Secret Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
-                            </p>
+                                <p>
+                                    Admin Ranking
+                                </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <router-link to="/secret" class="nav-link text-white">
-                                        <font-awesome-icon icon="list" class="nav-icon" />
-                                        <p>List Quest</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/secretcomplete" class="nav-link text-white">
-                                        <font-awesome-icon icon="tasks" class="nav-icon" />
-                                        <p>Mission Complete</p>
-                                    </router-link>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <router-link to="/allranking" class="nav-link text-white">
@@ -140,7 +161,7 @@
                                 <p>Help Center</p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mb-5">
                             <router-link to="/whyrep" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" />
                                 <p>Why REP ?</p>
@@ -190,12 +211,12 @@ export default {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, logout it!'
+                confirmButtonText: 'Yes!'
             })
                 .then(result => {
                     if(result.value) {
                         Swal.fire(
-                            'Logout!',
+                            'Success!',
                             'You has been logouted.!',
                             'success'
                         )
@@ -207,6 +228,7 @@ export default {
     async created() {
         await axios.post('https://dytlan.alphabetincubator.id/api/auth/user')
             .then(response => {
+                console.log(response)
                 if(response.data.error){
                     Swal.fire({
                         icon: 'error',
@@ -215,12 +237,10 @@ export default {
                     })
                     this.$store.dispatch('logout')
                     return
-                }else {
-                    console.log(response)
-                    this.name = response.data.User.Detail_user.name
-                    this.photo = response.data.User.Media[0].path
-                    this.$store.dispatch('addDataUser', response.data.User)
                 }
+                this.name = response.data.User.Detail_user.name
+                this.photo = response.data.User.Media[0].path
+                this.$store.dispatch('addDataUser', response.data.User)
             })
             .catch(error => console.log(error))
     }
