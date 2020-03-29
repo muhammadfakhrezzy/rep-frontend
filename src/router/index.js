@@ -14,13 +14,8 @@ import rankGlobal from '@/components/user/rank/RankGlobal'
 import rankAll from '@/components/user/rank/RankAll'
 
 import dailyList from '@/components/user/views/daily-quest/DailyList'
+import dailyStart from '@/components/user/views/daily-quest/DailyStart'
 import dailyComplete from '@/components/user/views/daily-quest/DailyComplete'
-import dailyAbsensi from '@/components/user/views/daily-quest/DailyAbsensi'
-import dailyBBC from '@/components/user/views/daily-quest/DailyBBC'
-import dailyCermi from '@/components/user/views/daily-quest/DailyCermi'
-import dailyLTAI from '@/components/user/views/daily-quest/DailyLTAI'
-import dailyShare from '@/components/user/views/daily-quest/DailyShare'
-import dailyVLC from '@/components/user/views/daily-quest/DailyVLC'
 
 import mainList from '@/components/user/views/main-quest/MainList'
 import mainComplete from '@/components/user/views/main-quest/MainComplete'
@@ -99,32 +94,13 @@ const routes = [
                 component: dailyList,
             },
             {
-                path: 'dailyComplete',
+                path: 'daily/:quest_name/:quest_id',
+                name: 'questDailyStart',
+                component: dailyStart
+            },
+            {
+                path: 'dailycomplete',
                 component: dailyComplete
-            },
-            {
-                path: 'dailyabsensi',
-                component: dailyAbsensi
-            },
-            {
-                path: 'dailybbc',
-                component: dailyBBC
-            },
-            {
-                path: 'dailycermi',
-                component: dailyCermi
-            },
-            {
-                path: 'dailyltai',
-                component: dailyLTAI
-            },
-            {
-                path: 'dailyshare',
-                component: dailyShare
-            },
-            {
-                path: 'dailyvlc',
-                component: dailyVLC
             },
 
 
@@ -207,8 +183,20 @@ const routes = [
         component: () => import('@/components/admin/navbar/AdminNavbar'),
         children: [
             {
-                path: 'choose',
+                path: 'createdifficulty',
+                component: () => import('@/components/admin/views/CreateDifficulty')
+            },
+            {
+                path: 'choosedifficulty',
                 component: () => import('@/components/admin/views/ChooseDifficulty')
+            },
+            {
+                path: 'createquest',
+                component: () => import('@/components/admin/views/CreateQuest')
+            },
+            {
+                path: 'allquest',
+                component: () => import('@/components/admin/views/AllQuest')
             }
         ]
     }
