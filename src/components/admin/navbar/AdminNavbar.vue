@@ -117,19 +117,50 @@
                             </router-link>
                         </li>
                         <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.7)">Main Navigation</li>
-                        <li class="nav-item">
-                            <router-link to="/admin/choose" class="nav-link text-white">
-                                <p>
-                                    Choose Difficulty
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
                                 <p>
-                                    Create Quest
+                                    Difficulty
+                                    <font-awesome-icon icon="angle-left" class="right" />
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/admin/createdifficulty" class="nav-link text-white">
+                                        <p>Create Difficulty</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/choosedifficulty" class="nav-link text-white">
+                                        <p>Choose Difficulty</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/listdifficulty" class="nav-link text-white">
+                                        <p>List Difficulty</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                                <p>
+                                    Quest
+                                    <font-awesome-icon :icon="['fas', 'angle-left']" class="right" />
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/admin/createquest" class="nav-link text-white">
+                                        <p>Create Quest</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/allquest" class="nav-link text-white">
+                                        <p>All Quest</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link text-white">
