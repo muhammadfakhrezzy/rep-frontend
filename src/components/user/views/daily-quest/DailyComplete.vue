@@ -1,3 +1,15 @@
+<script>
+import axios from 'axios'
+export default {
+    created() {
+        axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/2/records')
+            .then(response => {
+                console.log(response)
+            })
+    }
+}
+</script>
+
 <template>
     <div class="content-wrapper">
         <div class="content-header">
@@ -36,52 +48,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body p-0">
-                                <table class="table">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="width: 7rem">No</th>
-                                            <th style="width: 50%">Quests</th>
+                                            <th>No</th>
+                                            <th>Quest</th>
                                             <th>Submit Date</th>
-                                            <th style="width: 10rem">Status</th>
+                                            <th>Status</th>
                                             <th>Point</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1.</td>
-                                            <td>Cermi</td>
-                                            <td>2 minute ago</td>
-                                            <td><span class="badge bg-success">verified</span></td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>VLC</td>
-                                            <td>1 hour ago</td>
-                                            <td><span class="badge bg-success">verified</span></td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>BBC</td>
-                                            <td>20 hour ago</td>
-                                            <td><span class="badge bg-success">verified</span></td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>BBC</td>
-                                            <td>1 day ago</td>
-                                            <td><span class="badge bg-success">verified</span></td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5.</td>
-                                            <td>BBC</td>
-                                            <td>a week ago</td>
-                                            <td><span class="badge bg-success">verified</span></td>
-                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <span class="badge bg-success">verified</span>
+                                            </td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                 </table>
