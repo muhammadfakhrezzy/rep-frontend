@@ -116,7 +116,7 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.7)">Main Navigation</li>
+                        <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.7)">Quest Navigation</li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
                                 <p>
@@ -148,7 +148,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <router-link to="main" class="nav-link text-white">
+                                    <router-link to="/main" class="nav-link text-white">
                                         <font-awesome-icon icon="list" class="nav-icon" />
                                         <p>List Quest</p>
                                     </router-link>

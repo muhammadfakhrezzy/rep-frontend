@@ -1,3 +1,22 @@
+<script>
+import axios from 'axios'
+export default {
+    data() {
+        return {
+            secret_quest: '',
+            quest_id: ''
+        }
+    },
+    async created() {
+        await axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties/7')
+            .then(response => {
+                console.log(response)
+                this.secret_quest = response.data[0].quests
+            })
+    }
+}
+</script>
+
 <template>
     <div class="content-wrapper">
         <div class="content-header">
@@ -12,23 +31,40 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    
+                    <div v-for="index in secret_quest" :key="index.id" class="col-lg-3 col-6">
+                        <div class="small-box bg-olive">
+                            <div class="inner">
+                                <h3>
+                                    {{ index.value }} POIN
+                                    <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'secret' + index.id]"/>
+                                </h3>
+                                <p>{{ index.name }}</p>
+                            </div>
+                            <div class="icon">
+
+                            </div>
+                            <router-link :to="{name: 'questSecretStart', params: {quest_name: index.name, quest_id: index.id}}" class="small-box-footer">
+                                Start Quest
+                                <font-awesome-icon icon="arrow-circle-right" />
+                            </router-link>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
-            <div class="modal fade" id="s6">
+            <div v-for="index in secret_quest" :key="index.id" class="modal fade" :id="['secret' + index.id]">
                 <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Jurnal S6</h4>
+                            <h4 class="modal-title">{{ index.name }}</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <font-awesome-icon icon="times" aria-hidden="true" />
                             </button>
                         </div>
                         <div class="modal-body pt-0">
                             <h5>Quest Description</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>{{ index.description }}</p>
                         </div>
                     </div>
                 </div>

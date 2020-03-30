@@ -19,21 +19,15 @@ import dailyComplete from '@/components/user/views/daily-quest/DailyComplete'
 
 import mainList from '@/components/user/views/main-quest/MainList'
 import mainComplete from '@/components/user/views/main-quest/MainComplete'
-import mainS6 from '@/components/user/views/main-quest/MainS6'
-import mainS5 from '@/components/user/views/main-quest/MainS5'
-import mainS4 from '@/components/user/views/main-quest/MainS4'
-import mainS3 from '@/components/user/views/main-quest/MainS3'
-import mainS2 from '@/components/user/views/main-quest/MainS2'
-import mainsNondit from '@/components/user/views/main-quest/MainNondit'
-import mainsDitlabmas from '@/components/user/views/main-quest/MainDitlabmas'
-import mainsScopus from '@/components/user/views/main-quest/MainScopus'
+import mainsStart from '@/components/user/views/main-quest/MainStart'
 
 import extraList from '@/components/user/views/extra-quest/ExtraList'
 import extraComplete from '@/components/user/views/extra-quest/ExtraComplete'
-import extraSpecial from '@/components/user/views/extra-quest/ExtraSpecial'
+import extraStart from '@/components/user/views/extra-quest/ExtraStart'
 
 import secretList from '@/components/user/views/secret-quest/SecretList'
 import secretComplete from '@/components/user/views/secret-quest/SecretComplete'
+import secretStart from '@/components/user/views/secret-quest/SecretStart'
 import store from '../store'
 
 
@@ -114,36 +108,9 @@ const routes = [
                 component: mainComplete
             },
             {
-                path: 'mains6',
-                component: mainS6
-            },
-            {
-                path: 'mains5',
-                component: mainS5
-            },
-            {
-                path: 'mains4',
-                component: mainS4
-            },
-            {
-                path: 'mains3',
-                component: mainS3
-            },
-            {
-                path: 'mains2',
-                component: mainS2
-            },
-            {
-                path: 'mainnondit',
-                component: mainsNondit
-            },
-            {
-                path: 'mainditlabmas',
-                component: mainsDitlabmas
-            },
-            {
-                path: 'mainscopus',
-                component: mainsScopus
+                path: 'main/:quest_name/:quest_id',
+                name: 'questMainStart',
+                component: mainsStart
             },
 
 
@@ -157,8 +124,9 @@ const routes = [
                 component: extraComplete
             },
             {
-                path: 'extraspecial',
-                component: extraSpecial
+                path: 'extra/:quest_name/:quest_id',
+                name: 'questExtraStart',
+                component: extraStart
             },
 
 
@@ -170,6 +138,11 @@ const routes = [
             {
                 path: 'secretcomplete',
                 component: secretComplete
+            },
+            {
+                path: '/secret/:quest_name/:quest_id',
+                name: 'questSecretStart',
+                component: secretStart
             }
         ]
     },

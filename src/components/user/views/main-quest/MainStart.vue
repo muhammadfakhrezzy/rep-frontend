@@ -11,8 +11,8 @@ const swalWithBootstrap = Swal.mixin({
 export default {
     data() {
         return {
-            quest_name : this.$route.params.quest_name,
-            quest_id : this.$route.params.quest_id,
+            quest_name: this.$route.params.quest_name,
+            quest_id: this.$route.params.quest_id,
             link: ''
         }
     },
@@ -57,10 +57,10 @@ export default {
         }
     },
     computed: {
-        name() {
+        userName() {
             return this.$store.state.user.name
         },
-        email() {
+        userEmail() {
             return this.$store.state.user.email
         }
     }
@@ -73,7 +73,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">Daily Quest</h1>
+                        <h1 class="m-0 text-dark">Main Quest</h1>
                     </div>
                 </div>
             </div>
@@ -84,14 +84,14 @@ export default {
                     <div class="col-md-12">
                         <div class="card card-olive">
                             <div class="card-header">
-                                <h3 class="card-title"></h3>
+                                <h3 class="card-title">{{ quest_name }}</h3>
                             </div>
                             <div class="card-body">
                                 <form role="form">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Quest Name</label>
+                                                <label>Quest</label>
                                                 <input type="text" class="form-control" :placeholder="quest_name" disabled>
                                             </div>
                                         </div>
@@ -104,13 +104,13 @@ export default {
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" :placeholder="name" disabled>
+                                                <input type="text" class="form-control" :placeholder="userName" disabled>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Rinfo</label>
-                                                <input type="text" class="form-control" :placeholder="email" disabled>
+                                                <input type="text" class="form-control" :placeholder="userEmail" disabled>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
