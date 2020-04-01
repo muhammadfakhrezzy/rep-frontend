@@ -26,13 +26,29 @@ export default {
                 difficulty_id: this.difficulty_id
             }
             console.log(questData)
-            axios.post('https://dytlan.alphabetincubator.id/api/superuser/quests', questData)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            Swal.fire({
+                title: 'Are you sure create this quest ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            })  .then(result => {
+                    if(result.value) {
+                        axios.post('https://dytlan.alphabetincubator.id/api/superuser/quests', questData)
+                            .then(response => {
+                                console.log(response)
+                                Swal.fire(
+                                    'Success!',
+                                    'Quest has been created',
+                                    'success'
+                                )
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    }
+            })
         }
     },
     async created() {

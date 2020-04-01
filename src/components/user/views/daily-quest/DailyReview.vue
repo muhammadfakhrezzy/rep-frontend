@@ -3,15 +3,34 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            all_data: '',
-            user_id: this.$store.state.user.id
+            review_data: [],
+            record_id: ''
+        }
+    },
+    methods: {
+        verif(id) {
+            const status = {
+                status: 'verified'
+            }
+            axios.put('https://dytlan.alphabetincubator.id/api/reviewer/records/' + id + '/update', status)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        reject(id) {
+            const status = {
+                status: 'reject'
+            }
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/user/difficulty/' + 4)
+        axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/4/records')
             .then(response => {
                 console.log(response)
-                this.all_data = response.data[0].records
+                this.review_data = response.data[0].records
             })
     }
 }
@@ -23,7 +42,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">Daily Quests History</h1>
+                        <h1 class="m-0 text-dark">Daily Quests Review</h1>
                     </div>
                 </div>
             </div>
@@ -34,7 +53,7 @@ export default {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">History</h3>
+                                <h3 class="card-title">Quests Review</h3>
                                 <div class="card-tools">
                                     <div class="pagination pagination-sm float-right">
                                         <div class="page-item">
@@ -61,24 +80,28 @@ export default {
                                         <tr>
                                             <th>No</th>
                                             <th>Quest ID</th>
+                                            <th>User ID</th>
                                             <th>Submit Date</th>
                                             <th>Status</th>
-                                            <th>Point</th>
-                                            <th>Reviewer</th>
+                                            <th>Link</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(index, length) in all_data" :key="length">
-                                            <td>{{ length + 1 }}</td>
+                                        <tr v-for="(index, length) in review_data" :key="length">
+                                            <td>{{ length + 1 }}.</td>
                                             <td>{{ index.quest_id }}</td>
-                                            <td>{{ index.created_at | cutString }}, {{ index.created_at | cutTime }}</td>
+                                            <td>{{ index.user_id }}</td>
+                                            <td>{{ index.created_at | cutString }}</td>
                                             <td>
                                                 <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>
-                                                <span v-else-if="index.status === 'pending'" class="badge bg-warning">pending</span>
-                                                <span v-else class="badge bg-danger">reject</span>
+                                                <span v-else class="badge bg-danger">pending</span>
                                             </td>
-                                            <td>{{index.value}}</td>
-                                            <td>--</td>
+                                            <td><a :href="index.link" target="_blank">Click Here</a></td>
+                                            <td>
+                                                <button @click="verif(index.id)" class="btn btn-xs btn-success">Verified</button>
+                                                <button @click="reject(index.id)" class="btn btn-xs btn-danger ml-2">Reject</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

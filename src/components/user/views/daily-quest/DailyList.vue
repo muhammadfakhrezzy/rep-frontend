@@ -8,7 +8,7 @@ export default {
         }
     },
     async created() {
-        await axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties/2')
+        await axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties/4')
             .then(response => {
                 console.log(response)
                 this.daily = response.data[0].quests
@@ -36,9 +36,10 @@ export default {
                             <div class="inner">
                                 <h3>
                                     {{ index.value }} POIN
-                                    <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + index.name + index.id]"/>
+                                    <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.id]"/>
                                 </h3>
                                 <p>{{ index.name }}</p>
+                                <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.daily_limit}}/{{index.daily_limit}}</p>
                             </div>
                             <div class="icon">
 
@@ -53,7 +54,7 @@ export default {
             </div>
 
 
-            <div class="modal fade" :id="[index.name + index.id]" v-for="index in daily" :key="index.id">
+            <div class="modal fade" :id="['quest' + index.id]" v-for="index in daily" :key="index.id">
                 <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                     <div class="modal-content">
                         <div class="modal-header">

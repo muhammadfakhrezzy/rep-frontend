@@ -30,6 +30,21 @@ if (token) {
         "Bearer" + token;
 }
 
+Vue.filter('cutString', value => {
+    return value.substr(0, 10)
+})
+
+Vue.filter('cutTime', value => {
+    return value.substr(11, 5)
+})
+
+Vue.filter('strCapitalize', value => {
+    return value.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+})
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -16,6 +16,7 @@ import rankAll from '@/components/user/rank/RankAll'
 import dailyList from '@/components/user/views/daily-quest/DailyList'
 import dailyStart from '@/components/user/views/daily-quest/DailyStart'
 import dailyComplete from '@/components/user/views/daily-quest/DailyComplete'
+import dailyReview from '@/components/user/views/daily-quest/DailyReview'
 
 import mainList from '@/components/user/views/main-quest/MainList'
 import mainComplete from '@/components/user/views/main-quest/MainComplete'
@@ -96,6 +97,10 @@ const routes = [
                 path: 'dailycomplete',
                 component: dailyComplete
             },
+            {
+                path: 'dailyreview',
+                component: dailyReview
+            },
 
 
             // Main Quest
@@ -170,6 +175,10 @@ const routes = [
             {
                 path: 'allquest',
                 component: () => import('@/components/admin/views/AllQuest')
+            },
+            {
+                path: 'listdifficulty',
+                component: () => import('@/components/admin/views/ListDifficulty')
             }
         ]
     }

@@ -1,4 +1,7 @@
 <style>
+    .menu-open a p svg {
+        transform: rotate(-90deg);
+    }
     .hi-dropdown{
         position: relative;
     }

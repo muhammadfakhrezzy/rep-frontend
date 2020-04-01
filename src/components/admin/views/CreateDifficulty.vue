@@ -9,8 +9,30 @@ export default {
     },
     methods: {
         submit() {
-            axios.post('https://dytlan.alphabetincubator.id/api/superuser/difficulties', {name: this.data})
-                .then(response => console.log(response))
+            Swal.fire({
+                title: 'Are you sure create this difficulty ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            })  .then(result => {
+                    if(result.value) {
+                        axios.post('https://dytlan.alphabetincubator.id/api/superuser/difficulties', {name: this.data})
+                            .then(response => {
+                                console.log(response)
+                                Swal.fire(
+                                    'Sucess!',
+                                    'Difficulty has been created',
+                                    'success'
+                                )
+                                this.data = ''
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    }
+            })
         }
     }
 }

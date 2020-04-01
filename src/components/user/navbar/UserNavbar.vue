@@ -1,4 +1,75 @@
+<script>
+import axios from 'axios'
+import DigitalClock from 'vue-digital-clock'
+import Swal from 'sweetalert2'
+export default {
+    data() {
+        return {
+            name: this.$store.state.user.name,
+            photo: this.$store.state.user.photo
+        }
+    },
+    components: {
+        DigitalClock
+    },
+    computed: {
+        dateNow() {
+            const d = new Date()
+            const h = d.getHours()
+            const m = d.getMinutes()
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + '  '
+        }
+    },
+    methods: {
+        logout() {
+            Swal.fire({
+                title: "Are you sure to logout?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            })
+                .then(result => {
+                    if(result.value) {
+                        Swal.fire(
+                            'Success!',
+                            'You has been logouted.!',
+                            'success'
+                        )
+                        this.$store.dispatch('logout')
+                    }
+                })
+        }
+    },
+    async created() {
+        await axios.post('https://dytlan.alphabetincubator.id/api/auth/user')
+            .then(response => {
+                console.log(response)
+                if(response.data.error){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Your token has been expired!.'
+                    })
+                    this.$store.dispatch('logout')
+                    return
+                }
+                this.name = response.data.User.Detail_user.name
+                this.photo = response.data.User.Media[0].path
+                this.$store.dispatch('addDataUser', response.data.User)                
+            })
+            .catch(error => console.log(error))
+    }
+}
+</script>
+
 <style>
+    .menu-open a p svg {
+        transform: rotate(-90deg);
+    }
     .hi-dropdown{
         position: relative;
     }
@@ -118,7 +189,7 @@
                         </li>
                         <li class="header mt-3 mb-1" style="color: rgba(255,255,255,.7)">Quest Navigation</li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link text-white">
+                            <a class="nav-link text-white" style="cursor: pointer">
                                 <p>
                                     Daily Quests
                                     <font-awesome-icon icon="angle-left" class="right" />
@@ -132,15 +203,21 @@
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link to="/dailyComplete" class="nav-link text-white">
+                                    <router-link to="/dailycomplete" class="nav-link text-white">
                                         <font-awesome-icon icon="tasks" class="nav-icon" />
-                                        <p>Mission Complete</p>
+                                        <p>Quest History</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/dailyreview" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Review Quest</p>
                                     </router-link>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link text-white">
+                            <a class="nav-link text-white" style="cursor: pointer">
                             <p>
                                 Main Quests
                                 <font-awesome-icon icon="angle-left" class="right" />
@@ -162,7 +239,7 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link text-white">
+                            <a class="nav-link text-white" style="cursor: pointer">
                             <p>
                                 Extra Quests
                                 <font-awesome-icon icon="angle-left" class="right" />
@@ -184,7 +261,7 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link text-white">
+                            <a class="nav-link text-white" style="cursor: pointer">
                             <p>
                                 Secret Quests
                                 <font-awesome-icon icon="angle-left" class="right" />
@@ -214,7 +291,7 @@
                             </router-link>
                         </li>
 
-                        <li class="header mt-5 text-white">Documentation</li>
+                        <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
                             <router-link to="/helpcenter" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
@@ -238,71 +315,3 @@
 <!-- ./wrapper -->
     </div>
 </template>
-
-<script>
-import axios from 'axios'
-import DigitalClock from 'vue-digital-clock'
-import Swal from 'sweetalert2'
-export default {
-    data() {
-        return {
-            name: this.$store.state.user.name,
-            photo: this.$store.state.user.photo
-        }
-    },
-    components: {
-        DigitalClock
-    },
-    computed: {
-        dateNow() {
-            const d = new Date()
-            const h = d.getHours()
-            const m = d.getMinutes()
-            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + '  '
-        }
-    },
-    methods: {
-        logout() {
-            Swal.fire({
-                title: "Are you sure to logout?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!'
-            })
-                .then(result => {
-                    if(result.value) {
-                        Swal.fire(
-                            'Success!',
-                            'You has been logouted.!',
-                            'success'
-                        )
-                        this.$store.dispatch('logout')
-                    }
-                })
-        }
-    },
-    async created() {
-        await axios.post('https://dytlan.alphabetincubator.id/api/auth/user')
-            .then(response => {
-                console.log(response)
-                if(response.data.error){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Your token has been expired!.'
-                    })
-                    this.$store.dispatch('logout')
-                    return
-                }
-                this.name = response.data.User.Detail_user.name
-                this.photo = response.data.User.Media[0].path
-                this.$store.dispatch('addDataUser', response.data.User)                
-            })
-            .catch(error => console.log(error))
-    }
-}
-</script>
