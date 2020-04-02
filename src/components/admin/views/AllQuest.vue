@@ -4,7 +4,65 @@ import Swal from 'sweetalert2'
 export default {
     data(){
         return {
-            dataQuest: []
+            dataQuest: [],
+            update_name: '',
+            update_code : '',
+            update_description: '',
+            update_value : '',
+            update_daily_limit:'',
+            update_expires_in:'',
+            update_difficulty_id:''
+        }
+    },methods: {
+        update_quest(id) {
+            Swal.fire({
+                title: 'Are you sure update quest',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            })  .then(result => {
+                    if(result.value) {
+                        axios.put('https://dytlan.alphabetincubator.id/api/superuser/quests/' + id, {name: this.update_name}, {code: this.update_code}, {description: this.update_description}, {value: this.update_value}, {daily: this.update_daily_limit}, {expires: this.update_expires_in})
+                            .then(response => {
+                                console.log(response)
+                                Swal.fire(
+                                    'Success!',
+                                    'quest has been updated',
+                                    'success'
+                                )
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    }
+            })
+        },
+        delete_quest(id) {
+            Swal.fire({
+                title: 'Are you sure delete this quest?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            })  .then(result => {
+                    if(result.value) {
+                        axios.delete('https://dytlan.alphabetincubator.id/api/superuser/quests/' + id)
+                            .then(response => {
+                                console.log(response)
+                                Swal.fire(
+                                    'Success!',
+                                    'Your quest has been deleted',
+                                    'success'
+                                )
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    }
+            })
         }
     },
     created() {
@@ -36,7 +94,7 @@ export default {
                             <div class="card-header">
                                 <h3 class="card-title">All Quest List Table</h3>
                             </div>
-                            <div class="card-body table-responsive p-0">
+                            <div class="card-body table-responsive p-4">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -48,10 +106,13 @@ export default {
                                             <th>Daily Limit</th>
                                             <th>Expires in</th>
                                             <th>Difficulty ID</th>
+                                            </th></th>
+                                            <th>Action</th>
+                                            </th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="index in dataQuest" :key="index.id">
+                                        <tr v-for="index, length in dataQuest" :key="index.id">
                                             <td>{{ index.id }}</td>
                                             <td>{{ index.name }}</td>
                                             <td>{{ index.code }}</td>
@@ -60,6 +121,12 @@ export default {
                                             <td>{{ index.daily_limit }}</td>
                                             <td>{{ index.expires_in}}</td>
                                             <td>{{ index.difficulty_id }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary mr-2" data-toggle="modal" :data-target="['#' + 'quest' + index.id]">Update</button>
+                                            </td>
+                                            <td>
+                                                <button @click="delete_quest(index.id)" class="btn btn-sm btn-danger">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -67,6 +134,39 @@ export default {
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" :id="['quest' + index.id]" v-for="(index, length) in dataQuest" :key="index.id">
+                <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update Difficulty</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <font-awesome-icon icon="times" aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="form-group">
+                                <label>Update Name</label>
+                                <input type="text" class="form-control" v-model="update_name">
+                                <label>Update Code</label>
+                                <input type="text" class="form-control" v-model="update_code">
+                                <label>Update Description</label>
+                                <input type="text" class="form-control" v-model="update_description">
+                                <label>Update Point</label>
+                                <input type="text" class="form-control" v-model="update_value">
+                                <label>Update Daily Limit</label>
+                                <input type="text" class="form-control" v-model="update_daily_limit">
+                                <label>Update Expires</label>
+                                <input type="date" class="form-control" v-model="update_expires_in">
+                                <label>Update Difficulty ID</label>
+                                <input type="text" class="form-control" v-model="update_difficulty_id">
+                            </div>
+                            <div class="form-group">
+                                <button @click="update_quest(index.id)" class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>

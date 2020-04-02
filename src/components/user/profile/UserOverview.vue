@@ -1,10 +1,19 @@
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
             name: this.$store.state.user.name,
-            photo: this.$store.state.user.photo
+            photo: this.$store.state.user.photo,
+            nama: '',
+            konsentrasi: '',
+            fakultas:'',
         }
+    },
+    created () {
+        axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=iqbal@raharja.info')
+        .then (res =>
+        console.log(res))
     }
 }
 </script>
@@ -15,7 +24,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">My Overview</h1>
+                        <h1 class="m-0 text-dark">My Overboard</h1>
                     </div>
                 </div>
             </div>
@@ -34,7 +43,7 @@ export default {
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Total Point</b>
-                                        <a class="float-right">1082</a>
+                                        <a class="float-right">1082 / 1000</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Total Quest</b>
@@ -42,11 +51,13 @@ export default {
                                     </li>
                                     <li class="list-group-item">
                                         <b>Level</b>
-                                        <a class="float-right">76</a>
+                                        <a class="float-right">76 / 100</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-9">
                         <div class="card card-olive">
                             <div class="card-header">
                                 <h3 class="card-title">About Me</h3>
@@ -54,7 +65,7 @@ export default {
                             <div class="card-body">
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'book']" />
-                                    Education
+                                    Fakultas
                                 </strong>
                                 <p class="text-muted">
                                     Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
@@ -62,7 +73,7 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'map-marker-alt']" />
-                                    Location
+                                    Jenjang
                                 </strong>
                                 <p class="text-muted">
                                     Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
@@ -70,7 +81,7 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'pencil-alt']" />
-                                    Skill
+                                    Prodi
                                 </strong>
                                 <p class="text-muted">
                                     Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
@@ -78,7 +89,13 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['far', 'file-alt']" />
-                                    Notes
+                                    Konsentrasi
+                                </strong>
+                                <p class="text-muted">
+                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                </p><strong>
+                                    <font-awesome-icon :icon="['far', 'file-alt']" />
+                                    IPK
                                 </strong>
                                 <p class="text-muted">
                                     Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
@@ -86,36 +103,11 @@ export default {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header p-2">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a href="#activity" data-toggle="tab" class="nav-link active">Activity</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#timeline" data-toggle="tab" class="nav-link">Progress</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#settings" data-toggle="tab" class="nav-link">Edit</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="activity">
-                                        <p>Activity</p>
-                                    </div>
-                                    <div class="tab-pane" id="timeline">
-                                        <p>Progress</p>
-                                    </div>
-                                    <div class="tab-pane" id="settings">
-                                        <p>Edit My Overview</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+
+
                 </div>
             </div>
         </div>
