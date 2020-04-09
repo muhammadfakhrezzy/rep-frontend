@@ -8,7 +8,7 @@ export default {
         }
     },
     created() {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/' + 1)
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {
                 console.log(response)
                 this.all_data = response.data[0].records

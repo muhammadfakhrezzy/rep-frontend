@@ -8,7 +8,7 @@ export default {
         }
     },
     async created() {
-        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/difficulties/1')
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/1')
             .then(response => {
                 console.log(response)
                 this.daily = response.data[0].quests

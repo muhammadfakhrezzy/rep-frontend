@@ -1,3 +1,23 @@
+<script>
+import axios from 'axios'
+export default {
+    data () {
+        return {
+            name: this.$store.state.user.name,
+            photo: this.$store.state.user.photo,
+            rank : ''
+        }
+    },
+    created () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/2')
+        .then(response => {
+            this.rank = response.data
+            console.log(this.rank)
+        })
+    }
+}
+</script>
+
 <template>
     <div class="content-wrapper">
             <!-- Content Header (Page header) -->

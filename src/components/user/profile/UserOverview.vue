@@ -5,12 +5,12 @@ export default {
         return {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
-            data_mahasiswa:[],
-            data:''
+            data_mahasiswa:'',
+
         }
     },
     created () {
-        axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=iqbal@raharja.info')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience')
         .then(response => {
                 this.data_mahasiswa = response.data
                 console.log(this.data_mahasiswa)
@@ -19,10 +19,11 @@ export default {
     created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience')
         .then(response => {
-            this.data=response.data
-            console.log(this.data)
-        })
-    }
+                this.data_mahasiswa = response.data
+                console.log(this.data_mahasiswa)
+            })
+    },
+    
 }
 </script>
 
@@ -51,15 +52,15 @@ export default {
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Total Point</b>
-                                        <a class="float-right">1082 / 1000</a>
+                                        <a class="float-right">{{data_mahasiswa.total_value}} / 1000</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Total Quest</b>
-                                        <a class="float-right">368</a>
+                                        <a class="float-right">{{data_mahasiswa.total_quest}}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Level</b>
-                                        <a class="float-right">76 / 100</a>
+                                        <a class="float-right">{{data_mahasiswa.level_id}} / 100</a>
                                     </li>
                                 </ul>
                             </div>
