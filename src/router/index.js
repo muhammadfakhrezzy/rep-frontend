@@ -5,7 +5,10 @@ import login from '@/components/login/Login'
 import UserNavbar from '@/components/user/navbar/UserNavbar'
 import UserOverview from '@/components/user/profile/UserOverview'
 import helpCenter from '@/components/user/help-center/HelpCenter'
+import contactUs from '@/components/user/help-center/ContactUs'
+import Answered from '@/components/user/help-center/Answered'
 import whyRep from '@/components/user/why-rep/WhyRep'
+import Construction from '@/components/user/views/Construction'
 
 import rankDaily from '@/components/user/rank/RankDaily'
 import rankWeekly from '@/components/user/rank/RankWeekly'
@@ -54,6 +57,12 @@ const routes = [
                 path: 'helpcenter',
                 component: helpCenter
             },
+
+            {
+                path:'contactus',
+                component:contactUs
+            },
+
             {
                 path: 'whyrep',
                 component: whyRep
@@ -148,6 +157,14 @@ const routes = [
                 path: '/secret/:quest_name/:quest_id',
                 name: 'questSecretStart',
                 component: secretStart
+            },
+            {
+                path: 'Answered',
+                component: Answered
+            },
+            {
+                path:'underConstruction',
+                component:Construction
             }
         ]
     },
@@ -179,6 +196,10 @@ const routes = [
             {
                 path: 'listdifficulty',
                 component: () => import('@/components/admin/views/ListDifficulty')
+            },
+            {
+                path: 'faqadmin',
+                component: () => import('@/components/admin/views/FAQAdmin')
             }
         ]
     }

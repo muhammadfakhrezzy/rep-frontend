@@ -4,14 +4,15 @@ export default {
     data() {
         return {
             all_data: '',
-            user_id: this.$store.state.user.id
+            user_id: this.$store.state.user.id,
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/user/difficulty/' + 4)
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/' + 1)
             .then(response => {
                 console.log(response)
                 this.all_data = response.data[0].records
+                
             })
     }
 }
@@ -70,7 +71,7 @@ export default {
                                     <tbody>
                                         <tr v-for="(index, length) in all_data" :key="length">
                                             <td>{{ length + 1 }}</td>
-                                            <td>{{ index.quest_id }}</td>
+                                            <td>{{ index.quest.name }}</td>
                                             <td>{{ index.created_at | cutString }}, {{ index.created_at | cutTime }}</td>
                                             <td>
                                                 <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>

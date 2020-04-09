@@ -8,7 +8,7 @@ export default {
         }
     },
     async created() {
-        await axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties/7')
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/difficulties/7')
             .then(response => {
                 console.log(response)
                 this.secret_quest = response.data[0].quests

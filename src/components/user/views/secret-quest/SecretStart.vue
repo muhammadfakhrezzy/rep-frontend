@@ -33,7 +33,7 @@ export default {
                         link: this.link
                     }
                     console.log(data)
-                    axios.post('https://dytlan.alphabetincubator.id/api/user/records', data)
+                    axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records', data)
                         .then(response => {
                             console.log(response)
                             Swal.fire({

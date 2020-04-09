@@ -45,7 +45,7 @@ export default {
         }
     },
     async created() {
-        await axios.post('https://dytlan.alphabetincubator.id/api/auth/user')
+        await axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/auth/user')
             .then(response => {
                 console.log(response)
                 if(response.data.error){
@@ -217,14 +217,14 @@ export default {
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a class="nav-link text-white" style="cursor: pointer">
+                            <router-link to="/underConstruction" class=" text-white" style="cursor: pointer">
                             <p>
-                                Main Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
+                                <p>Main Quest</p>
+                                <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
                             </p>
-                            </a>
+                            </router-link>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <router-link to="/main" class="nav-link text-white">
                                         <font-awesome-icon icon="list" class="nav-icon" />
                                         <p>List Quest</p>
@@ -235,18 +235,18 @@ export default {
                                         <font-awesome-icon icon="tasks" class="nav-icon" />
                                         <p>Mission Complete</p>
                                     </router-link>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a class="nav-link text-white" style="cursor: pointer">
+                            <router-link to="/underConstruction" class="text-white" style="cursor: pointer">
                             <p>
-                                Extra Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
+                                <p>Extra Quest</p>
+                                <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
                             </p>
-                            </a>
+                            </router-link>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <router-link to="/extra" class="nav-link text-white">
                                         <font-awesome-icon icon="list" class="nav-icon" />
                                         <p>List Quest</p>
@@ -257,18 +257,18 @@ export default {
                                         <font-awesome-icon icon="tasks" class="nav-icon" />
                                         <p>Mission Complete</p>
                                     </router-link>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a class="nav-link text-white" style="cursor: pointer">
+                            <router-link to="/underConstruction" class="text-white" style="cursor: pointer">
                             <p>
-                                Secret Quests
-                                <font-awesome-icon icon="angle-left" class="right" />
+                                <p>Secret Quest</p>
+                                <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
                             </p>
-                            </a>
+                            </router-link>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <router-link to="/secret" class="nav-link text-white">
                                         <font-awesome-icon icon="list" class="nav-icon" />
                                         <p>List Quest</p>
@@ -279,14 +279,14 @@ export default {
                                         <font-awesome-icon icon="tasks" class="nav-icon" />
                                         <p>Mission Complete</p>
                                     </router-link>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="nav-item">
                             <router-link to="/allranking" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
-                                    All Ranking
+                                    <i>All Rank</i>
                                 </p>
                             </router-link>
                         </li>
@@ -299,9 +299,9 @@ export default {
                             </router-link>
                         </li>
                         <li class="nav-item mb-5">
-                            <router-link to="/whyrep" class="nav-link text-white">
-                                <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" />
-                                <p>Why REP ?</p>
+                            <!-- <router-link to="/whyrep" class="nav-link text-white"> -->
+                                <!-- <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" /> -->
+                                <a class="nav-link text-white" href="https://rep.alphabetincubator.id/why-rep/"target="_blank">Why REP ?</a>
                             </router-link>
                         </li>
 

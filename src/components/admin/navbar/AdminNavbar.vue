@@ -189,18 +189,13 @@
                         </li>
 
                         <li class="header mt-5 text-white">Documentation</li>
-                        <li class="nav-item">
-                            <router-link to="/helpcenter" class="nav-link text-white">
+                        <li class="nav-item mb-5">
+                            <router-link to="/admin/faqadmin" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
                                 <p>Help Center</p>
                             </router-link>
                         </li>
-                        <li class="nav-item mb-5">
-                            <router-link to="/whyrep" class="nav-link text-white">
-                                <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" />
-                                <p>Why REP ?</p>
-                            </router-link>
-                        </li>
+                        
 
                     </ul>
                 </nav>

@@ -25,12 +25,15 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card card-widget widget-user m-3">
-                                <div class="widget-user-header" style="background-color: #BF814D">
+                                <div class="widget-user-header" style="background-color: #BFBFBF">
                                     <h3 class="widget-user-username">RANK 2</h3>
                                     <h5 class="widget-user-desc">Aditya Lityanian</h5>
                                 </div>
-                                <div class="widget-user-image">
-                                    <img src="@/assets/img/user5-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2" data-toggle="modal" data-target="#modal-rank2">
+                                <div class="widget-user-image" style="top: 33%">
+                                    <img src="@/assets/img/user5-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                </div>
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
+                                    <img src="@/assets/img/Monthly-Silver.png" style="border: none; width: 158px">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -62,8 +65,11 @@
                                     <h3 class="widget-user-username">RANK 1</h3>
                                     <h5 class="widget-user-desc">Muhammad Iqbal</h5>
                                 </div>
-                                <div class="widget-user-image">
+                                <div class="widget-user-image" style="top: 33%">
                                     <img src="@/assets/img/user1-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                </div>
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
+                                    <img src="@/assets/img/Monthly-Gold.png" style="border: none; width: 158px">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -91,13 +97,17 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card card-widget widget-user m-3">
-                                <div class="widget-user-header" style="background-color: #BFBFBF">
+                                <div class="widget-user-header" style="background-color: #BF814D">
                                     <h3 class="widget-user-username">RANK 3</h3>
                                     <h5 class="widget-user-desc">Angga Widianto</h5>
                                 </div>
-                                <div class="widget-user-image">
+                                <div class="widget-user-image" style="top: 33%">
                                     <img src="@/assets/img/user4-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
+                                    <img src="@/assets/img/Monthly-Bronze.png" style="border: none; width: 158px">
+                                </div>
+                                
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm-4 border-right">

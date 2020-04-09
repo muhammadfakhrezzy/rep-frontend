@@ -9,7 +9,7 @@ import {
     faFile, faTasks, faList, faAngleLeft, faSignOutAlt, faBars, faCircle, 
     faArrowCircleRight, faTimes, faQuestionCircle, faInfoCircle, faUserCircle, 
     faBook, faMapMarkerAlt, faPencilAlt,  faPlus, faSpinner,faQuoteLeft, faQuestion,
-    faSyncAlt
+    faSyncAlt, faThumbsUp,faThumbsDown
     } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHackerrank, faGoogle } from '@fortawesome/free-brands-svg-icons'
@@ -19,7 +19,7 @@ library.add(faFile, faHackerrank, faTasks, faList, faAngleLeft, faBell,
     faSignOutAlt, faBars, faCircle, faGoogle, faArrowCircleRight, faTimes, 
     faQuestionCircle, faInfoCircle, faUserCircle, faBook, faMapMarkerAlt, 
     faPencilAlt, faFileAlt, faPlus, faSpinner, faQuoteLeft, faQuestion,
-    faSyncAlt
+    faSyncAlt,faThumbsUp,faThumbsDown
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

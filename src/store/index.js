@@ -44,7 +44,7 @@ export default new Vuex.Store({
     actions: {
         ssoGoogle({commit}, access) {
             commit('AUTH_LOAD')
-            axios.post("https://dytlan.alphabetincubator.id/api/auth/callback/google", access)
+            axios.post("https://dev.alphabetincubator.id/rep-backend/public/api/auth/callback/google", access)
                 .then(response => {
                     console.log(response)
                     commit('AUTH_SUCCESS', response.data.access_token)
@@ -69,7 +69,7 @@ export default new Vuex.Store({
             commit('AUTH_USER', data)
         },
         logout({commit}){
-            axios.post('https://dytlan.alphabetincubator.id/api/auth/logout')
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/auth/logout')
                 .then(response => {
                     console.log(response)
                 })

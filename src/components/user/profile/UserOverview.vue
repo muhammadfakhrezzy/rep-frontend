@@ -5,15 +5,23 @@ export default {
         return {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
-            nama: '',
-            konsentrasi: '',
-            fakultas:'',
+            data_mahasiswa:[],
+            data:''
         }
     },
     created () {
         axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=iqbal@raharja.info')
-        .then (res =>
-        console.log(res))
+        .then(response => {
+                this.data_mahasiswa = response.data
+                console.log(this.data_mahasiswa)
+            })
+    },
+    created () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience')
+        .then(response => {
+            this.data=response.data
+            console.log(this.data)
+        })
     }
 }
 </script>
@@ -24,7 +32,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">My Overboard</h1>
+                        <h1 class="m-0 text-dark">My Viewboard</h1>
                     </div>
                 </div>
             </div>

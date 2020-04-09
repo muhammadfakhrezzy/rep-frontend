@@ -12,7 +12,7 @@ export default {
             const status = {
                 status: 'verified'
             }
-            axios.put('https://dytlan.alphabetincubator.id/api/reviewer/records/' + id + '/update', status)
+            axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
                 .then(response => {
                     console.log(response)
                 })
@@ -27,7 +27,7 @@ export default {
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/4/records')
+        axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/1/records')
             .then(response => {
                 console.log(response)
                 this.review_data = response.data[0].records
@@ -90,8 +90,8 @@ export default {
                                     <tbody>
                                         <tr v-for="(index, length) in review_data" :key="length">
                                             <td>{{ length + 1 }}.</td>
-                                            <td>{{ index.quest_id }}</td>
-                                            <td>{{ index.user_id }}</td>
+                                            <td>{{ index.quest.name }}</td>
+                                            <td>{{ index.user.name }}</td>
                                             <td>{{ index.created_at | cutString }}</td>
                                             <td>
                                                 <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>
