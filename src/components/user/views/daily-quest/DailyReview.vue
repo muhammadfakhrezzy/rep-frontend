@@ -143,11 +143,12 @@ export default {
                                             <td>{{ index.user.name }}</td>
                                             <td>{{ index.created_at | cutString }}</td>
                                             <td>
-                                                <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>
-                                                <span v-else class="badge bg-danger">pending</span>
+                                                <span v-if="index.status === 'verified'" class="badge bg-success">{{index.status}}</span>
+                                                <span v-else-if="index.status ==='reject'" class="badge bg-danger">{{index.status}}</span>
+                                                <span v-else class="badge bg-warning">{{index.status}}</span>
                                             </td>
                                             <td><a :href="['http://' + index.link]" target="_blank">Click Here</a></td>
-                                            <td>
+                                            <td v-if="index.status ==='pending'">
                                                 <button @click="verif(index.id)" class="btn btn-xs btn-success">Verified</button>
                                                 <button @click="reject(index.id)" class="btn btn-xs btn-danger ml-2">Reject</button>
                                             </td>
