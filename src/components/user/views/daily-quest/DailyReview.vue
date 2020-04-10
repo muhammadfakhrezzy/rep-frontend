@@ -1,5 +1,13 @@
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
+const swalWithBootstrap = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success py-2 px-4',
+        cancelButton : 'btn btn-danger py-2 px-4 mx-3'
+    },
+    buttonsStyling: false
+})
 export default {
     data() {
         return {
@@ -79,8 +87,8 @@ export default {
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Quest ID</th>
-                                            <th>User ID</th>
+                                            <th>Quest Name</th>
+                                            <th>User</th>
                                             <th>Submit Date</th>
                                             <th>Status</th>
                                             <th>Link</th>

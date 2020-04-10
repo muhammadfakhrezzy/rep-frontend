@@ -283,7 +283,7 @@ export default {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/allranking" class="nav-link text-white">
+                            <router-link to="/underConstruction" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
                                     <i>All Rank</i>

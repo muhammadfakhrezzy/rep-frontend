@@ -12,7 +12,9 @@
             <div class="row">
                 <div class="coming-soon col text-center p-b-10">
                     <h3>Coming Soon</h3>
+                    <img src="../../../assets/57605.gif" alt="">
                 </div>
+
             </div>
         </div>
     </div>
@@ -20,16 +22,15 @@
 
 <style scoped>
 .content-wrapper {
-    background: linear-gradient(to right, rgb(168, 255, 120), rgb(120, 255, 214));
+
     min-height: 1000px;
 }
 .coming-soon {
     font-family: Montserrat-Black;
     font-size: 50px;
-    color: #fff;
+    color:black;
     line-height: 1.2;
     text-transform: uppercase;
-    margin-top:25%;
     
 }
 </style>

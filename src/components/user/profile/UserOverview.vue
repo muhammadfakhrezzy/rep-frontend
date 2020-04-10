@@ -6,7 +6,7 @@ export default {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
             data_mahasiswa:'',
-            user:''
+            user:'',
 
         }
     },
@@ -18,9 +18,10 @@ export default {
             })
     },
     mounted () {
-        axios.get('https://iqbal-759ad.firebaseio.com/users.json')
+        axios.get('http://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
         .then(response => {
-                this.user = response.data
+            // console.log(response)
+                this.user = response.data.results
                 console.log(this.user)
             })
     },
@@ -78,7 +79,7 @@ export default {
                                     Fakultas
                                 </strong>
                                 <p class="text-muted">
-                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                    {{user.fakultas}}
                                 </p>
                                 <hr>
                                 <strong>
@@ -86,7 +87,7 @@ export default {
                                     Jenjang
                                 </strong>
                                 <p class="text-muted">
-                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                    {{user.jenjang}}
                                 </p>
                                 <hr>
                                 <strong>
@@ -94,7 +95,7 @@ export default {
                                     Prodi
                                 </strong>
                                 <p class="text-muted">
-                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                    {{user.prodi}}
                                 </p>
                                 <hr>
                                 <strong>
@@ -102,13 +103,13 @@ export default {
                                     Konsentrasi
                                 </strong>
                                 <p class="text-muted">
-                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                    {{user.konsentrasi}}
                                 </p><strong>
                                     <font-awesome-icon :icon="['far', 'file-alt']" />
                                     IPK
                                 </strong>
                                 <p class="text-muted">
-                                    Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise.
+                                    {{user.ipk}} / 4.00
                                 </p>
                             </div>
                         </div>
