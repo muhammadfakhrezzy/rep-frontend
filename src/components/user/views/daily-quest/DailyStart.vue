@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import router from '../../../../router'
 const swalWithBootstrap = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success py-2 px-4',
@@ -44,6 +45,7 @@ export default {
                                 timer: 1500
                             })
                             this.link = ''
+                            router.push('/daily')
                         })
                         .catch(error => console.log(error))
                 }else if(response.dismiss === Swal.DismissReason.cancel) {
