@@ -20,18 +20,59 @@ export default {
             const status = {
                 status: 'verified'
             }
-            axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            swalWithBootstrap.fire({
+                title: 'Are you sure verified this quest?',
+                text: 'Player will get a point after the quest has been verified',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                reverseButtons: true
+            }).then(result => {
+                if(result.value) {
+                    axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
+                        .then(response => {
+                            console.log(response)
+                            swalWithBootstrap.fire(
+                                'Success!',
+                                'Player got a point',
+                                'success'
+                            )
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                }
+            })
         },
         reject(id) {
             const status = {
                 status: 'reject'
             }
+            swalWithBootstrap.fire({
+                title: 'Are you sure rejected this quest?',
+                text: 'Player will not get a point if the quest has been rejected',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                reverseButtons: true
+            }).then(result => {
+                if(result.value) {
+                    axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
+                        .then(response => {
+                            console.log(response)
+                            swalWithBootstrap.fire(
+                                'Success!',
+                                'Player don\'t got a point',
+                                'success'
+                            )
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                }
+            })
         }
     },
     created() {
@@ -105,7 +146,7 @@ export default {
                                                 <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>
                                                 <span v-else class="badge bg-danger">pending</span>
                                             </td>
-                                            <td><a :href="index.link" target="_blank">Click Here</a></td>
+                                            <td><a :href="['http://' + index.link]" target="_blank">Click Here</a></td>
                                             <td>
                                                 <button @click="verif(index.id)" class="btn btn-xs btn-success">Verified</button>
                                                 <button @click="reject(index.id)" class="btn btn-xs btn-danger ml-2">Reject</button>
