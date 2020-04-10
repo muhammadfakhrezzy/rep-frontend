@@ -5,14 +5,22 @@ export default {
         return {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
-            rank : ''
+            rank : '',
+            detail:[]
         }
     },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/2')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/daily')
         .then(response => {
             this.rank = response.data
             console.log(this.rank)
+        })
+    },
+    mounted () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/2')
+        .then(response => {
+            this.detail = response.data
+            console.log(this.detail)
         })
     }
 }
@@ -101,7 +109,7 @@ export default {
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">1091</h5>
+                                                <h5 class="description-header">1000</h5>
                                                 <span class="description-text">POINT</span>
                                             </div>
                                         </div>

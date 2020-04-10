@@ -6,6 +6,7 @@ export default {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
             data_mahasiswa:'',
+            user:''
 
         }
     },
@@ -16,11 +17,11 @@ export default {
                 console.log(this.data_mahasiswa)
             })
     },
-    created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience')
+    mounted () {
+        axios.get('https://iqbal-759ad.firebaseio.com/users.json')
         .then(response => {
-                this.data_mahasiswa = response.data
-                console.log(this.data_mahasiswa)
+                this.user = response.data
+                console.log(this.user)
             })
     },
     

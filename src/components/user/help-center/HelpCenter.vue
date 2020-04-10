@@ -11,50 +11,35 @@ const swalWithBootstrap = Swal.mixin({
 export default {
     data () {
         return {
-            like:'',
-            dislike:''
+            
+        }
+        
+    },
+    methods : {
+        clickedLike() {
+            this.$store.dispatch('button')
+        },
+        clickedDislike() {
+            this.$store.dispatch('tombol')
         }
     },
-    methods: {
-        submit() {
-            swalWithBootstrap.fire({
-                title: 'Are you sure ?',
-                icon: 'warning',
-                text: "You want to be send this ?",
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                reverseButtons: true
-            }).then(response => {
-                if(response.value) {
-                    let data = {
-                        like: this.like,
-                        dislike: this.dislike
-                    }
-                    console.log(data)
-                    axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/posts/{id}/total', data)
-                        .then(response => {
-                            console.log(response)
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Your result has been sended',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            this.link = ''
-                        })
-                        .catch(error => console.log(error))
-                }else if(response.dismiss === Swal.DismissReason.cancel) {
-                    swalWithBootstrap.fire(
-                        'Cancelled',
-                        'Your result is still safe',
-                        'error'
-                    )
-                }
-            })
+    computed : {
+        like() {
+            return this.$store.state.like
+        },
+        dislike(){
+            return this.$store.state.dislike
         }
-    },
+
+    }
+    // created () {
+    //     axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/posts/{id}/feedback')
+    //                     .then(response => {
+    //                         this.like = response.data
+    //                         console.log(this.like)
+    // }
+    // )
+    // }
 }
 </script>
 
@@ -251,13 +236,23 @@ export default {
                     <div class="wrapper text-center">
                         <p>Was this Questions useful ?</p>
                         <div class="col text-center">
-                            <p>
+                            <p v-if="!like" class="d-inline">
                                  <font-awesome-icon :icon="['fa', 'thumbs-up']" />
-                                <a href="#" @click="submit" class="link-black text-sm mr-3 ml-2" v-model="like">Like
+                                <a href="#" @click="clickedLike()" class="link-black text-sm mr-3 ml-2" >Like
                                     </a>
-
-                                <a href="#" @click="submit" class="link-black text-sm ml-3 mr-2" v-model="dislike">Dislike
-                                    
+                            </p>
+                            <p v-else class="d-inline">
+                                 <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+                                <a href="#" class="text-sm mr-3 ml-2" style="color:red;" >Liked
+                                    </a>
+                            </p>
+                            <p v-if="!dislike" class="d-inline">
+                                <a href="#" @click="clickedDislike()" class="link-black text-sm ml-3 mr-2" >Dislike
+                                    </a>
+                                <font-awesome-icon :icon="['fa', 'thumbs-down']" />
+                            </p>
+                            <p v-else class="d-inline">
+                                <a href="#" class="text-sm ml-3 mr-2" style="color:red;" >Dislike
                                     </a>
                                 <font-awesome-icon :icon="['fa', 'thumbs-down']" />
                         </p>
@@ -286,7 +281,6 @@ export default {
             </div>
 
                 </div>
-        </div>
 
 
 

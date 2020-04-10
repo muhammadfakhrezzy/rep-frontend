@@ -16,7 +16,9 @@ export default new Vuex.Store({
     state: {
         status: '',
         token: '',
-        user: {}
+        user: {},
+        like: false,
+        dislike: false
     },
     mutations: {
         AUTH_LOAD(state) {
@@ -39,9 +41,21 @@ export default new Vuex.Store({
             state.user.name = userData.Detail_user.name
             state.user.email = userData.Detail_user.email
             state.user.photo = userData.Media[0].path
+        },
+        BEBAS(state){
+            state.like = true
+        },
+        SERAH(state){
+            state.dislike = true
         }
     },
     actions: {
+        button({commit}) {
+            commit('BEBAS')
+        },
+        tombol({commit}) {
+            commit('SERAH')
+        },
         ssoGoogle({commit}, access) {
             commit('AUTH_LOAD')
             axios.post("https://dev.alphabetincubator.id/rep-backend/public/api/auth/callback/google", access)
