@@ -34,7 +34,7 @@ export default {
                 <div class="row">
                     <div class="col-lg-3 col-6" v-for="index in daily" :key="index.quest.id">
                         <div v-if="index.limit_display !== index.quest.daily_limit" class="small-box bg-warning">
-                            <div  class="inner">
+                            <div style="height: 130px" class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
@@ -56,7 +56,7 @@ export default {
                         </div>
 
                         <div v-else class="small-box bg-olive">
-                            <div  class="inner">
+                            <div style="height: 130px" class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
