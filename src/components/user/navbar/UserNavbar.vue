@@ -25,7 +25,7 @@ export default {
     methods: {
         logout() {
             Swal.fire({
-                title: "Are you sure to logout?",
+                title: "Are you sure want to logout?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -36,7 +36,6 @@ export default {
                     if(result.value) {
                         Swal.fire(
                             'Success!',
-                            'You has been logouted.!',
                             'success'
                         )
                         this.$store.dispatch('logout')
@@ -221,7 +220,7 @@ export default {
                             <p>
                                 <p>Main Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
-                            </p>
+                            <!-- </p> -->
                             </router-link>
                             <ul class="nav nav-treeview">
                                 <!-- <li class="nav-item">
@@ -243,7 +242,7 @@ export default {
                             <p>
                                 <p>Extra Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
-                            </p>
+                            <!-- </p> -->
                             </router-link>
                             <ul class="nav nav-treeview">
                                 <!-- <li class="nav-item">
@@ -265,7 +264,7 @@ export default {
                             <p>
                                 <p>Secret Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
-                            </p>
+                            <!-- </p> -->
                             </router-link>
                             <ul class="nav nav-treeview">
                                 <!-- <li class="nav-item">
@@ -301,8 +300,8 @@ export default {
                         <li class="nav-item mb-5">
                             <!-- <router-link to="/whyrep" class="nav-link text-white"> -->
                                 <!-- <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" /> -->
-                                <a class="nav-link text-white" href="https://rep.alphabetincubator.id/why-rep/"target="_blank">Why REP ?</a>
-                            </router-link>
+                                <a class="nav-link text-white" href="https://rep.alphabetincubator.id/why-rep/" target="_blank">Why REP ?</a>
+                            <!-- </router-link> -->
                         </li>
 
                     </ul>

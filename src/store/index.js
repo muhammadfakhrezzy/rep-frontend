@@ -69,7 +69,7 @@ export default new Vuex.Store({
                         title: 'Welcome to REP',
                         text: 'Login Successful',
                         showConfirmButton: false,
-                        timer: 2500
+                        timer: 3500
                     })
                     router.push('/')
                 })

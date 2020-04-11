@@ -38,7 +38,7 @@ export default {
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
                                 </h3>
-                                <p>{{ length+1 }}. {{ index.quest.name }} ({{index.quest.code}})</p>
+                                <p>{{ index.quest.id }}. {{ index.quest.name }} ({{index.quest.code}})</p>
                                 <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p>
                             </div>
                             <div class="icon">
