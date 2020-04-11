@@ -46,32 +46,6 @@ export default {
             user_id: this.$store.state.user.id,
         }
     },
-    computed: {
-        countDown(){
-            const getDate = new Date()
-            const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-            const dateString = month[getDate.getMonth()] + ' ' + getDate.getDay()
-            const dateNow = new Date(dateString + ', ' + getDate.getFullYear() + '23:59:59')
-            
-            const x = setInterval(function() {
-                let now = new Date().getTime()
-                let distance = distance = dateNow - now;
-
-                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                let hours = Math.floor(
-                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                );
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // if(distance < 0) {
-                //     clearInterval(x)
-                //     return "Expired"
-                // }
-                return hours + "Jam " + minutes + "Menit " + seconds + "Detik"
-            },1000)
-        }
-    },
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {

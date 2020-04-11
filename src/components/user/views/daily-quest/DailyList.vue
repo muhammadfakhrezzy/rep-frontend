@@ -11,7 +11,8 @@ export default {
         await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/1')
             .then(response => {
                 console.log(response)
-                this.daily = response.data
+                const data = response.data.sort((a, b) => (a.quest.id > b.quest.id) ? 1 : -1)
+                this.daily = data
             })
     }
 }
@@ -31,14 +32,14 @@ export default {
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-6" v-for="(index, length) in daily" :key="index.quest.id">
+                    <div class="col-lg-3 col-6" v-for="index in daily" :key="index.quest.id">
                         <div v-if="index.limit_display !== index.quest.daily_limit" class="small-box bg-warning">
                             <div  class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
                                 </h3>
-                                <p>{{ length+1 }}. {{ index.quest.name }} ({{index.quest.code}})</p>
+                                <p>{{ index.quest.id }}. {{ index.quest.name }} ({{index.quest.code}})</p>
                                 <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p>
                             </div>
                             <div class="icon">
@@ -53,13 +54,14 @@ export default {
                                 <font-awesome-icon :icon="['far', 'check-circle']" />
                             </p>
                         </div>
+
                         <div v-else class="small-box bg-olive">
                             <div  class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
                                 </h3>
-                                <p>{{ length+1 }}. {{ index.quest.name }}</p>
+                                <p>{{ index.quest.id }}. {{ index.quest.name }}</p>
                                 <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p>
                             </div>
                             <div class="icon">
