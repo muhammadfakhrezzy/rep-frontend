@@ -50,7 +50,7 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {
                 console.log(response)
-                this.all_data = response.data[0].records
+                this.all_data = response.data.Data
                 
             })
     }
@@ -111,10 +111,13 @@ export default {
                                     <tbody>
                                         <tr v-for="(index, length) in all_data" :key="length">
                                             <td>{{ length + 1 }}</td>
-                                            <td>{{ index.quest.name }}</td>
-                                            <td>{{ index.created_at | cutString }}, {{ index.created_at | cutTime }}</td>
-                                            <td>{{index.value}}</td>
-                                            <td>--</td>
+                                            <td>{{ index.quest }}</td>
+                                            <td>{{ index.detail_record.created_at | cutString }}, {{ index.detail_record.created_at | cutTime }}</td>
+                                            <td>{{index.detail_record.value}}</td>
+                                            <td>
+                                                <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+                                                {{ index.likes }}
+                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>

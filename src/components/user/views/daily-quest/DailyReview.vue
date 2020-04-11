@@ -60,7 +60,7 @@ export default {
                 reverseButtons: true
             }).then(result => {
                 if(result.value) {
-                    axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
+                    axios.put(' https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', status)
                         .then(response => {
                             console.log(response)
                             swalWithBootstrap.fire(
@@ -77,7 +77,7 @@ export default {
             })
         },
         getData() {
-            axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/1/records')
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
             .then(response => {
                 console.log(response)
                 this.review_data = response.data[0].records
