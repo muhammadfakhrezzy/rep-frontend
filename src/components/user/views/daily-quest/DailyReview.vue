@@ -38,6 +38,7 @@ export default {
                                 'Player got a point',
                                 'success'
                             )
+                            this.getData()
                         })
                         .catch(error => {
                             console.log(error)
@@ -67,20 +68,24 @@ export default {
                                 'Player don\'t got a point',
                                 'success'
                             )
+                            this.getData()
                         })
                         .catch(error => {
                             console.log(error)
                         })
                 }
             })
-        }
-    },
-    created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/1/records')
+        },
+        getData() {
+            axios.get('https://dytlan.alphabetincubator.id/api/reviewer/difficulty/1/records')
             .then(response => {
                 console.log(response)
                 this.review_data = response.data[0].records
             })
+        }
+    },
+    created() {
+        this.getData()
     }
 }
 </script>
