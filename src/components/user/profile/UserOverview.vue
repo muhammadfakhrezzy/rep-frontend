@@ -53,7 +53,7 @@ export default {
                                 <p class="text-muted text-center">Sistem Informasi</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Total Point</b>
+                                        <b>Total ECP</b>
                                         <a class="float-right">{{data_mahasiswa.total_value}} / 1000</a>
                                     </li>
                                     <li class="list-group-item">

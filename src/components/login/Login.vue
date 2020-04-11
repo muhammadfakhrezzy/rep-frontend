@@ -21,12 +21,12 @@
             </video>
         <div class="login-box">
             <div class="login-logo">
-                <div class="text">Rep Login
+                <div class="text">
                     <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" :logoutButton="false" class="social-auth-links text-center mb-3">
                         <a href="#" class="btn btn-block bg-teal p-3">
                             <font-awesome-icon v-if="!load" :icon="['fab', 'google']" class="mr-2 text-white" /> 
                             <font-awesome-icon v-else :icon="['fas', 'spinner']" class="mr-2 infi-animation" />
-                            <p v-if="!load" class="d-inline text-white">Login using Rinfo</p>
+                            <p v-if="!load" class="d-inline text-white">Login REP using Rinfo</p>
                             <p v-else class="d-inline">Loading...</p>
                         </a>
                     </GoogleLogin>

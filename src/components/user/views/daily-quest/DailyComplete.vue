@@ -25,6 +25,7 @@ export default {
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <h1 class="m-0 text-dark">Daily Quests History</h1>
+                        <h5>Total Point : 0 / 11</h5>
                     </div>
                 </div>
             </div>

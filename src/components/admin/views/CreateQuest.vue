@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import router from '../../../router'
 export default {
     data() {
         return {
@@ -43,6 +44,7 @@ export default {
                                     'Quest has been created',
                                     'success'
                                 )
+                            router.push('/createquest')
                             })
                             .catch(error => {
                                 console.log(error)
