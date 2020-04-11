@@ -16,6 +16,23 @@ export default {
         }
     },
     methods: {
+        getData(){
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
+            .then(response => {
+                console.log(response)
+                this.review_data = response.data
+            })
+        },
+        funcLike(id) {
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', {like: 1.0})
+                .then(response => {
+                    console.log(response)
+                    this.getData()
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
         verif(id) {
             const status = {
                 status: 'verified'
@@ -74,13 +91,6 @@ export default {
                             console.log(error)
                         })
                 }
-            })
-        },
-        getData() {
-            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
-            .then(response => {
-                console.log(response)
-                this.review_data = response.data
             })
         }
     },
@@ -146,9 +156,9 @@ export default {
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.user }}</td>
                                             <td>{{ index.detail_record.created_at | cutString }}</td>
-                                            <td><a :href="['http://' + index.detail_record.link]" target="_blank">Click Here</a></td>
+                                            <td><a>Click Here</a></td>
                                             <td>
-                                                <font-awesome-icon :icon="['fa', 'thumbs-up']" /> {{index.likes}}
+                                                <font-awesome-icon @click="funcLike(index.detail_record.id)" style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> {{index.likes}}
                                             </td>
                                         </tr>
                                     </tbody>
