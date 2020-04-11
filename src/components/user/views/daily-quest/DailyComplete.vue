@@ -1,10 +1,75 @@
 <script>
+const getDate = new Date()
+const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
+const countDownDate = new Date(dateString).getTime();
+// var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML =
+        days +
+        "Hari " +
+        hours +
+        "Jam " +
+        minutes +
+        "Menit " +
+        seconds +
+        "Detik ";
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
 import axios from 'axios'
 export default {
     data() {
         return {
             all_data: '',
             user_id: this.$store.state.user.id,
+        }
+    },
+    computed: {
+        countDown(){
+            const getDate = new Date()
+            const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            const dateString = month[getDate.getMonth()] + ' ' + getDate.getDay()
+            const dateNow = new Date(dateString + ', ' + getDate.getFullYear() + '23:59:59')
+            
+            const x = setInterval(function() {
+                let now = new Date().getTime()
+                let distance = distance = dateNow - now;
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor(
+                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // if(distance < 0) {
+                //     clearInterval(x)
+                //     return "Expired"
+                // }
+                return hours + "Jam " + minutes + "Menit " + seconds + "Detik"
+            },1000)
         }
     },
     created() {
@@ -26,6 +91,7 @@ export default {
                     <div class="col-sm-12">
                         <h1 class="m-0 text-dark">Daily Quests History</h1>
                         <h5>Total Point : 0 / 11</h5>
+                        <p id="demo"></p>
                     </div>
                 </div>
             </div>
