@@ -6,21 +6,27 @@ export default {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
             rank : '',
-            detail:[]
+            detail:''
         }
+    },
+    methods: {
+        getUserRank (id) {
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + id)
+            .then(response => {
+                this.detail = response.data
+                console.log(this.detail)
+            })
+    }
     },
     created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/daily')
         .then(response => {
-            this.rank = response.data
-            console.log(this.rank)
-        })
-    },
-    mounted () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/2')
-        .then(response => {
-            this.detail = response.data
-            console.log(this.detail)
+            console.log(response)
+            let res = response.data
+            this.rank = res
+            // this.rank = res.sort((a, b) => 
+            // (a.total_value > b.total_value) ? 1 : (a.total_value === b.total_value) ? 
+            // ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
         })
     }
 }
@@ -91,7 +97,7 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #E7AB30">
                                     <h3 class="widget-user-username">RANK 1</h3>
-                                    <h5 class="widget-user-desc">Muhammad Iqbal</h5>
+                                    <!-- <h5 class="widget-user-desc">{{rank.0.detail_user}}</h5> -->
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
                                     <img src="@/assets/img/user1-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
