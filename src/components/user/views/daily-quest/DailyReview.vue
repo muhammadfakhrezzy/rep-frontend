@@ -80,7 +80,7 @@ export default {
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
             .then(response => {
                 console.log(response)
-                this.review_data = response.data[0].records
+                this.review_data = response.data
             })
         }
     },
@@ -110,7 +110,7 @@ export default {
                                 <h3 class="card-title">Quests Review</h3>
                                 <div class="card-tools">
                                     <div class="pagination pagination-sm float-right">
-                                        <div class="page-item">
+                                        <!-- <div class="page-item">
                                             <a class="page-link">«</a>
                                         </div>
                                         <div class="page-item">
@@ -124,7 +124,7 @@ export default {
                                         </div>
                                         <div class="page-item">
                                             <a class="page-link">»</a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -141,14 +141,14 @@ export default {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(index, length) in review_data" :key="length">
+                                        <tr v-for="(index, length) in review_data" :key="index.detail_record.id">
                                             <td>{{ length + 1 }}.</td>
-                                            <td>{{ index.quest.name }}</td>
-                                            <td>{{ index.user.name }}</td>
-                                            <td>{{ index.created_at | cutString }}</td>
-                                            <td><a :href="['http://' + index.link]" target="_blank">Click Here</a></td>
+                                            <td>{{ index.quest }}</td>
+                                            <td>{{ index.user }}</td>
+                                            <td>{{ index.detail_record.created_at | cutString }}</td>
+                                            <td><a :href="['http://' + index.detail_record.link]" target="_blank">Click Here</a></td>
                                             <td>
-                                                <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+                                                <font-awesome-icon :icon="['fa', 'thumbs-up']" /> {{index.likes}}
                                             </td>
                                         </tr>
                                     </tbody>
