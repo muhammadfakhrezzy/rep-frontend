@@ -64,7 +64,7 @@ export default {
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <h1 class="m-0 text-dark">Daily Quests History</h1>
-                        <h5>Total Point : 0 / 11</h5>
+                        <h5>Total ECP : 0 / 11</h5>
                         <p id="demo"></p>
                     </div>
                 </div>
@@ -102,11 +102,10 @@ export default {
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Quest ID</th>
+                                            <th>Quest Name</th>
                                             <th>Submit Date</th>
-                                            <th>Status</th>
                                             <th>Point</th>
-                                            <th>Reviewer</th>
+                                            <th>Likes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -114,11 +113,6 @@ export default {
                                             <td>{{ length + 1 }}</td>
                                             <td>{{ index.quest.name }}</td>
                                             <td>{{ index.created_at | cutString }}, {{ index.created_at | cutTime }}</td>
-                                            <td>
-                                                <span v-if="index.status === 'verified'" class="badge bg-success">verified</span>
-                                                <span v-else-if="index.status === 'pending'" class="badge bg-warning">pending</span>
-                                                <span v-else class="badge bg-danger">reject</span>
-                                            </td>
                                             <td>{{index.value}}</td>
                                             <td>--</td>
                                         </tr>
