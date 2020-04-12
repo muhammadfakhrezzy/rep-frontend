@@ -63,8 +63,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[1].media" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)">
-                                    <img src="@/assets/img/silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" data-target="#modal-rank2">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-48%) translateY(-50%)">
+                                    <img src="@/assets/img/Global-Silver.png" style="border: none; width: 250px; cursor: pointer" data-toggle="modal" data-target="#modal-rank2">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -99,8 +99,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank1">
-                                    <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-48%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank1">
+                                    <img src="@/assets/img/Global-Rank.png" style="border: none; width: 250px; cursor:pointer">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -135,8 +135,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank3">
-                                    <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-48%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank3">
+                                    <img src="@/assets/img/Global-Bronze.png" style="border: none; width: 250px; cursor:pointer;">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
