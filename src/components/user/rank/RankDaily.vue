@@ -224,7 +224,7 @@ export default {
                                 <div class="card card-olive card-outline mb-0">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img src="" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                            <img :src="value.data.media[0].path" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
                                         <h3 class="profile-username text-center">{{ value.data.detail_user.name }}</h3>
                                         <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
@@ -238,7 +238,7 @@ export default {
                                                     <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
                                                         <h3 class="card-title">Total ECP</h3>
                                                         <div class="card-tools">
-                                                            <a class="float-right">-</a>
+                                                            <a class="float-right">{{ value.data.total_value }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="card-body px-2 py-0">
