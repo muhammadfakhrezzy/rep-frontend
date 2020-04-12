@@ -158,8 +158,10 @@ export default {
                                             <td>{{ index.detail_record.created_at | cutString }}</td>
                                             <td><a>Click Here</a></td>
                                             <td>
-                                                <font-awesome-icon @click="funcLike(index.detail_record.id)" style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> {{index.likes}}
-                                            </td>
+                                                <button @click="funcLike(index.detail_record.id)" class="submit" type="submit" >
+                                                <font-awesome-icon  style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
+                                                </button>{{index.likes}}
+                                            </td>asdasd
                                         </tr>
                                     </tbody>
                                 </table>
