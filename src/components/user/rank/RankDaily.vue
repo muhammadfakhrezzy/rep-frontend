@@ -23,10 +23,13 @@ export default {
         .then(response => {
             console.log(response)
             let res = response.data
-            this.rank = res
+            // this.rank = res
             // this.rank = res.sort((a, b) => 
             // (a.total_value > b.total_value) ? 1 : (a.total_value === b.total_value) ? 
             // ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
+            this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
+            ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
+            console.log(this.rank)
         })
     }
 }
