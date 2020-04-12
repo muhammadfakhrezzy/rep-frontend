@@ -14,7 +14,8 @@ export default {
             quest_name : this.$route.params.quest_name,
             quest_id : this.$route.params.quest_id,
             link: '',
-            created_at:''
+            created_at:'',
+            user:''
             
         }
             },
@@ -61,6 +62,14 @@ export default {
             })
         }
     },
+    created () {
+        axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
+        .then(response => {
+            // console.log(response)
+                this.user = response.data.results
+                console.log(this.user)
+            })
+    },
     computed: {
         name() {
             return this.$store.state.user.name
@@ -103,7 +112,7 @@ export default {
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>NIM</label>
-                                                <input type="text" class="form-control" placeholder="--" disabled>
+                                                <input type="text" class="form-control" :placeholder="user.nim" disabled>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -122,7 +131,7 @@ export default {
                                                 <label>Submitted at</label>
                                                 <input class="form-control" type="date" v-model="created_at">
                                         </div>
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-12 mt-2">
                                             <div class="form-group">
                                                 <label>Result</label>
                                                 <input v-model="link" type="text" class="form-control">

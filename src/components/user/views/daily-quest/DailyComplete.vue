@@ -125,7 +125,7 @@ export default {
                                         <tr v-for="(index, length) in all_data" :key="length">
                                             <td>{{ length + 1 }}</td>
                                             <td>{{ index.quest }}</td>
-                                            <td>{{ index.detail_record.created_at }}, {{ index.detail_record.created_at | cutTime }}</td>
+                                            <td>{{ index.detail_record.created_at }}</td>
                                             <td>{{index.detail_record.value}}</td>
                                             <td>
                                                 <font-awesome-icon :icon="['fa', 'thumbs-up']" />

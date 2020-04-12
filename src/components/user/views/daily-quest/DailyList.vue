@@ -19,7 +19,7 @@ export default {
 const getDate = new Date()
 const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
-const countDownDate = new Date(dateString).getTime();
+const countDownDate = new Date("Apr 15, 2020 00:00:00").getTime();
 // var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
 
 // Update the count down every 1 second
@@ -40,13 +40,7 @@ var x = setInterval(function() {
 
     // Output the result in an element with id="demo"
     document.getElementById("demo").innerHTML =
-        
-        hours + 
-        " Jam " +
-        minutes +
-        " Menit " +
-        seconds +
-        " Detik ";
+        days + " Hari " + hours +  " Jam " + minutes + " Menit " + seconds + " Detik ";
 
     // If the count down is over, write some text
     if (distance < 0) {
@@ -82,7 +76,7 @@ var x = setInterval(function() {
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
                                 </h3>
                                 <p>{{ index.quest.id }}. {{ index.quest.name }} ({{index.quest.code}})</p>
-                                <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p>
+                                <!-- <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p> -->
                             </div>
                             <div class="icon">
 
