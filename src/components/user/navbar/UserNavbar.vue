@@ -292,7 +292,7 @@ export default {
 
                         <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
-                            <router-link to="/helpcenter" class="nav-link text-white">
+                            <router-link to="/underConstruction" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
                                 <p>Help Center</p>
                             </router-link>
