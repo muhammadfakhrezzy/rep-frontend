@@ -24,7 +24,7 @@ export default {
             })
         },
         funcLike(id) {
-            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', {like: 1.0})
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', {like: 1.0}, {dislike:0})
                 .then(response => {
                     console.log(response)
                     this.getData()
@@ -158,7 +158,9 @@ export default {
                                             <td>{{ index.detail_record.created_at | cutString }}</td>
                                             <td><a>Click Here</a></td>
                                             <td>
-                                                <font-awesome-icon @click="funcLike(index.detail_record.id)" style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> {{index.likes}}
+                                                <a @click="funcLike(index.detail_record.id)" class="mr-3" type="submit" >
+                                                <font-awesome-icon  style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
+                                                </a>{{index.likes}}
                                             </td>
                                         </tr>
                                     </tbody>

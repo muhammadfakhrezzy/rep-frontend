@@ -8,10 +8,22 @@ export default {
             rank : ''
         }
     },
+    methods: {
+        getUserRank (id) {
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + id)
+            .then(response => {
+                this.detail = response.data
+                console.log(this.detail)
+            })
+    }
+    },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/2')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/monthly')
         .then(response => {
-            this.rank = response.data
+            console.log(response)
+            let res = response.data
+            this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
+            ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
             console.log(this.rank)
         })
     }
@@ -42,30 +54,30 @@ export default {
                         <div class="col-sm-12 mt-3">
                             <h3 class="text-center">MONTHLY RANK</h3>
                         </div>
-                        <div class="col-md-4">
+                         <div class="col-md-4">
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BFBFBF">
                                     <h3 class="widget-user-username">RANK 2</h3>
-                                    <h5 class="widget-user-desc">Aditya Lityanian</h5>
+                                    <h5 class="widget-user-desc">{{rank[1].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user5-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                    <img :src="rank[1].media" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
-                                    <img src="@/assets/img/Monthly-Silver.png" style="border: none; width: 158px">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)">
+                                    <img src="@/assets/img/silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" data-target="#modal-rank2">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">401</h5>
+                                                <h5 class="description-header">{{rank[1].total_quest}}</h5>
                                                 <span class="description-text">QUEST</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">931</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[1].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -82,26 +94,26 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #E7AB30">
                                     <h3 class="widget-user-username">RANK 1</h3>
-                                    <h5 class="widget-user-desc">Muhammad Iqbal</h5>
+                                    <h5 class="widget-user-desc">{{rank[0].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user1-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                    <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
-                                    <img src="@/assets/img/Monthly-Gold.png" style="border: none; width: 158px">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank1">
+                                    <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
                                     <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">421</h5>
-                                                <span class="description-text">QUEST</span>
+                                                <h5 class="description-header">{{rank[0].total_quest}}</h5>
+                                                <span class="description-text">Quest</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">1091</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[0].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -118,27 +130,26 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BF814D">
                                     <h3 class="widget-user-username">RANK 3</h3>
-                                    <h5 class="widget-user-desc">Angga Widianto</h5>
+                                    <h5 class="widget-user-desc">{{rank[2].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user4-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                    <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-54%)">
-                                    <img src="@/assets/img/Monthly-Bronze.png" style="border: none; width: 158px">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank3">
+                                    <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
                                 </div>
-                                
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">349</h5>
+                                                <h5 class="description-header">{{rank[2].total_quest}}</h5>
                                                 <span class="description-text">QUEST</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">876</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[2].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -171,27 +182,27 @@ export default {
                                                 <td>04</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Amin Bahrul Ulum
+                                                    {{rank[3].detail_user.name}}
                                                 </td>
-                                                <td>822 POINT</td>
+                                                <td>{{rank[3].total_value}} ECP</td>
                                                 <td>LEVEL 74</td>
                                             </tr>
                                             <tr>
                                                 <td>05</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Fahri Tri Setio
+                                                    {{rank[4].detail_user.name}}
                                                 </td>
-                                                <td>789 POINT</td>
+                                                <td>{{rank[4].total_value}} ECP</td>
                                                 <td>LEVEL 70</td>
                                             </tr>
                                             <tr>
                                                 <td>06</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Muhammad Zamrozi
+                                                    {{rank[5].detail_user.name}}
                                                 </td>
-                                                <td>751 POINT</td>
+                                                <td>{{rank[5].total_value}} ECP</td>
                                                 <td>LEVEL 69</td>
                                             </tr>
                                             <tr>
@@ -239,20 +250,203 @@ export default {
                 <!-- /.container-fluid -->
                 </div>
             <!-- /.content -->
-                <div class="modal fade" id="modal-rank2">
+                 <div class="modal fade" id="modal-rank1">
                     <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">#Rank2 | Aditya Lityanian</h4>
+                                <h4 class="modal-title">#Rank 1</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <font-awesome-icon icon="times" aria-hidden="true" />
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <p>One fine body&hellip;</p>
+                            <div class="modal-body p-0">
+                                <div class="card card-olive card-outline mb-0">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img :src="rank[0].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                        </div>
+                                        <h3 class="profile-username text-center">{{rank[0].detail_user.name}}</h3>
+                                        <p class="text-muted text-center">Sistem Informasi</p>
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item">
+                                                <b>Level</b>
+                                                <a class="float-right">76</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="card card-success mb-0 collapsed-card">
+                                                    <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
+                                                        <h3 class="card-title">Total ECP</h3>
+                                                        <div class="card-tools">
+                                                            <a class="float-right">1082</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body px-2 py-0">
+                                                        <ul class="list-group list-group-unbordered">
+                                                            <li class="list-group-item">
+                                                                <b>BBC</b>
+                                                                <a class="float-right">230</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Cermi</b>
+                                                                <a class="float-right">165</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>LTAI</b>
+                                                                <a class="float-right">489</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>VLC</b>
+                                                                <a class="float-right">76</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Absensi</b>
+                                                                <a class="float-right">160</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Jurnal Scopus</b>
+                                                                <a class="float-right">1</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-footer justify-content-flexend">
-                                <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-rank2">
+                    <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">#Rank 1</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <font-awesome-icon icon="times" aria-hidden="true" />
+                                </button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="card card-olive card-outline mb-0">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img :src="rank[1].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                        </div>
+                                        <h3 class="profile-username text-center">{{rank[1].detail_user.name}}</h3>
+                                        <p class="text-muted text-center">Sistem Informasi</p>
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item">
+                                                <b>Level</b>
+                                                <a class="float-right">76</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="card card-success mb-0 collapsed-card">
+                                                    <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
+                                                        <h3 class="card-title">Total ECP</h3>
+                                                        <div class="card-tools">
+                                                            <a class="float-right">1082</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body px-2 py-0">
+                                                        <ul class="list-group list-group-unbordered">
+                                                            <li class="list-group-item">
+                                                                <b>BBC</b>
+                                                                <a class="float-right">230</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Cermi</b>
+                                                                <a class="float-right">165</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>LTAI</b>
+                                                                <a class="float-right">489</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>VLC</b>
+                                                                <a class="float-right">76</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Absensi</b>
+                                                                <a class="float-right">160</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Jurnal Scopus</b>
+                                                                <a class="float-right">1</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-rank3">
+                    <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">#Rank 3</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <font-awesome-icon icon="times" aria-hidden="true" />
+                                </button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="card card-olive card-outline mb-0">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img :src="rank[2].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                        </div>
+                                        <h3 class="profile-username text-center">{{rank[2].detail_user.name}}</h3>
+                                        <p class="text-muted text-center">Sistem Informasi</p>
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item">
+                                                <b>Level</b>
+                                                <a class="float-right">76</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="card card-success mb-0 collapsed-card">
+                                                    <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
+                                                        <h3 class="card-title">Total Point</h3>
+                                                        <div class="card-tools">
+                                                            <a class="float-right">1082</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body px-2 py-0">
+                                                        <ul class="list-group list-group-unbordered">
+                                                            <li class="list-group-item">
+                                                                <b>BBC</b>
+                                                                <a class="float-right">230</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Cermi</b>
+                                                                <a class="float-right">165</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>LTAI</b>
+                                                                <a class="float-right">489</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>VLC</b>
+                                                                <a class="float-right">76</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Absensi</b>
+                                                                <a class="float-right">160</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Jurnal Scopus</b>
+                                                                <a class="float-right">1</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,7 +459,7 @@ export default {
                 <strong>Copyright &copy; 2020 <a href="http://raharja.ac.id">Universitas Raharja</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 0.0.1
+                <b>Version</b> 1.0
                 </div>
             </footer>
         </div>

@@ -23,10 +23,6 @@ export default {
         .then(response => {
             console.log(response)
             let res = response.data
-            // this.rank = res
-            // this.rank = res.sort((a, b) => 
-            // (a.total_value > b.total_value) ? 1 : (a.total_value === b.total_value) ? 
-            // ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
             this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
             ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
             console.log(this.rank)
@@ -64,10 +60,10 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BFBFBF">
                                     <h3 class="widget-user-username">RANK 2</h3>
-                                    <h5 class="widget-user-desc">Aditya Lityanian</h5>
+                                    <h5 class="widget-user-desc">{{rank[1].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user5-128x128.jpg" class="img-circle elevation-2">
+                                    <img :src="rank[1].media" class="img-circle elevation-2">
                                 </div>
                                 <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)">
                                     <img src="@/assets/img/silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" data-target="#modal-rank2">
@@ -76,14 +72,14 @@ export default {
                                     <div class="row">
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">401</h5>
+                                                <h5 class="description-header">{{rank[1].total_quest}}</h5>
                                                 <span class="description-text">QUEST</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">931</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[1].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -100,10 +96,10 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #E7AB30">
                                     <h3 class="widget-user-username">RANK 1</h3>
-                                    <!-- <h5 class="widget-user-desc">{{rank.0.detail_user}}</h5> -->
+                                    <h5 class="widget-user-desc">{{rank[0].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user1-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                    <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
                                 <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank1">
                                     <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
@@ -112,14 +108,14 @@ export default {
                                     <div class="row">
                                     <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">421</h5>
-                                                <span class="description-text">QUEST</span>
+                                                <h5 class="description-header">{{rank[0].total_quest}}</h5>
+                                                <span class="description-text">Quest</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">1000</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[0].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -136,10 +132,10 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BF814D">
                                     <h3 class="widget-user-username">RANK 3</h3>
-                                    <h5 class="widget-user-desc">Angga Widianto</h5>
+                                    <h5 class="widget-user-desc">{{rank[2].detail_user.name}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
-                                    <img src="@/assets/img/user4-128x128.jpg" style="cursor: pointer" class="img-circle elevation-2">
+                                    <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
                                 <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal-rank3">
                                     <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
@@ -148,14 +144,14 @@ export default {
                                     <div class="row">
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">349</h5>
+                                                <h5 class="description-header">{{rank[2].total_quest}}</h5>
                                                 <span class="description-text">QUEST</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right">
                                             <div class="description-block">
-                                                <h5 class="description-header">876</h5>
-                                                <span class="description-text">POINT</span>
+                                                <h5 class="description-header">{{rank[2].total_value}}</h5>
+                                                <span class="description-text">ECP</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -188,27 +184,27 @@ export default {
                                                 <td>04</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Amin Bahrul Ulum
+                                                    {{rank[3].detail_user.name}}
                                                 </td>
-                                                <td>822 POINT</td>
+                                                <td>{{rank[3].total_value}} ECP</td>
                                                 <td>LEVEL 74</td>
                                             </tr>
                                             <tr>
                                                 <td>05</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Fahri Tri Setio
+                                                    {{rank[4].detail_user.name}}
                                                 </td>
-                                                <td>789 POINT</td>
+                                                <td>{{rank[4].total_value}} ECP</td>
                                                 <td>LEVEL 70</td>
                                             </tr>
                                             <tr>
                                                 <td>06</td>
                                                 <td>
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
-                                                    Muhammad Zamrozi
+                                                    {{rank[5].detail_user.name}}
                                                 </td>
-                                                <td>751 POINT</td>
+                                                <td>{{rank[5].total_value}} ECP</td>
                                                 <td>LEVEL 69</td>
                                             </tr>
                                             <tr>
@@ -217,7 +213,7 @@ export default {
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Damar Pamungkas
                                                 </td>
-                                                <td>721 POINT</td>
+                                                <td>721 ECP</td>
                                                 <td>LEVEL 67</td>
                                             </tr>
                                             <tr>
@@ -226,7 +222,7 @@ export default {
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Miftahul Fallah
                                                 </td>
-                                                <td>579 POINT</td>
+                                                <td>579 ECP</td>
                                                 <td>LEVEL 63</td>
                                             </tr>
                                             <tr>
@@ -235,7 +231,7 @@ export default {
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Rifaldy Thoriq
                                                 </td>
-                                                <td>522 POINT</td>
+                                                <td>522 ECP</td>
                                                 <td>LEVEL 59</td>
                                             </tr>
                                             <tr>
@@ -244,7 +240,7 @@ export default {
                                                     <img src="@/assets/img/default-150x150.png" class="img-circle img-size-32 mr-2">
                                                     Muhammad Abdul Azis
                                                 </td>
-                                                <td>501 POINT</td>
+                                                <td>501 ECP</td>
                                                 <td>LEVEL 55</td>
                                             </tr>
                                         </tbody>
@@ -269,9 +265,9 @@ export default {
                                 <div class="card card-olive card-outline mb-0">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img src="../../../assets/img/user1-128x128.jpg" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                            <img :src="rank[1].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
-                                        <h3 class="profile-username text-center">Muhammad Iqbal</h3>
+                                        <h3 class="profile-username text-center">{{rank[1].detail_user.name}}</h3>
                                         <p class="text-muted text-center">Sistem Informasi</p>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
@@ -336,9 +332,9 @@ export default {
                                 <div class="card card-olive card-outline mb-0">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img src="../../../assets/img/user1-128x128.jpg" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                            <img :src="rank[0].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
-                                        <h3 class="profile-username text-center">Muhammad Iqbal</h3>
+                                        <h3 class="profile-username text-center">{{rank[0].detail_user.name}}</h3>
                                         <p class="text-muted text-center">Sistem Informasi</p>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
@@ -348,7 +344,7 @@ export default {
                                             <li class="list-group-item">
                                                 <div class="card card-success mb-0 collapsed-card">
                                                     <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
-                                                        <h3 class="card-title">Total Point</h3>
+                                                        <h3 class="card-title">Total ECP</h3>
                                                         <div class="card-tools">
                                                             <a class="float-right">1082</a>
                                                         </div>
@@ -403,9 +399,9 @@ export default {
                                 <div class="card card-olive card-outline mb-0">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img src="../../../assets/img/user1-128x128.jpg" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                            <img :src="rank[2].media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
-                                        <h3 class="profile-username text-center">Muhammad Iqbal</h3>
+                                        <h3 class="profile-username text-center">{{rank[1].detail_user.name}}</h3>
                                         <p class="text-muted text-center">Sistem Informasi</p>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
@@ -465,7 +461,7 @@ export default {
                 <strong>Copyright &copy; 2020 <a href="http://raharja.ac.id">Universitas Raharja</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 0.0.1
+                <b>Version</b> 1.0
                 </div>
             </footer>
         </div>
