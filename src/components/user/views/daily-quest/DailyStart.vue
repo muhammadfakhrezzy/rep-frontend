@@ -1,7 +1,6 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import router from '../../../../router'
 const swalWithBootstrap = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success py-2 px-4',
@@ -18,7 +17,8 @@ export default {
             created_at:''
             
         }
-    },
+            },
+    
     methods: {
         submit() {
             swalWithBootstrap.fire({
@@ -46,8 +46,9 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                            this.link = ''
-                            router.push('/daily')
+                            this.link = '',
+                            this.created_at='',
+                            this.$router.push('/daily')
                         })
                         .catch(error => console.log(error))
                 }else if(response.dismiss === Swal.DismissReason.cancel) {
@@ -126,6 +127,7 @@ export default {
                                                 <label>Result</label>
                                                 <input v-model="link" type="text" class="form-control">
                                                 <p>*Upload link is required to use <a href="https://docs.google.com/document/d/1NiHpMcYYI4SjvvJ_aLNnUKUjx1ldxSf1esmF91hPEEs/edit?usp=sharing">Rinfo</a> and ensure file privacy in public</p>
+                                                <p>Example : <a href="https://docs.google.com/document/d/1NiHpMcYYI4SjvvJ_aLNnUKUjx1ldxSf1esmF91hPEEs/edit?usp=sharing">Click Here</a></p>
                                             </div>
                                         </div>
                                     </div>
