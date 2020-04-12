@@ -308,9 +308,17 @@ export default {
                 </nav>
             <!-- /.sidebar-menu -->
             </div>
+            <p class="version text-center">REP Version 1.0</p>
         </aside>
 
         <router-view />
 <!-- ./wrapper -->
     </div>
 </template>
+
+<style scoped>
+ .version {
+     margin-top:150px;
+ color:white;
+ }
+</style>

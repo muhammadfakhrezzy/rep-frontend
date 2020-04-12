@@ -23,14 +23,13 @@ var x = setInterval(function() {
 
     // Output the result in an element with id="demo"
     document.getElementById("demo").innerHTML =
-        days +
-        "Hari " +
-        hours +
-        "Jam " +
+        
+        hours + 
+        " Jam " +
         minutes +
-        "Menit " +
+        " Menit " +
         seconds +
-        "Detik ";
+        " Detik ";
 
     // If the count down is over, write some text
     if (distance < 0) {
@@ -44,15 +43,25 @@ export default {
         return {
             all_data: '',
             user_id: this.$store.state.user.id,
+            value:''
         }
     },
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {
-                console.log(response)
                 this.all_data = response.data.Data
                 
             })
+            .catch(error => {
+                console.log
+                (error)
+            })
+    },
+    mounted (){
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
+        .then(response => {
+            this.value=response.data
+        })
     }
 }
 </script>
@@ -64,8 +73,12 @@ export default {
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <h1 class="m-0 text-dark">Daily Quests History</h1>
-                        <h5>Total ECP : 0 / 11</h5>
-                        <p id="demo"></p>
+                        <h5 class="mt-2">Total ECP : {{value.value}} / 11</h5>
+                        <div class="text-center">
+                            <p>Remaining Time :</p>
+                            <p id="demo" ></p>
+                            </div>
+                        
                     </div>
                 </div>
             </div>
