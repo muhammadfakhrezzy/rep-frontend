@@ -40,7 +40,7 @@ var x = setInterval(function() {
 
     // Output the result in an element with id="demo"
     document.getElementById("demo").innerHTML =
-        days + " Hari " + hours +  " Jam " + minutes + " Menit " + seconds + " Detik ";
+        days + " Hari  " + hours +  " Jam " + minutes + " Menit " + seconds + " Detik ";
 
     // If the count down is over, write some text
     if (distance < 0) {
