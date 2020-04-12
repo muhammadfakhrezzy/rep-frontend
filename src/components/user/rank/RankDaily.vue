@@ -35,7 +35,7 @@ export default {
                         this.all_quest.push(res)
                     })
             });
-            console.log(this.all_quest)
+            console.log('all_quest',this.all_quest)
             let a = [...this.rank]
             a.splice(0, 3)
             this.latest_rank = a
@@ -114,7 +114,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
                                     <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
                                 </div>
                                 <div class="card-footer">
@@ -150,7 +150,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" data-target="#modal">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
                                     <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
                                 </div>
                                 <div class="card-footer">
@@ -193,7 +193,7 @@ export default {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="(value, length) in latest_rank" :key="value.detail_user.id">
+                                            <tr v-for="(value, length) in latest_rank" :key="value.detail_user.id" style="cursor: pointer" data-toggle="modal" :data-target="['#modal' + value.detail_user.id]">
                                                 <td>{{ length + 4 }}</td>
                                                 <td>
                                                     <img :src="value.media" class="img-circle img-size-32 mr-2">
@@ -211,7 +211,7 @@ export default {
                 <!-- /.container-fluid -->
                 </div>
             <!-- /.content -->
-                <div class="modal fade" id="modal">
+                <div class="modal fade" v-for="value in all_quest" :key="value.data.detail_user.id" :id="['modal' + value.data.detail_user.id]">
                     <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -226,26 +226,26 @@ export default {
                                         <div class="text-center">
                                             <img src="" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
-                                        <h3 class="profile-username text-center"></h3>
+                                        <h3 class="profile-username text-center">{{ value.data.detail_user.name }}</h3>
                                         <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
-                                                <b>Level</b>
-                                                <a class="float-right">{{detail.level}}</a>
+                                                <b>Rank</b>
+                                                <a class="float-right">{{ value.data.level }}</a>
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="card card-success mb-0 collapsed-card">
                                                     <div class="card-header" data-card-widget="collapse" style="cursor: pointer">
-                                                        <h3 class="card-title">Total Point</h3>
+                                                        <h3 class="card-title">Total ECP</h3>
                                                         <div class="card-tools">
-                                                            <a class="float-right">1082</a>
+                                                            <a class="float-right">-</a>
                                                         </div>
                                                     </div>
                                                     <div class="card-body px-2 py-0">
                                                         <ul class="list-group list-group-unbordered">
-                                                            <li v-for="(value, length) in all_quest" :key="length" class="list-group-item">
-                                                                <b>{{ value.name }}</b>
-                                                                <a class="float-right">{{ value.total }}</a>
+                                                            <li class="list-group-item" v-for="(valueIn, length) in value.data.quests" :key="length">
+                                                                <b>{{ valueIn.name }}</b>
+                                                                <a class="float-right">{{ valueIn.total }}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
