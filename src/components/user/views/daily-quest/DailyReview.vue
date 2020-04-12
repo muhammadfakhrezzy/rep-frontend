@@ -20,7 +20,8 @@ export default {
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
             .then(response => {
                 console.log(response)
-                this.review_data = response.data
+                const dataRes =  response.data
+                this.review_data = dataRes.sort((a, b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
             })
         },
         funcLike(id) {
