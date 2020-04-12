@@ -16,6 +16,44 @@ export default {
             })
     }
 }
+const getDate = new Date()
+const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
+const countDownDate = new Date(dateString).getTime();
+// var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML =
+        
+        hours + 
+        " Jam " +
+        minutes +
+        " Menit " +
+        seconds +
+        " Detik ";
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
 </script>
 
 <template>
@@ -27,6 +65,10 @@ export default {
                         <h1 class="m-0 text-dark">Daily Quests List</h1>
                     </div>
                 </div>
+                <div class="text-center">
+                            <p>Remaining Time :</p>
+                            <p id="demo" ></p>
+                    </div>
             </div>
         </div>
         <div class="content">

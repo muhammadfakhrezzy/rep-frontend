@@ -19,9 +19,10 @@ export default {
             const m = d.getMinutes()
             const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + '  '
+            return days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ' ' + d.getFullYear() + '  '
         }
     },
+    // ' + d.getDate() + '
     methods: {
         logout() {
             Swal.fire({
@@ -150,7 +151,7 @@ export default {
         <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133);">
             <!-- Brand Logo -->
             <div class="brand-link" style="padding: .5rem 0; background-color: #rgb(104,162,137); border-color: #fff">
-                <img src="../../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">
+                <img src="../../../assets/REP logo.png" style="height: 30px" class="d-block mx-auto">
             </div>
 
             <!-- Sidebar -->

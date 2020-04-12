@@ -155,7 +155,7 @@ export default {
                                             <td>{{ length + 1 }}.</td>
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.user }}</td>
-                                            <td>{{ index.detail_record.created_at | cutString }}</td>
+                                            <td>{{ index.detail_record.created_at }}</td>
                                             <td><a :href="index.detail_record.link">Click Here</a></td>
                                             <td>
                                                 <a @click="funcLike(index.detail_record.id)" class="mr-3" type="submit" >

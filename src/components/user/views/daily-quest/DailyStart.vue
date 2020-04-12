@@ -14,7 +14,9 @@ export default {
         return {
             quest_name : this.$route.params.quest_name,
             quest_id : this.$route.params.quest_id,
-            link: ''
+            link: '',
+            created_at:''
+            
         }
     },
     methods: {
@@ -22,7 +24,6 @@ export default {
             swalWithBootstrap.fire({
                 title: 'Are you sure ?',
                 icon: 'warning',
-                text: "You want to be send this ?",
                 showCancelButton: true,
                 confirmButtonText: 'Yes',
                 cancelButtonText: 'No',
@@ -31,7 +32,8 @@ export default {
                 if(response.value) {
                     let data = {
                         quest_id: this.quest_id,
-                        link: this.link
+                        link: this.link,
+                        created_at: this.created_at
                     }
                     console.log(data)
                     axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records', data)
@@ -116,10 +118,14 @@ export default {
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
+                                                <label>Submitted at</label>
+                                                <input class="form-control" type="date" v-model="created_at">
+                                        </div>
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Result</label>
                                                 <input v-model="link" type="text" class="form-control">
-                                                <p>*diwajibkan upload link menggunakan <a href="https://docs.google.com">https://docs.google.com</a> dan dipastikan privasi file adalah public</p>
+                                                <p>*Upload link is required to use <a href="https://docs.google.com/document/d/1NiHpMcYYI4SjvvJ_aLNnUKUjx1ldxSf1esmF91hPEEs/edit?usp=sharing">Rinfo</a> and ensure file privacy in public</p>
                                             </div>
                                         </div>
                                     </div>

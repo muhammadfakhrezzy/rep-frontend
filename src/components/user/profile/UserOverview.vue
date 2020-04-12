@@ -18,7 +18,7 @@ export default {
             })
     },
     mounted () {
-        axios.get('http://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
+        axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
         .then(response => {
             // console.log(response)
                 this.user = response.data.results
@@ -76,7 +76,7 @@ export default {
                             <div class="card-body">
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'book']" />
-                                    Fakultas
+                                    Faculty
                                 </strong>
                                 <p class="text-muted">
                                     {{user.fakultas}}
@@ -84,7 +84,7 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'map-marker-alt']" />
-                                    Jenjang
+                                    Degree
                                 </strong>
                                 <p class="text-muted">
                                     {{user.jenjang}}
@@ -92,7 +92,7 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['fas', 'pencil-alt']" />
-                                    Prodi
+                                    Study Program
                                 </strong>
                                 <p class="text-muted">
                                     {{user.prodi}}
@@ -100,13 +100,13 @@ export default {
                                 <hr>
                                 <strong>
                                     <font-awesome-icon :icon="['far', 'file-alt']" />
-                                    Konsentrasi
+                                    Concentration
                                 </strong>
                                 <p class="text-muted">
                                     {{user.konsentrasi}}
                                 </p><strong>
                                     <font-awesome-icon :icon="['far', 'file-alt']" />
-                                    IPK
+                                    GPA
                                 </strong>
                                 <p class="text-muted">
                                     {{user.ipk}} / 4.00
