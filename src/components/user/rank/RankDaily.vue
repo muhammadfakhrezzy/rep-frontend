@@ -256,12 +256,6 @@ export default {
                                 </div>
                             </div>
                         </div>
-                        <footer class="main-footer">
-                <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
-                <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0
-                </div>
-            </footer>
                     </div>
                     
                 </div>
@@ -272,10 +266,17 @@ export default {
     <!-- Main Footer -->
             <footer class="main-footer">
                 <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
-                <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0
-                </div>
             </footer>
         </div>
         
 </template>
+
+<style scoped>
+.main-footer {
+bottom: 0;
+left: 0;
+position: fixed;
+right: 0;
+z-index: 999;
+}
+</style>

@@ -2,7 +2,7 @@
 const getDate = new Date()
 const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
-const countDownDate = new Date("Apr 15, 2020 00:00:00").getTime();
+const countDownDate = new Date("Apr 17, 2020 00:00:00").getTime();
 // var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
 
 // Update the count down every 1 second
@@ -44,8 +44,8 @@ export default {
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {
+                console.log(response)
                 this.all_data = response.data.Data
-                
             })
             .catch(error => {
                 console.log
@@ -113,6 +113,7 @@ export default {
                                             <th>Quest Name</th>
                                             <th>Submit Date</th>
                                             <th>Point</th>
+                                            <th>Link</th>
                                             <th>Likes</th>
                                         </tr>
                                     </thead>
@@ -122,6 +123,7 @@ export default {
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.detail_record.created_at }}</td>
                                             <td>{{index.detail_record.value}}</td>
+                                            <td><a :href="index.detail_record.link">Click Here</a></td>
                                             <td>
                                                 <font-awesome-icon :icon="['fa', 'thumbs-up']" />
                                                 {{ index.likes }}

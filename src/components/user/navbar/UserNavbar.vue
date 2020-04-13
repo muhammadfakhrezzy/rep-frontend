@@ -37,7 +37,6 @@ export default {
                     if(result.value) {
                         Swal.fire(
                             'Success!',
-                            'success'
                         )
                         this.$store.dispatch('logout')
                     }

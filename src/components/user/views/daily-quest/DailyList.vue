@@ -19,7 +19,7 @@ export default {
 const getDate = new Date()
 const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
-const countDownDate = new Date("Apr 15, 2020 00:00:00").getTime();
+const countDownDate = new Date("Apr 17, 2020 00:00:00").getTime();
 // var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
 
 // Update the count down every 1 second

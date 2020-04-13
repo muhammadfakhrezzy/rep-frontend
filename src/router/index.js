@@ -200,6 +200,10 @@ const routes = [
             {
                 path: 'faqadmin',
                 component: () => import('@/components/admin/views/FAQAdmin')
+            },
+            {
+                path: 'adduser',
+                component: () => import('@/components/admin/views/AddUser')
             }
         ]
     }

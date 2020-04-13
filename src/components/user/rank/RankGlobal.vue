@@ -22,7 +22,7 @@ export default {
     }
     },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/monthly')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/global')
         .then(response => {
             console.log(response)
             let res = response.data
@@ -96,7 +96,7 @@ export default {
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="description-block">
-                                                <h5 class="description-header">79</h5>
+                                                <h5 class="description-header">{{ rank[1].level.name }}</h5>
                                                 <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@ export default {
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="description-block">
-                                                <h5 class="description-header">82</h5>
+                                                <h5 class="description-header">{{ rank[0].level.name }}</h5>
                                                 <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@ export default {
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="description-block">
-                                                <h5 class="description-header">76</h5>
+                                                <h5 class="description-header">{{ rank[2].level.name }}</h5>
                                                 <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
