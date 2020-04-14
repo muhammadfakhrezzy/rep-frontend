@@ -62,7 +62,7 @@ export default {
                                     </li>
                                     <li class="list-group-item">
                                         <b>Level</b>
-                                        <a class="float-right">{{data_mahasiswa.level_id}} / 100</a>
+                                        <a class="float-right">{{data_mahasiswa.level_id}} / 21</a>
                                     </li>
                                 </ul>
                             </div>

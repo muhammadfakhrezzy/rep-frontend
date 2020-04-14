@@ -1,12 +1,11 @@
 <script>
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import router from '../../../router'
 export default {
     data() {
         return {
-            name: '',
-            email:'',
-            role:''
+            name:''
         }
     },
     methods: {
@@ -20,17 +19,14 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users', {name: this.data})
+                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users')
                             .then(response => {
+                                this.name=response.data
                                 console.log(response)
                                 Swal.fire(
                                     'Sucess!',
                                     'User has been added',
                                 )
-                                this.name = '',
-                                this.email='',
-                                this.role=''
-
                             })
                             .catch(error => {
                                 console.log(error)
@@ -66,8 +62,18 @@ export default {
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Difficulty Quests</label>
-                                                <input type="text" class="form-control" v-model="data">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="email" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Role</label>
+                                                <select class="form-control select2" style="width: 100%;">
+                                                    <option></option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -75,21 +81,6 @@ export default {
                             </div>
                             <div class="card-footer">
                                 <button @click="submit" class="btn btn-primary" type="submit">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-warning">
-                            <div class="card-header">
-                                <h3 class="card-title text-white">Rules Create Difficulty</h3>
-                            </div>
-                            <div class="card-body">
-
-                            </div>
-                            <div class="card-footer">
-
                             </div>
                         </div>
                     </div>

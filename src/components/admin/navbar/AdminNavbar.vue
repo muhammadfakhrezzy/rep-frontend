@@ -166,7 +166,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <router-link to="" class="nav-link text-white">
+                            <router-link to="/adduser" class="nav-link text-white">
                                 <p>
                                     Add User
                                 </p>

@@ -78,7 +78,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[1].media" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)">
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)">
                                     <img src="@/assets/img/silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" :data-target="['#modal' + rank[1].detail_user.id]">
                                 </div>
                                 <div class="card-footer">
@@ -114,7 +114,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
                                     <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
                                 </div>
                                 <div class="card-footer">
@@ -150,7 +150,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
+                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
                                     <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
                                 </div>
                                 <div class="card-footer">
@@ -264,7 +264,7 @@ export default {
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-            <footer class="main-footer">
+            <footer class="main-footer float-right">
                 <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
             </footer>
         </div>
@@ -275,7 +275,9 @@ export default {
 .main-footer {
 bottom: 0;
 left: 0;
-position: fixed;
+position: relative;
+width:100%;
+text-align: center;
 right: 0;
 z-index: 999;
 }
