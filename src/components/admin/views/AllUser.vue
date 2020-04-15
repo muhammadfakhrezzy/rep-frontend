@@ -14,7 +14,11 @@ export default {
         }
     },
     methods: {
-        update_user(id) {
+        updateValue(value) {
+            this.name = value
+        },
+        update_user(id, name, email, role_id) {
+            console.log(name, email, role_id)
             Swal.fire({
                 title: 'Are you sure want to update the User ?',
                 icon: 'warning',
@@ -24,13 +28,20 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/' + id, {name: this.name}, {email: this.email}, {role_id:this.role_id})
+                        let data = {
+                            name: name,
+                            email: email,
+                            role_id: role_id
+                        }
+                        console.log(data)
+                        axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/' + id, data)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'User has been updated',
                                 )
+                                this.getAllData()
                             })
                             .catch(error => {
                                 console.log(error)
@@ -62,10 +73,9 @@ export default {
                             })
                     }
             })
-        }
-    },
-    created() {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users')
+        },
+        getAllData() {
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users')
             .then(response => {
                 console.log(response)
                 this.all_data = response.data
@@ -74,6 +84,10 @@ export default {
                 console.log
                 (error)
             })
+        }
+    },
+    created() {
+        this.getAllData()
     },
     mounted() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/create')
@@ -151,7 +165,8 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="modal fade" :id="['difficulty' + index.id]" v-for="(index, length) in all_data" :key="length">
+
+            <div class="modal fade" v-for="(index, length) in all_data" :key="length" :id="['difficulty' + index.id]">
                 <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -163,20 +178,20 @@ export default {
                         <div class="modal-body pt-0">
                             <div class="form-group">
                                 <label>Update Name</label>
-                                <input type="text" class="form-control" v-model="name">
+                                <input type="text" class="form-control" v-model="index.name">
                             </div>
                             <div class="form-group">
                                 <label>Update Email</label>
-                                <input type="text" class="form-control" v-model="email">
+                                <input type="text" class="form-control" v-model="index.email">
                             </div>
                             <div class="form-group">
                                 <label>Update Role</label>
                                     <select class="form-control select2" style="width: 100%;" v-model="role_id">
-                                         <option v-for="(role) in user" :key="role.id" :value="role.id">{{ role.name }}</option>
+                                        <option v-for="(role) in user" :key="role.id" :value="role.id">{{ role.name }}</option>
                                     </select>
                             </div>
                             <div class="form-group">
-                                <button @click="update_user(index.id)" class="btn btn-primary" type="submit">Submit</button>
+                                <button @click="update_user(index.id, index.name, index.email, role_id)" class="btn btn-primary" type="submit">Submit</button>
                             </div>
                         </div>
                     </div>
