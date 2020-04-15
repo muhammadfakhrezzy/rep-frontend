@@ -69,29 +69,29 @@ var x = setInterval(function() {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-6" v-for="index in daily" :key="index.quest.id">
-                        <div class="small-box bg-warning">
+                        <div v-if="index.limit_display !== index.quest.daily_limit" class="small-box bg-warning">
                             <div style="height: 130px" class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
                                     <font-awesome-icon icon="info-circle" style="position: absolute; right: .5rem; cursor: pointer; font-size: 1.5rem" data-toggle="modal" :data-target="['#' + 'quest' + index.quest.id]"/>
                                 </h3>
                                 <p>{{ index.quest.id }}. {{ index.quest.name }} ({{index.quest.code}})</p>
-                                <!-- <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p> -->
+                                <p style="position: absolute; bottom: 1.2rem; right: .5rem; font-size: 15px">Limit {{index.limit_display}}/{{index.quest.daily_limit}}</p>
                             </div>
                             <div class="icon">
 
                             </div>
-                            <router-link :to="{name : 'questDailyStart', params: { quest_name: index.quest.name, quest_id: index.quest.id }}" class="small-box-footer">
+                            <router-link  v-if="index.limit_display !== index.quest.daily_limit"  :to="{name : 'questDailyStart', params: { quest_name: index.quest.name, quest_id: index.quest.id }}" class="small-box-footer">
                                 Start Quest
                                 <font-awesome-icon icon="arrow-circle-right" />
                             </router-link>
-                            <!-- <p v-else class="small-box-footer">
+                            <p v-else class="small-box-footer">
                                 Quest Completed
                                 <font-awesome-icon :icon="['far', 'check-circle']" />
-                            </p> -->
+                            </p>
                         </div>
 
-                        <!-- <div v-else class="small-box bg-olive">
+                        <div v-else class="small-box bg-olive">
                             <div style="height: 130px" class="inner">
                                 <h3>
                                     {{ index.quest.value }} ECP
@@ -111,7 +111,7 @@ var x = setInterval(function() {
                                 Quest Completed
                                 <font-awesome-icon :icon="['far', 'check-circle']" />
                             </p>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

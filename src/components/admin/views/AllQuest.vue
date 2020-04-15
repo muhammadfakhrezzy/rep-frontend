@@ -106,13 +106,11 @@ export default {
                                             <th>Daily Limit</th>
                                             <th>Expires in</th>
                                             <th>Difficulty ID</th>
-                                            </th></th>
                                             <th>Action</th>
-                                            </th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="index, length in dataQuest" :key="index.id">
+                                        <tr v-for="index in dataQuest" :key="index.id">
                                             <td>{{ index.id }}</td>
                                             <td>{{ index.name }}</td>
                                             <td>{{ index.code }}</td>
@@ -134,7 +132,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" :id="['quest' + index.id]" v-for="(index, length) in dataQuest" :key="index.id">
+                <div class="modal fade" :id="['quest' + index.id]" v-for="index in dataQuest" :key="index.id">
                 <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                     <div class="modal-content">
                         <div class="modal-header">

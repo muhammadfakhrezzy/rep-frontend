@@ -165,12 +165,25 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <router-link to="/adduser" class="nav-link text-white">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
                                 <p>
-                                    Add User
+                                    User
+                                    <font-awesome-icon :icon="['fas', 'angle-left']" class="right" />
                                 </p>
-                            </router-link>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/admin/adduser" class="nav-link text-white">
+                                        <p>Add User</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/user" class="nav-link text-white">
+                                        <p>Show User</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link text-white">

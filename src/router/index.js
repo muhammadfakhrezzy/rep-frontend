@@ -204,6 +204,10 @@ const routes = [
             {
                 path: 'adduser',
                 component: () => import('@/components/admin/views/AddUser')
+            },
+            {
+                path: 'user',
+                component: () => import('@/components/admin/views/AllUser')
             }
         ]
     }
