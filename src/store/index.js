@@ -65,7 +65,8 @@ export default new Vuex.Store({
                     axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
                     Swal.fire({
                         position: 'top',
-                        icon: 'success',
+                        imageUrl: "../assets/REP logo.png",
+                        imageSize: '600x600',
                         title: 'Welcome to REP',
                         text: 'Login Successful',
                         showConfirmButton: false,
