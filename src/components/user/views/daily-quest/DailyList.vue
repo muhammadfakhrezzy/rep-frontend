@@ -1,10 +1,26 @@
 <script>
+import Countdown from '../../../countdown/countdown'
 import axios from 'axios'
 export default {
+    components: {
+        'countdown' : Countdown
+    },
     data() {
         return {
             daily: '',
             quest_id : ''
+        }
+    },
+    computed: {
+        getTimeNow() {
+            let getDate = new Date()
+            let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            let hours = ("0" + getDate.getHours()).slice(-2)
+            let minutes = ("0" + getDate.getMinutes()).slice(-2)
+            let seconds = ("0" + getDate.getSeconds()).slice(-2)
+            let dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds
+            console.log(dateString)
+            return dateString.toString()
         }
     },
     async created() {
@@ -16,38 +32,6 @@ export default {
             })
     }
 }
-const getDate = new Date()
-const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-const dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' 23:59:59'
-const countDownDate = new Date("Apr 17, 2020 00:00:00").getTime();
-// var countDownDate = new Date("Mar 31, 2020 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-    // Get today's date and time
-    var now = new Date().getTime();
-
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Output the result in an element with id="demo"
-    document.getElementById("demo").innerHTML =
-        days + " Hari  " + hours +  " Jam " + minutes + " Menit " + seconds + " Detik ";
-
-    // If the count down is over, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-    }
-}, 1000);
 </script>
 
 <template>
@@ -61,7 +45,22 @@ var x = setInterval(function() {
                 </div>
                 <div class="text-center">
                             <p>Remaining Time :</p>
-                            <p id="demo" ></p>
+                            <countdown 
+                                :starttime="getTimeNow"
+                                endtime="Apr 17, 2020 00:00:00"
+                                trans='{  
+                                    "day":"Hari",
+                                    "hours":"Jam",
+                                    "minutes":"Menit",
+                                    "seconds":"Detik",
+                                    "expired":"Event has been expired.",
+                                    "running":"Till the end of event.",
+                                    "upcoming":"Till start of event.",
+                                    "status": {
+                                        "expired":"Expired",
+                                        "running":"Running",
+                                        "upcoming":"Future"
+                                    }}' />
                     </div>
             </div>
         </div>
