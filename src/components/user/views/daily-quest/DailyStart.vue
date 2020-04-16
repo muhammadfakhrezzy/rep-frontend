@@ -42,6 +42,9 @@ export default {
                             console.log(response)
                             Swal.fire({
                                 position: 'center',
+                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                                imageWidth: 150,
+                                imageHeight: 60,
                                 icon: 'success',
                                 title: 'Your result has been sended',
                                 showConfirmButton: false,

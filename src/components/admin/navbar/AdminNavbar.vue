@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <p class="nav-link mb-0" style="color: #fff">Admin Page</p>
+                    <router-link to="/admin" class="nav-link mb-0" style="color: #fff">Admin Page</router-link>
                 </li>
             </ul>
 
@@ -83,7 +83,7 @@
         <aside class="main-sidebar sidebar-dark-teal elevation-4" style="background-color: rgb(97,158,133);">
             <!-- Brand Logo -->
             <div class="brand-link" style="padding: .5rem 0; background-color: #rgb(104,162,137); border-color: #fff">
-                <img src="../../../assets/REP logo.png" style="height: 40px" class="d-block mx-auto">
+                <img src="../../../assets/REP logo.png" style="height: 30px" class="d-block mx-auto">
             </div>
 
             <!-- Sidebar -->
@@ -186,11 +186,11 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white">
+                            <router-link to="/admin/allplayers" class="nav-link text-white">
                                 <p>
                                     Viewboard Admin
                                 </p>
-                            </a>
+                            </router-link>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">

@@ -27,9 +27,9 @@ export default {
         logout() {
             Swal.fire({
                 title: "Are you sure want to logout?",
-                imageUrl: 'https://lh3.googleusercontent.com/-aJkZOBy7QaQ/XpcdhLTMmpI/AAAAAAAABEo/6z69EG9KBN45dd6VnlMwelrrkoI55lhZgCK8BGAsYHg/s0/2020-04-15.png',
-                imageWidth: 200,
-                imageHeight: 200,
+                imageUrl: 'https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png',
+                imageWidth: 150,
+                imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',

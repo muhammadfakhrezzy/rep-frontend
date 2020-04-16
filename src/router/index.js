@@ -208,9 +208,15 @@ const routes = [
             {
                 path: 'user',
                 component: () => import('@/components/admin/views/AllUser')
+            },
+            {
+                path: 'allplayers',
+                component: () => import('@/components/admin/views/AllPlayers')
             }
         ]
-    }
+    },
+    
+
 ]
 
 const router = new VueRouter({
