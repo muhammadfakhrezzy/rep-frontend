@@ -22,6 +22,16 @@ export default {
             let dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds
             console.log(dateString)
             return dateString.toString()
+        },
+        getTimeEnd() {
+            let getDate = new Date()
+            let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            let hours = ("0" + getDate.getHours()).slice(-2)
+            let minutes = ("0" + getDate.getMinutes()).slice(-2)
+            let seconds = ("0" + getDate.getSeconds()).slice(-2)
+            let dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' ' + '23:59:59'
+            console.log(dateString)
+            return dateString.toString()
         }
     },
     created() {
@@ -56,7 +66,7 @@ export default {
                             <p>Remaining Time :</p>
                             <countdown 
                                 :starttime="getTimeNow"
-                                endtime="Apr 17, 2020 00:00:00"
+                                :endtime="getTimeEnd"
                                 trans='{  
                                     "day":"Hari",
                                     "hours":"Jam",
