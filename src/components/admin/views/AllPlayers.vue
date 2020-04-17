@@ -57,7 +57,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ rank.total_record }}</h3>
 
                 <p>Total ECP</p>
               </div>
@@ -87,7 +87,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3></h3>
+                <h3>{{ rank.data.length }}</h3>
 
                 <p>Total Players</p>
               </div>
@@ -109,10 +109,10 @@ export default {
                   <!-- /.card-header -->
                   <div class="card-body p-0" >
                     <ul class="users-list clearfix">
-                      <li v-for='index in user' :key="index.data.detail_user.id">
-                        <img :src="index.data.media[0].path" alt="User Image" class="img-circle img-size-32 mr-2" style="cursor:pointer" data-toggle="modal" :data-target="['#modal' + index.data.detail_user.id]">
-                        <a class="users-list-name">{{ index.data.detail_user.name }}</a>
-                        <span class="users-list-date">{{index.data.total_value}}</span>
+                      <li v-for='index in rank.data' :key="index.detail_user.id">
+                        <img :src="index.media" alt="User Image" class="img-circle img-size-32 mr-2" style="cursor:pointer" data-toggle="modal" :data-target="['#modal' + index.data.detail_user.id]">
+                        <a class="users-list-name">{{ index.detail_user.name }}</a>
+                        <!-- <span class="users-list-date">{{index.level}}</span> -->
                       </li>
                     </ul>
                     <!-- /.users-list -->
