@@ -29,7 +29,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users', questData)
+                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users', questData)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(

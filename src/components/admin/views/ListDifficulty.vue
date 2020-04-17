@@ -19,7 +19,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.put('https://dytlan.alphabetincubator.id/api/superuser/difficulties/' + id, {name: this.update_name})
+                        axios.put('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties/' + id, {name: this.update_name})
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -44,7 +44,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.delete('https://dytlan.alphabetincubator.id/api/superuser/difficulties/' + id)
+                        axios.delete('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties/' + id)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -61,7 +61,7 @@ export default {
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties')
+        axios.get('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties')
             .then(response => {
                 console.log(response)
                 this.difficulty_list = response.data

@@ -37,7 +37,7 @@ export default {
                             role_id: role_id
                         }
                         console.log(data)
-                        axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/' + id, data)
+                        axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/' + id, data)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -65,7 +65,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/' + id)
+                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/' + id)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -81,7 +81,7 @@ export default {
             })
         },
         getAllData() {
-            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users')
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users')
             .then(response => {
                 console.log(response)
                 this.all_data = response.data
@@ -96,7 +96,7 @@ export default {
         this.getAllData()
     },
     mounted() {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/create')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/create')
             .then(response => {
                 console.log(response)
                     this.user = response.data

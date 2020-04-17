@@ -18,7 +18,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.post('https://dytlan.alphabetincubator.id/api/superuser/difficulties', {name: this.data})
+                        axios.post('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties', {name: this.data})
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(

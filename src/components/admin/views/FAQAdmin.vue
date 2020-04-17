@@ -10,7 +10,7 @@ export default {
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/superuser/postrequest')
+        axios.get('https://dytlan.alphabetincubator.id/api/secretchamber/postrequest')
             .then(response => {
                 console.log(response)
                 this.all_data = response.data
@@ -27,7 +27,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.put('https://dytlan.alphabetincubator.id/api/superuser/postrequest/' + id, {status: 'verified', note: this.update_note})
+                        axios.put('https://dytlan.alphabetincubator.id/api/secretchamber/postrequest/' + id, {status: 'verified', note: this.update_note})
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(

@@ -9,12 +9,11 @@ export default {
         }
     },
    created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/daily')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
             console.log(response)
-            let res = response.data
-            this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
-            ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
+            let res = response.data.data
+            this.rank = res
             this.rank.forEach(element => {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
                     .then(response => {
@@ -46,7 +45,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ rank.total_value }}</h3>
 
                 <p>Submitted Quests</p>
               </div>
@@ -78,7 +77,7 @@ export default {
               <div class="inner">
                 <h3></h3>
 
-                <p></p>
+                <p>Level</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -93,7 +92,7 @@ export default {
               <div class="inner">
                 <h3></h3>
 
-                <p></p>
+                <p>Total Players</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -116,7 +115,7 @@ export default {
                       <li v-for='index in user' :key="index.data.detail_user.id">
                         <img :src="index.data.media[0].path" alt="User Image" class="img-circle img-size-32 mr-2" style="cursor:pointer" data-toggle="modal" :data-target="['#modal' + index.data.detail_user.id]">
                         <a class="users-list-name">{{ index.data.detail_user.name }}</a>
-                        <span class="users-list-date">Today</span>
+                        <span class="users-list-date">{{index.data.total_value}}</span>
                       </li>
                     </ul>
                     <!-- /.users-list -->
@@ -133,7 +132,7 @@ export default {
             </div>
         </div>
         </div>
-        <div class="modal fade" v-for="index in user" :key="index.data.detail_user.id" :id="['modal' + index.data.detail_user.id]" style="cursor:pointer">
+        <div class="modal fade" v-for="index in user" :key="index.data.detail_user.id" :id="['modal' + index.data.detail_user.id]">
                     <div class="modal-dialog" style="margin-top: 60vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -153,7 +152,7 @@ export default {
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <b>Rank</b>
-                                                <a class="float-right">{{ index.data.level.name }}</a>
+                                                <a class="float-right">{{ index.data.level }}</a>
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="card card-success mb-0 collapsed-card">

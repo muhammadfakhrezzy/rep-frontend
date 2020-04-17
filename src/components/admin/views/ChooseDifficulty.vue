@@ -29,7 +29,7 @@ export default {
                 confirmButtonText: 'Yes'
             }).then(result => {
                 if(result.value) {
-                    axios.post('https://dytlan.alphabetincubator.id/api/superuser/users/attach/' + this.$store.state.user.id, {difficulty_id : this.choose})
+                    axios.post('https://dytlan.alphabetincubator.id/api/secretchamber/users/attach/' + this.$store.state.user.id, {difficulty_id : this.choose})
                         .then(response => {
                             console.log(response)
                             Swal.fire(
@@ -50,7 +50,7 @@ export default {
     },
     created() {
         this.loading = 'loading'
-        axios.get('https://dytlan.alphabetincubator.id/api/superuser/difficulties')
+        axios.get('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties')
             .then(response => {
                 console.log(response)
                 for(let key in response.data){
