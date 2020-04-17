@@ -4,17 +4,17 @@ export default {
     data() {
         return {
             user:[],
-            latest_rank:'',
-            rank:''
+            rank:'',
+            total_value: ''
         }
     },
    created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
             console.log(response)
-            let res = response.data.data
+            let res = response.data
             this.rank = res
-            this.rank.forEach(element => {
+            this.rank.data.forEach(element => {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
                     .then(response => {
                         let res = response
@@ -22,9 +22,6 @@ export default {
                     })
             });
             console.log('user',this.user)
-            let a = [...this.rank]
-            a.splice(0, 3)
-            this.latest_rank = a
         })
     }
 }
