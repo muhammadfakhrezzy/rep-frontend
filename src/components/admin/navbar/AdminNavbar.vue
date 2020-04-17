@@ -257,6 +257,9 @@ export default {
             Swal.fire({
                 title: "Are you sure to logout?",
                 icon: 'warning',
+                // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                // imageWidth: 150,
+                // imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -265,9 +268,12 @@ export default {
                 .then(result => {
                     if(result.value) {
                         Swal.fire(
-                            'Success!',
-                            'You has been logouted.!',
-                            'success'
+                            {
+                        // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                        // imageWidth: 150,
+                        // imageHeight: 60,
+                        title:'Success'
+                            }
                         )
                         this.$store.dispatch('logout')
                     }

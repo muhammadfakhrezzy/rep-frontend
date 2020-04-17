@@ -27,9 +27,10 @@ export default {
         logout() {
             Swal.fire({
                 title: "Are you sure want to logout?",
-                imageUrl: 'https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png',
-                imageWidth: 150,
-                imageHeight: 60,
+                icon:'warning',
+                // imageUrl: 'https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png',
+                // imageWidth: 150,
+                // imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -37,8 +38,13 @@ export default {
             })
                 .then(result => {
                     if(result.value) {
-                        Swal.fire(
-                            'Success!',
+                        Swal.fire({
+                            icon:'success',
+                        // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                        // imageWidth: 150,
+                        // imageHeight: 60,
+                        title:'Success'
+                            }
                         )
                         this.$store.dispatch('logout')
                     }
@@ -165,7 +171,7 @@ export default {
                         </router-link>
                     </div>
                     <div class="info mb-1 text-white" style="white-space: normal">
-                        <router-link to="/profile" style="text-align: center" class="d-block text-white">{{ name }}</router-link>
+                        <router-link to="/myoverview" style="text-align: center" class="d-block text-white">{{ name }}</router-link>
                         <p style="text-align: center; font-size: 13px;" class="d-block">
                             {{dateNow}}
                             <digital-clock :blink="true" />

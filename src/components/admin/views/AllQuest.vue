@@ -18,6 +18,9 @@ export default {
             Swal.fire({
                 title: 'Are you sure update quest',
                 icon: 'warning',
+                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                imageWidth: 150,
+                imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -27,10 +30,13 @@ export default {
                         axios.put('https://dytlan.alphabetincubator.id/api/superuser/quests/' + id, {name: this.update_name}, {code: this.update_code}, {description: this.update_description}, {value: this.update_value}, {daily: this.update_daily_limit}, {expires: this.update_expires_in})
                             .then(response => {
                                 console.log(response)
-                                Swal.fire(
-                                    'Success!',
-                                    'quest has been updated',
-                                    'success'
+                                Swal.fire({
+                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                                imageWidth: 150,
+                                imageHeight: 60,
+                                title:'Success !',
+                                text:'Quest has been updated'
+                                }
                                 )
                             })
                             .catch(error => {
@@ -44,6 +50,9 @@ export default {
                 title: 'Are you sure delete this quest?',
                 icon: 'warning',
                 showCancelButton: true,
+                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                imageWidth: 150,
+                imageHeight: 60,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes'
@@ -52,10 +61,13 @@ export default {
                         axios.delete('https://dytlan.alphabetincubator.id/api/superuser/quests/' + id)
                             .then(response => {
                                 console.log(response)
-                                Swal.fire(
-                                    'Success!',
-                                    'Your quest has been deleted',
-                                    'success'
+                                Swal.fire({
+                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                                imageWidth: 150,
+                                imageHeight: 60,
+                                title:'Success !',
+                                text:'Your quest has been Deleted'
+                                }
                                 )
                             })
                             .catch(error => {

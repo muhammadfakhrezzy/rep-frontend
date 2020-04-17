@@ -9,6 +9,7 @@ import contactUs from '@/components/user/help-center/ContactUs'
 import Answered from '@/components/user/help-center/Answered'
 import whyRep from '@/components/user/why-rep/WhyRep'
 import Construction from '@/components/user/views/Construction'
+import AdminNavbar from '@/components/admin/navbar/AdminNavbar'
 
 import rankDaily from '@/components/user/rank/RankDaily'
 import rankWeekly from '@/components/user/rank/RankWeekly'
@@ -175,8 +176,13 @@ const routes = [
     },
     {
         path: '/admin',
-        component: () => import('@/components/admin/navbar/AdminNavbar'),
+        component: AdminNavbar,
+        meta: { user: true },
         children: [
+            {
+                path: '/admin',
+                component: () => import('@/components/admin/views/AllPlayers')
+            },
             {
                 path: 'createdifficulty',
                 component: () => import('@/components/admin/views/CreateDifficulty')
@@ -212,6 +218,14 @@ const routes = [
             {
                 path: 'allplayers',
                 component: () => import('@/components/admin/views/AllPlayers')
+            },
+            {
+                path: 'showquests',
+                component: () => import('@/components/admin/views/ShowQuests')
+            },
+            {
+                path: 'showecp',
+                component: () => import('@/components/admin/views/ShowECP')
             }
         ]
     },

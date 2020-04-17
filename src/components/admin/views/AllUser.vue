@@ -22,6 +22,9 @@ export default {
             Swal.fire({
                 title: 'Are you sure want to update the User ?',
                 icon: 'warning',
+                // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                // imageWidth: 150,
+                // imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -53,6 +56,9 @@ export default {
             Swal.fire({
                 title: 'Are you sure want to delete the User ?',
                 icon: 'warning',
+                // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                // imageWidth: 150,
+                // imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -93,7 +99,7 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/create')
             .then(response => {
                 console.log(response)
-                    this.user = response.data[0]
+                    this.user = response.data
             })
     }
 }
