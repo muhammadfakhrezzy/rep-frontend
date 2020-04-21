@@ -8,7 +8,8 @@ export default {
             rank : '',
             detail:'',
             latest_rank: '',
-            all_quest: []
+            all_quest: [],
+            detail_rank:''
         }
     },
     methods: {
@@ -32,13 +33,18 @@ export default {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
                     .then(response => {
                         let res = response
-                        this.all_quest.push(res)
                     })
             });
             console.log('all_quest',this.all_quest)
             let a = [...this.rank]
             a.splice(0, 3)
             this.latest_rank = a
+
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/experience/user/1/progress')
+        .then(response => {
+             console.log(response)
+        })
+
         })
     }
 }
@@ -200,6 +206,7 @@ export default {
                                                     {{value.detail_user.name}}
                                                 </td>
                                                 <td>{{value.total_value}} ECP</td>
+                                                <td>{{ value.total_quest }} Quests</td>
                                                 <td>{{value.level.name}}</td>
                                             </tr>
                                         </tbody>

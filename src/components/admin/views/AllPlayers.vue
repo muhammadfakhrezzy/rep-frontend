@@ -5,7 +5,8 @@ export default {
         return {
             user:[],
             rank:'',
-            total_value: ''
+            total_value: '',
+            players:''
         }
     },
    created () {
@@ -13,6 +14,7 @@ export default {
         .then(response => {
             console.log(response)
             let res = response.data
+            this.players = res.data.length
             this.rank = res
             this.rank.data.forEach(element => {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
@@ -72,9 +74,9 @@ export default {
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3></h3>
+                <h3>Ordinary</h3>
 
-                <p>Level</p>
+                <p>Highest Level</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -87,7 +89,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ rank.data.length }}</h3>
+                <h3>{{ players }}</h3>
 
                 <p>Total Players</p>
               </div>
@@ -100,30 +102,31 @@ export default {
           <!-- ./col -->
         </div>
                 <div class="row">
-                    <div class="col">
+                   <div class="col">
                 <!-- USERS LIST -->
                 <div class="card">
                   <div class="card-header">
                     <h3 class="card-title">All Players</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0" >
+                  <div class="card-body p-0">
                     <ul class="users-list clearfix">
                       <li v-for='index in rank.data' :key="index.detail_user.id">
-                        <img :src="index.media" alt="User Image" class="img-circle img-size-32 mr-2" style="cursor:pointer" data-toggle="modal" :data-target="['#modal' + index.data.detail_user.id]">
+                        <img :src="index.media" class="img-circle mr-2" style="cursor:pointer; width:40px; height:40px;" data-toggle="modal" :data-target="['#modal' + index.detail_user.id]">
                         <a class="users-list-name">{{ index.detail_user.name }}</a>
-                        <!-- <span class="users-list-date">{{index.level}}</span> -->
+                        <span class="users-list-date">{{index.lastlogin}}</span>
                       </li>
                     </ul>
                     <!-- /.users-list -->
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer text-center">
-                    <a href="javascript::">View All Players</a>
+                    <a href="javascript::">View All Users</a>
                   </div>
                   <!-- /.card-footer -->
                 </div>
                 <!--/.card -->
+              </div>
               </div>
                 </div>
             </div>
@@ -179,6 +182,5 @@ export default {
                 </div>
                 
             </div>
-    </div>
-    
+
 </template>

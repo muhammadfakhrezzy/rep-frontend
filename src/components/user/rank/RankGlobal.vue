@@ -6,9 +6,10 @@ export default {
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo,
             rank : '',
-        detail:'',
+            detail:'',
             latest_rank: '',
-            all_quest: []
+            all_quest: [],
+            progress:''
         }
     },
     methods: {
@@ -18,9 +19,9 @@ export default {
                 this.detail = response.data
                 this.all_quest = detail.quests
                 console.log(this.detail)
-            })
-    }
-    },
+                })
+            }
+        },
     created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/global')
         .then(response => {
@@ -39,6 +40,12 @@ export default {
             let a = [...this.rank]
             a.splice(0, 3)
             this.latest_rank = a
+        })
+    },
+    mounted () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/user/' + detail_user.id + '/progress')
+        .then(response => {
+            console.log(response)
         })
     }
 }
@@ -199,6 +206,7 @@ export default {
                                                     {{value.detail_user.name}}
                                                 </td>
                                                 <td>{{value.total_value}} ECP</td>
+                                                <td>{{ value.total_quest }} Quests</td>
                                                 <td>{{value.level.name}}</td>
                                             </tr>
                                         </tbody>

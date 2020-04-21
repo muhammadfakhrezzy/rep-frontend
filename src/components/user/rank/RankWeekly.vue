@@ -199,6 +199,7 @@ export default {
                                                     {{value.detail_user.name}}
                                                 </td>
                                                 <td>{{value.total_value}} ECP</td>
+                                                <td>{{ value.total_quest }} Quests</td>
                                                 <td>{{value.level.name}}</td>
                                             </tr>
                                         </tbody>

@@ -7,6 +7,8 @@ export default {
             photo: this.$store.state.user.photo,
             data_mahasiswa:'',
             user:'',
+            detail:'',
+            hasil:''
 
         }
     },
@@ -16,6 +18,14 @@ export default {
                 this.data_mahasiswa = response.data
                 console.log(this.data_mahasiswa)
             })
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/experience/user/' + this.$store.state.user.id + '/progress')
+        .then(response => {
+            this.detail = response.data
+            let rumus = this.detail.total_value - this.detail.detail_level.min_value
+            let bagi = (rumus / 50) * 100
+            this.hasil = bagi
+            console.log(this.detail)
+        })
     },
     mounted () {
         axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
@@ -62,9 +72,12 @@ export default {
                                     </li>
                                     <li class="list-group-item">
                                         <b>Level</b>
-                                        <a class="float-right">{{data_mahasiswa.level_id}} / 21</a>
+                                        <span class="float-right"></span>
                                     </li>
                                 </ul>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="['width:' + hasil + '%']"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

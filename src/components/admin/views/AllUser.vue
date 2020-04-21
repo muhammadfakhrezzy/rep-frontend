@@ -99,7 +99,7 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/create')
             .then(response => {
                 console.log(response)
-                    this.user = response.data
+                this.user = response.data.dropdown_list
             })
     }
 }

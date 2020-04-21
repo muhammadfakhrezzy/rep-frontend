@@ -46,14 +46,10 @@ export default {
         }
     },
     created() {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/superuser/users/create')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/create')
             .then(response => {
-                console.log(this.user)
-                for(let key in response.data[0]){
-                    const obj = response.data[0][key]
-                    this.user.push(obj)
-                    this.loading = ''
-                }
+                console.log(response)
+               this.user = response.data.dropdown_list
             })
     }
 }

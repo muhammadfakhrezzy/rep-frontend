@@ -1,3 +1,20 @@
+<script>
+import axios from 'axios'
+export default {
+    data() {
+        return {
+            user:'',
+        }
+    },
+   created () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
+        .then(response => {
+            console.log(response)
+            this.user = response.data
+        })
+    }
+}
+</script>
 <template>
     <div class="content-wrapper">
         <div class="content-header">
@@ -31,24 +48,29 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>Quest Name</th>
-                      <th>Total</th>
+                      <th></th>  
+                      <th>Name</th>
+                      <th>Total ECP</th>
+                      <th>Total Quest</th>
                       
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
+                    <tr v-for="value in user.data" :key="value.detail_user.id">
+                        <td>
+                            <img :src="value.media" class="img-circle img-size-32 mr-2">
+
+                        </td>
+                        <td>{{ value.detail_user.name }}</td>
+                        <td>{{ value.total_value }}</td>
+                        <td>{{ value.total_quest }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
-            <button class="btn btn-sm btn-primary mr-2">Back</button>
+            <router-link to="/admin" class="btn btn-sm btn-primary mr-2">Back</router-link>
             <!-- /.card -->
           </div>
                 </div>
