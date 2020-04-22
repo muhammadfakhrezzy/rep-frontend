@@ -8,8 +8,7 @@ export default {
             rank : '',
             detail:'',
             latest_rank: '',
-            all_quest: [],
-            detail_rank:''
+            all_quest: []
         }
     },
     methods: {
@@ -33,23 +32,17 @@ export default {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
                     .then(response => {
                         let res = response
+                        this.all_quest.push(res)
                     })
             });
             console.log('all_quest',this.all_quest)
             let a = [...this.rank]
             a.splice(0, 3)
             this.latest_rank = a
-
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/experience/user/1/progress')
-        .then(response => {
-             console.log(response)
-        })
-
         })
     }
 }
 </script>
-
 <template>
     <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -71,7 +64,7 @@ export default {
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <div v-if="rank" class="row">
+                    <div class="row">
                         <div class="col-sm-12 mt-3">
                             <h3 class="text-center">DAILY RANK</h3>
                         </div>
@@ -84,8 +77,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[1].media" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)">
-                                    <img src="@/assets/img/silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" :data-target="['#modal' + rank[1].detail_user.id]">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-50%) translateY(-50%)">
+                                    <img src="@/assets/img/Weekly-Silver.png" style="border: none; width: 150px; cursor: pointer" data-toggle="modal" :data-target="['#modal' + rank[1].detail_user.id]">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -104,7 +97,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[1].level.name }}</h5>
-                                                <span class="description-text">RANK</span>
+                                                <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -120,8 +113,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
-                                    <img src="@/assets/img/gold.png" style="border: none; width: 150px; cursor:pointer">
+                                <div class="widget-user-image" style="margin-left: 0; top: 48%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
+                                    <img src="@/assets/img/Weekly-Gold.png" style="border: none; width: 150px; cursor:pointer">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -140,7 +133,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[0].level.name }}</h5>
-                                                <span class="description-text">RANK</span>
+                                                <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -156,8 +149,8 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 51%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
-                                    <img src="@/assets/img/bronze.png" style="border: none; width: 150px; cursor:pointer;">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
+                                    <img src="@/assets/img/Weekly-Bronze.png" style="border: none; width: 150px; cursor:pointer;">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -176,7 +169,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[2].level.name }}</h5>
-                                                <span class="description-text">RANK</span>
+                                                <span class="description-text">LEVEL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +211,7 @@ export default {
                 <!-- /.container-fluid -->
                 </div>
             <!-- /.content -->
-                <div class="modal fade" v-for="value in all_quest" :key="value.data.detail_user.id" :id="['modal' + value.data.detail_user.id]">
+                 <div class="modal fade" v-for="value in all_quest" :key="value.data.detail_user.id" :id="['modal' + value.data.detail_user.id]">
                     <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -264,9 +257,7 @@ export default {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-                
             </div>
     <!-- /.content-wrapper -->
 

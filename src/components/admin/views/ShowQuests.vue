@@ -2,6 +2,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Datepicker from 'vuejs-datepicker'
+import Loading from './Loading.vue'
 const swalWithBootstrap = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success py-2 px-4',
@@ -15,18 +16,32 @@ export default {
             review_data: [],
             record_id: '',
             date: new Date(),
+            page:1,
+            loading:false,
+            perPage: 10
             
         }
     },
     methods: {
         getData(){
-            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records')
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records?page=' + this.page)
             .then(response => {
                 console.log(response)
                 const dataRes =  response.data
-                this.review_data = dataRes.sort((a, b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
+                this.review_data = [].slice.call(dataRes).sort()
+                console.log(this.review_data)
             })
         },
+        prevPage () {
+            this.loading = true
+            this.page--
+            window.scrollTo({top: 0, behavior: 'smooth'})
+            },
+        nextPage () {
+            this.loading = true
+            this.page++
+            window.scrollTo({top: 0, behavior: 'smooth'})
+},
         Submit() {
             const tanggal = String(this.date)
             const baru = tanggal.split(' ')
@@ -79,7 +94,9 @@ export default {
                 .then(response => {
                     console.log(response)
                     const dataRes =  response.data
-                    this.review_data = dataRes.sort((a, b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
+                    this.review_data = [].slice.call(dataRes).sort()
+                    console.log(this.review_data)
+
                 })
                 .catch(error => {
                     console.log(error)
@@ -96,73 +113,26 @@ export default {
                     alert('Sudah Like')
                 })
         },
-        verif(id) {
-            const status = {
-                status: 'verified'
-            }
-            swalWithBootstrap.fire({
-                title: 'Are you sure verified this quest?',
-                text: 'Player will get a point after the quest has been verified',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                reverseButtons: true
-            }).then(result => {
-                if(result.value) {
-                    axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/records/' + id + '/update', status)
-                        .then(response => {
-                            console.log(response)
-                            swalWithBootstrap.fire(
-                                'Success!',
-                                'Player got a point',
-                                'success'
-                            )
-                            this.getData()
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                }
-            })
-        },
-        reject(id) {
-            const status = {
-                status: 'reject'
-            }
-            swalWithBootstrap.fire({
-                title: 'Are you sure rejected this quest?',
-                text: 'Player will not get a point if the quest has been rejected',
-                icon: 'error',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                reverseButtons: true
-            }).then(result => {
-                if(result.value) {
-                    axios.put(' https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', status)
-                        .then(response => {
-                            console.log(response)
-                            swalWithBootstrap.fire(
-                                'Success!',
-                                'Player don\'t got a point',
-                                'success'
-                            )
-                            this.getData()
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                }
-            })
-        }
     },
     created() {
+        this.loading = true
         this.getData()
     },
     components : {
         Datepicker
-    }
+    },
+    computed : {
+        showRepos () {
+            let start = (this.page - 1) * this.perPage
+            let end = start + this.perPage
+            this.loading = false
+            return this.review_data.slice(start, end)
+  },
+        lastPage () {
+            let length = this.review_data.length 
+            return Math.ceil(length / this.perPage)
+            }
+    },
 }
 </script>
 
@@ -206,7 +176,10 @@ export default {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(index, length) in review_data" :key="index.detail_record.id">
+                                        <!-- <div v-if="loading" class="justify-content-center"> -->
+                                            <Loading>
+                                            </Loading>
+                                        <tr v-for="(index, length) in showRepos" :key="index.detail_record.id">
                                             <td>{{ length + 1 }}.</td>
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.user }}</td>
@@ -218,9 +191,36 @@ export default {
                                                 </a>{{index.likes}}
                                             </td>
                                         </tr>
+                                        <!-- </div> -->
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="my-4"> <!-- Pagination -->
+   <ul class="pagination pagination-md justify-content-center text-center">
+        <li  class="page-item"
+            :class="page === 1 ? 'disabled' : ''"
+        >
+          <a 
+             class="page-link" 
+             @click="prevPage" 
+          >
+            Previous
+         </a>
+        </li>
+        <li class="page-link" style="background-color: inherit"> 
+          {{ page }} of {{ lastPage }}
+        </li>
+        <li  class="page-item" 
+            :class="page === lastPage ? 'disabled' : ''"
+        >
+          <a class="page-link" 
+            @click="nextPage"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
+ </div><!--./Pagination -->
                         </div>
                     </div>
                 </div>
@@ -228,3 +228,14 @@ export default {
         </div>
     </div>
 </template>
+<style>
+a:hover {
+ cursor: pointer;
+}
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+.fa-spinner {
+ animation: spinner 1s linear infinite;
+}
+</style>

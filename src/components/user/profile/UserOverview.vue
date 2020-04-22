@@ -23,7 +23,7 @@ export default {
             this.detail = response.data
             let rumus = this.detail.total_value - this.detail.detail_level.min_value
             let bagi = (rumus / 50) * 100
-            this.hasil = bagi
+            this.hasil = 'width:' + bagi + '%'
             console.log(this.detail)
         })
     },
@@ -72,16 +72,31 @@ export default {
                                     </li>
                                     <li class="list-group-item">
                                         <b>Level</b>
-                                        <span class="float-right"></span>
+                                        <span class="float-right">{{detail.detail_level.name}}</span>
                                     </li>
                                 </ul>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="['width:' + hasil + '%']"></div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
+                        <div class="card card-olive">
+                            <div class="card-header text-center">
+                                <h3 class="text-center" style="font-size:1.1rem;">Achievements</h3>
+                            </div>
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card card-olive">
                             <div class="card-header">
                                 <h3 class="card-title">About Me</h3>

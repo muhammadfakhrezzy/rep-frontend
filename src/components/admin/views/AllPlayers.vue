@@ -74,7 +74,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>Ordinary</h3>
+                <h3>{{rank.max_level}}</h3>
 
                 <p>Highest Level</p>
               </div>
