@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
+import Loading from '@/components/admin/views/Loading'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
     faFile, faTasks, faList, faAngleLeft, faSignOutAlt, faBars, faCircle, 
@@ -22,6 +24,7 @@ library.add(faFile, faHackerrank, faTasks, faList, faAngleLeft, faBell,
     faSyncAlt,faThumbsUp,faThumbsDown, faCheckCircle
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('Loading', Loading)
 
 Vue.prototype.$http = axios;
 const token = store.state.token

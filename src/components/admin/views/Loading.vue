@@ -1,5 +1,5 @@
 <template>
-    <div class="loader">Loading...</div>
+    <div class="loader m-auto">Loading...</div>
 </template>
 
 <style scoped>
@@ -14,8 +14,7 @@
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid black;
   border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
   border-left: 1.1em solid #ffffff;
   -webkit-transform: translateZ(0);

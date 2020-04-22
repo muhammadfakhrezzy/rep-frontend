@@ -2,7 +2,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Datepicker from 'vuejs-datepicker'
-import Loading from './Loading.vue'
+import Loadingpage from './Loading'
 const swalWithBootstrap = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success py-2 px-4',
@@ -10,6 +10,8 @@ const swalWithBootstrap = Swal.mixin({
     },
     buttonsStyling: false
 })
+
+
 export default {
     data() {
         return {
@@ -22,81 +24,86 @@ export default {
             
         }
     },
+    components: {
+        Loadingpage
+    },
     methods: {
         getData(){
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records?page=' + this.page)
             .then(response => {
                 console.log(response)
                 const dataRes =  response.data
-                this.review_data = [].slice.call(dataRes).sort()
+                this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                 console.log(this.review_data)
+                this.loading = false
             })
         },
         prevPage () {
-            this.loading = true
+            // this.loading = true
             this.page--
             window.scrollTo({top: 0, behavior: 'smooth'})
             },
         nextPage () {
-            this.loading = true
+            // this.loading = true
             this.page++
             window.scrollTo({top: 0, behavior: 'smooth'})
 },
         Submit() {
+            this.loading = true
             const tanggal = String(this.date)
             const baru = tanggal.split(' ')
             let bulan 
             switch (baru[1]){
-             case  "Jan":
-             bulan = '01';
-             break;
-             case  "Feb":
-             bulan = '02';
-             break;
-             case  "Mar":
-             bulan = '03';
-             break;
-             case  "Apr":
-             bulan = '04';
-             break;
-             case  "May":
-             bulan = '05';
-             break;
-             case  "Jun":
-             bulan = '06';
-             break;
-             case  "July":
-             bulan = '07';
-             break;
-             case  "Aug":
-             bulan = '08';
-             break;
-             case  "Sep":
-             bulan = '09';
-             break;
-             case  "Oct":
-             bulan = '10';
-             break;
-             case  "Nov":
-             bulan = '11';
-             break;
-             case  "Des":
-             bulan = '12';
-             break;
-             default: 
-             bulan = null
-             break;   
+                case  "Jan":
+                bulan = '01';
+                break;
+                case  "Feb":
+                bulan = '02';
+                break;
+                case  "Mar":
+                bulan = '03';
+                break;
+                case  "Apr":
+                bulan = '04';
+                break;
+                case  "May":
+                bulan = '05';
+                break;
+                case  "Jun":
+                bulan = '06';
+                break;
+                case  "July":
+                bulan = '07';
+                break;
+                case  "Aug":
+                bulan = '08';
+                break;
+                case  "Sep":
+                bulan = '09';
+                break;
+                case  "Oct":
+                bulan = '10';
+                break;
+                case  "Nov":
+                bulan = '11';
+                break;
+                case  "Des":
+                bulan = '12';
+                break;
+                default: 
+                bulan = null
+                break;   
             }
             
             const lala = [baru[3], bulan, baru[2]].join('-')
             console.log(lala)
-             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/quests/difficulty/1', {date:lala})
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/quests/difficulty/1', {date:lala})
                 .then(response => {
-                    console.log(response)
-                    const dataRes =  response.data
-                    this.review_data = [].slice.call(dataRes).sort()
-                    console.log(this.review_data)
-
+                    console.log('tanggal',response)
+                    const dataRes =  response.data.data
+                    this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
+                    console.log('tanggal ambil data',this.review_data)
+                    this.loading = false
                 })
                 .catch(error => {
                     console.log(error)
@@ -155,12 +162,12 @@ export default {
                             <div class="card-header">
                                 <div class="card-tools" style="float:left;">
                                     <div class="input-group input-group-sm"> 
-                                   <label>
-                                       <datepicker v-model="date">
-                                       </datepicker>
-                                    </label>
-                                    <button @click="Submit()" class="btn btn-sm btn-primary ml-4">Submit</button>
-                                  </div>
+                                        <label>
+                                            <datepicker v-model="date">
+                                            </datepicker>
+                                        </label>
+                                        <button @click="Submit()" class="btn btn-sm btn-primary ml-4">Submit</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body table-responsive p-0">
@@ -176,10 +183,10 @@ export default {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- <div v-if="loading" class="justify-content-center"> -->
-                                            <Loading>
-                                            </Loading>
-                                        <tr v-for="(index, length) in showRepos" :key="index.detail_record.id">
+                                        <!-- <div class="d-flex justify-content-center"> -->
+                                        <Loading v-if="loading" />
+                                        <!-- </div> -->
+                                        <tr v-else v-for="(index, length) in showRepos" :key="index.detail_record.id">
                                             <td>{{ length + 1 }}.</td>
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.user }}</td>
@@ -196,31 +203,31 @@ export default {
                                 </table>
                             </div>
                             <div class="my-4"> <!-- Pagination -->
-   <ul class="pagination pagination-md justify-content-center text-center">
-        <li  class="page-item"
-            :class="page === 1 ? 'disabled' : ''"
-        >
-          <a 
-             class="page-link" 
-             @click="prevPage" 
-          >
-            Previous
-         </a>
-        </li>
-        <li class="page-link" style="background-color: inherit"> 
-          {{ page }} of {{ lastPage }}
-        </li>
-        <li  class="page-item" 
-            :class="page === lastPage ? 'disabled' : ''"
-        >
-          <a class="page-link" 
-            @click="nextPage"
-          >
-            Next
-          </a>
-        </li>
-      </ul>
- </div><!--./Pagination -->
+                                <ul class="pagination pagination-md justify-content-center text-center">
+                                    <li  class="page-item"
+                                        :class="page === 1 ? 'disabled' : ''"
+                                    >
+                                    <a 
+                                        class="page-link" 
+                                        @click="prevPage" 
+                                    >
+                                        Previous
+                                    </a>
+                                    </li>
+                                    <li class="page-link" style="background-color: inherit"> 
+                                    {{ page }} of {{ lastPage }}
+                                    </li>
+                                    <li  class="page-item" 
+                                        :class="page === lastPage ? 'disabled' : ''"
+                                    >
+                                    <a class="page-link" 
+                                        @click="nextPage"
+                                    >
+                                        Next
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div><!--./Pagination -->
                         </div>
                     </div>
                 </div>
@@ -228,14 +235,15 @@ export default {
         </div>
     </div>
 </template>
+
 <style>
 a:hover {
- cursor: pointer;
+    cursor: pointer;
 }
 @keyframes spinner {
-  to { transform: rotate(360deg); }
+    to { transform: rotate(360deg); }
 }
 .fa-spinner {
- animation: spinner 1s linear infinite;
+    animation: spinner 1s linear infinite;
 }
 </style>
