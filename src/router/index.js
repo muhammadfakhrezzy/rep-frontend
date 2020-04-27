@@ -9,6 +9,7 @@ import contactUs from '@/components/user/help-center/ContactUs'
 import Answered from '@/components/user/help-center/Answered'
 import whyRep from '@/components/user/why-rep/WhyRep'
 import Construction from '@/components/user/views/Construction'
+import Level from '@/components/user/views/ShowLevel'
 import AdminNavbar from '@/components/admin/navbar/AdminNavbar'
 
 import rankDaily from '@/components/user/rank/RankDaily'
@@ -166,6 +167,10 @@ const routes = [
             {
                 path:'underConstruction',
                 component:Construction
+            },
+            {
+                path:'showlevel',
+                component:Level
             }
         ]
     },
@@ -185,35 +190,39 @@ const routes = [
             },
             {
                 path: 'createdifficulty',
-                component: () => import('@/components/admin/views/CreateDifficulty')
+                component: () => import('@/components/admin/views/Difficulty/CreateDifficulty')
             },
             {
                 path: 'choosedifficulty',
-                component: () => import('@/components/admin/views/ChooseDifficulty')
+                component: () => import('@/components/admin/views/Difficulty/ChooseDifficulty')
             },
             {
                 path: 'createquest',
-                component: () => import('@/components/admin/views/CreateQuest')
+                component: () => import('@/components/admin/views/Quests/CreateQuest')
             },
             {
                 path: 'allquest',
-                component: () => import('@/components/admin/views/AllQuest')
+                component: () => import('@/components/admin/views/Quests/AllQuest')
+            },
+            {
+                path: 'favquest',
+                component: () => import('@/components/admin/views/Quests/FavQuest')
             },
             {
                 path: 'listdifficulty',
-                component: () => import('@/components/admin/views/ListDifficulty')
+                component: () => import('@/components/admin/views/Difficulty/ListDifficulty')
             },
             {
                 path: 'faqadmin',
-                component: () => import('@/components/admin/views/FAQAdmin')
+                component: () => import('@/components/admin/views/FAQ/FAQAdmin')
             },
             {
                 path: 'adduser',
-                component: () => import('@/components/admin/views/AddUser')
+                component: () => import('@/components/admin/views/User/AddUser')
             },
             {
                 path: 'user',
-                component: () => import('@/components/admin/views/AllUser')
+                component: () => import('@/components/admin/views/User/AllUser')
             },
             {
                 path: 'allplayers',
@@ -226,6 +235,10 @@ const routes = [
             {
                 path: 'showecp',
                 component: () => import('@/components/admin/views/ShowECP')
+            },
+            {
+                path: 'showlevel',
+                component: () => import('@/components/admin/views/ShowLevel')
             }
         ]
     },

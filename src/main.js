@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import "chart.js"
+import "hchs-vue-charts"
+Vue.use(window.VueCharts);
 
 import Loading from '@/components/admin/views/Loading'
 

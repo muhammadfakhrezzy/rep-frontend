@@ -44,7 +44,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ rank.total_value }}</h3>
+                <h3>{{ rank.total_record }}</h3>
 
                 <p>Submitted Quests</p>
               </div>
@@ -59,7 +59,7 @@ export default {
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ rank.total_record }}</h3>
+                <h3>{{ rank.total_value }}</h3>
 
                 <p>Total ECP</p>
               </div>
@@ -81,7 +81,7 @@ export default {
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <router-link to="/admin/showlevel" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
             </div>
           </div>
           <!-- ./col -->
@@ -184,3 +184,17 @@ export default {
             </div>
 
 </template>
+
+<style scoped>
+.users-list>li {
+    float: left;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+}
+.users-list {
+    padding-left: 8%;
+    list-style: none;
+    text-align: center;
+}
+</style>

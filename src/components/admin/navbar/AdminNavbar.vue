@@ -163,6 +163,11 @@
                                         <p>All Quest</p>
                                     </router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/favquest" class="nav-link text-white">
+                                        <p>Fav Quest</p>
+                                    </router-link>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">

@@ -263,7 +263,7 @@ export default {
 
     <!-- Main Footer -->
             <footer class="main-footer float-right">
-                <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
+                <strong>Copyright 2020 <a href="https://rep.raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
             </footer>
         </div>
         

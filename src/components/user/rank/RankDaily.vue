@@ -97,7 +97,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[1].level.name }}</h5>
-                                                <span class="description-text">LEVEL</span>
+                                                <router-link to="/showlevel" style="color:black;">LEVEL</router-link>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[0].level.name }}</h5>
-                                                <span class="description-text">LEVEL</span>
+                                                <router-link to="/showlevel" style="color:black;">LEVEL</router-link>
                                             </div>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@ export default {
                                         <div class="col-sm-4">
                                             <div class="description-block">
                                                 <h5 class="description-header">{{ rank[2].level.name }}</h5>
-                                                <span class="description-text">LEVEL</span>
+                                                <router-link to="/showlevel" style="color:black;">LEVEL</router-link>
                                             </div>
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@ export default {
 
     <!-- Main Footer -->
             <footer class="main-footer float-right">
-                <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
+                <strong>Copyright 2020 <a href="https://rep.raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
             </footer>
         </div>
         

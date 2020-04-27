@@ -1,17 +1,132 @@
 <script>
 import axios from 'axios'
+import Datepicker from 'vuejs-datepicker'
 export default {
     data() {
         return {
             user:'',
+            date: new Date(),
+            now: new Date()
+        }
+    },
+    methods : {
+        Submit() {
+            const tanggal = String(this.date)
+            const baru = tanggal.split(' ')
+            let bulan 
+            switch (baru[1]){
+                case  "Jan":
+                bulan = '01';
+                break;
+                case  "Feb":
+                bulan = '02';
+                break;
+                case  "Mar":
+                bulan = '03';
+                break;
+                case  "Apr":
+                bulan = '04';
+                break;
+                case  "May":
+                bulan = '05';
+                break;
+                case  "Jun":
+                bulan = '06';
+                break;
+                case  "July":
+                bulan = '07';
+                break;
+                case  "Aug":
+                bulan = '08';
+                break;
+                case  "Sep":
+                bulan = '09';
+                break;
+                case  "Oct":
+                bulan = '10';
+                break;
+                case  "Nov":
+                bulan = '11';
+                break;
+                case  "Des":
+                bulan = '12';
+                break;
+                default: 
+                bulan = null
+                break;   
+            }
+            
+            const lala = [baru[3], bulan, baru[2]].join('-')
+            console.log(lala)
+
+             const date = String(this.now)
+            const neww = date.split(' ')
+            let month 
+            switch (neww[1]){
+                case  "Jan":
+                month = '01';
+                break;
+                case  "Feb":
+                month = '02';
+                break;
+                case  "Mar":
+                month = '03';
+                break;
+                case  "Apr":
+                month = '04';
+                break;
+                case  "May":
+                month = '05';
+                break;
+                case  "Jun":
+                month = '06';
+                break;
+                case  "July":
+                month = '07';
+                break;
+                case  "Aug":
+                month = '08';
+                break;
+                case  "Sep":
+                month = '09';
+                break;
+                case  "Oct":
+                month = '10';
+                break;
+                case  "Nov":
+                month = '11';
+                break;
+                case  "Des":
+                month = '12';
+                break;
+                default: 
+                month = null
+                break;   
+            }
+            
+            const lili = [neww[3], month, neww[2]].join('-')
+            console.log(lili)
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/ecp', {date_from:lala,date_to:lili})
+                .then(response => {
+                    console.log(response)
+                    this.user = response.data
+                    console.log(this.user)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     },
    created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
-        .then(response => {
-            console.log(response)
-            this.user = response.data
-        })
+        // axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/ecp')
+        // .then(response => {
+        //     console.log(response)
+        //     this.user = response.data
+        // })
+        this.Submit()
+    },
+    components : {
+      Datepicker
     }
 }
 </script>
@@ -30,18 +145,20 @@ export default {
                 <div class="row">
                     <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Show ECP</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
+              <div class="card-header text-center">
+                <div class="row">
+                  <div class="col">
+                    <p>Date From : </p>
+                    <datepicker v-model="date">
+                    </datepicker>
                   </div>
-                </div>
+                  <div class="col">
+                    <p>Date To : </p>
+                    <datepicker v-model="now">
+                    </datepicker>
+                  </div>
+                </div>         
+                <button @click="Submit()" class="btn btn-sm btn-primary ml-4">Submit</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -56,7 +173,7 @@ export default {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="value in user.data" :key="value.detail_user.id">
+                    <tr v-for="value in user" :key="value.detail_user.id">
                         <td>
                             <img :src="value.media" class="img-circle img-size-32 mr-2">
 
@@ -79,3 +196,11 @@ export default {
     </div>
 
 </template>
+
+
+<style scoped>
+  .vdp-datepicker {
+    position: relative;
+    text-align: center;
+}
+</style>

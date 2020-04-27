@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import router from '../../../router'
+import router from '../../../../router'
 export default {
     data() {
         return {

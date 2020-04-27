@@ -8,8 +8,7 @@ export default {
             data_mahasiswa:'',
             user:'',
             detail:'',
-            hasil:'',
-            badge:''
+            hasil:''
 
         }
     },
@@ -26,11 +25,6 @@ export default {
             let bagi = (rumus / 50) * 100
             this.hasil = 'width:' + bagi + '%'
             console.log(this.detail)
-        })
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/achievement')
-        .then(response => {
-            console.log(response)
-            this.badge = response.data
         })
     },
     mounted () {
@@ -82,14 +76,85 @@ export default {
                                     </li>
                                 </ul>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil">{{detail.total_value}}</div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil"></div>
                                 </div>
-                                <div>
-                                    
-                                </div>
-                                
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card card-olive">
+                            <div class="card-header text-center">
+                                <h3 class="text-center" style="font-size:1.1rem;">Achievements</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-md-3" data-toggle="modal" data-target="#modal1" style="cursor:pointer;">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                        <p>2nd Rank Daily</p>
+                                        <p>1</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                        <p>1st Rank Daily</p>
+                                        <p>0</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                        <p>3rd Rank Daily</p>
+                                        <p>0</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-md-3">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                        <p>Daily Hardworker</p>
+                                        <p>1</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img src="../../../assets/img/badge/Daily-Hardworker.png" alt="badge" style="height:100px; width:100px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal1">
+                    <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <!-- <h4 class="modal-title">#Rank 2</h4> -->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <font-awesome-icon icon="times" aria-hidden="true" />
+                                </button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="card card-olive card-outline mb-0">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img src="../../../assets/img/badge/Daily-Hardworker.png" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                        </div>
+                                        <h3 class="profile-username text-center mt-4 mb-4">1st Rank Daily</h3>
+                                        <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item text-center">
+                                                <a>Submitted 11 Daily Quest</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card card-olive">
                             <div class="card-header">
                                 <h3 class="card-title">About Me</h3>
@@ -131,61 +196,10 @@ export default {
                                 </strong>
                                 <p class="text-muted">
                                     {{user.ipk}} / 4.00
-                            </p>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="card card-olive">
-                            <div class="card-header text-center">
-                                <h3 class="text-center" style="font-size:1.1rem;">Achievements</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row text-center">
-                                    <div  v-for="index in badge" :key="index.badge.id" class="col-md-4" data-toggle="modal" :data-target="['#modal' + index.badge.id]" style="cursor:pointer;">
-                                        <img :src="index.media" alt="badge" style="height:100px; width:100px;">
-                                        <p>{{index.badge.name}}</p>
-                                        <p>{{index.total}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" v-for="index in badge" :key="index.badge.id" :id="['modal' + index.badge.id]">
-                    <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <!-- <h4 class="modal-title">#Rank 2</h4> -->
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <font-awesome-icon icon="times" aria-hidden="true" />
-                                </button>
-                            </div>
-                            <div class="modal-body p-0">
-                                <div class="card card-olive card-outline mb-0">
-                                    <div class="card-body box-profile">
-                                        <div class="text-center">
-                                            <img :src="index.media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
-                                        </div>
-                                        <h3 class="profile-username text-center mt-4 mb-4">{{index.badge.name}}</h3>
-                                        <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
-                                        <ul class="list-group list-group-unbordered">
-                                            <li class="list-group-item text-center">
-                                                <a>{{index.badge.desc}}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                        
                 </div>
             </div>
         </div>

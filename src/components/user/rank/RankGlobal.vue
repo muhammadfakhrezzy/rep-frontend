@@ -156,7 +156,7 @@ export default {
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">
                                 </div>
-                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-48%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[1].detail_user.id]">
+                                <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-48%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
                                     <img src="@/assets/img/Global-Bronze.png" style="border: none; width: 250px; cursor:pointer;">
                                 </div>
                                 <div class="card-footer">
@@ -270,7 +270,7 @@ export default {
 
     <!-- Main Footer -->
             <footer class="main-footer float-right">
-                <strong>Copyright 2020 <a href="raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
+                <strong>Copyright 2020 <a href="https://rep.raharja.ac.id" target="_blank">Universitas Raharja</a> | All Rights Reserved | Powered by <a href="https://alphabetincubator.id/">Alphabet Incubator</a> | Build With Love</strong>
             </footer>
         </div>
         

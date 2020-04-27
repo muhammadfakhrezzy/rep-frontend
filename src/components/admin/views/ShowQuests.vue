@@ -100,7 +100,7 @@ export default {
             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/quests/difficulty/1', {date:lala})
                 .then(response => {
                     console.log('tanggal',response)
-                    const dataRes =  response.data.data
+                    const dataRes =  response.data
                     this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                     console.log('tanggal ambil data',this.review_data)
                     this.loading = false
