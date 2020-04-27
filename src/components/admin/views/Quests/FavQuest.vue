@@ -4,37 +4,63 @@ import axios from 'axios'
 import router from '../../../../router'
 
 export default {
-   data() {
-    return {
-      labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      types: [
-        {
-          bgColor: "#de98ab",
-          borderColor: "0c0306",
-          data: [1, 3, 5, 7, 2, 4, 6],
-          dataLabel: "Bar"
-        },
-        {
-          bgColor: "#98ddde",
-          borderColor: "030c0c",
-          data: [1, 5, 2, 6, 3, 7, 4],
-          dataLabel: "Baz"
-        },
-        {
-          bgColor: "green",
-          borderColor: "030c0c",
-          data: [3, 4, 7, 6, 7, 8, 3],
-          dataLabel: "Biz"
-        },
-      ]
-    };
-  },
-  created () {
-      axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/top/quests')
-      .then(response =>{
-          console.log(response)
-      })
-  } 
+    data() {
+        return {
+        labels: ["Favorite Quest"],
+        types: [],
+        totalQuest: ''
+        };
+    },
+    created () {
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/top/quests')
+        .then(response =>{
+            console.log("data", response)
+            const data = response.data
+            const total = response.data.length
+            this.totalQuest = total
+            data.forEach(element => {
+                let questName = element.detail_quest.name
+                let totalQuest = element.total
+                let color
+                switch(questName) {
+                    case "Absensi":
+                        color = "red"
+                        break
+                    case "BBC Post":
+                        color = "yellow"
+                        break
+                    case "Membuat Cermi":
+                        color = "black"
+                        break
+                    case "VLC":
+                        color = "green"
+                        break
+                    case "Social Media":
+                        color = "cyan"
+                        break
+                    case "Zoom":
+                        color = "purple"
+                        break
+                    case "Tridarma Pengabdian":
+                        color = "gray"
+                        break
+                    case "Melakukan LTAI":
+                        color = "maroon"
+                        break
+                    default:
+                        color = "white"
+                        break
+                }
+                let type = {
+                    bgColor: color,
+                    borderColor: "030c0c",
+                    data: [totalQuest],
+                    dataLabel: questName
+                }
+                this.types.push(type)
+            });
+        })
+    } 
 }
 </script>
 
@@ -58,7 +84,7 @@ export default {
                                 <h2 class="card-title">Bar</h2>
                             </div>
                             <div class="card-img-bottom">
-                                <canvas id="fooCanvas" count="3" />
+                                <canvas id="fooCanvas" :count="totalQuest" />
                                     <chartjs-bar
                                         v-for="(item, index) in types" :key="index"
                                         :backgroundcolor="item.bgColor"
