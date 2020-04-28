@@ -7,64 +7,90 @@ export default {
             user:'',
             players:'',
             rank:'',
-            colorBorder:'#36495d',
-            warna:["blue","#fc85ae","red","purple","yellow","black"],
             planetChartData :  {
                 type: 'bar',
                 data: {
-                labels: [],
-                datasets: 
-                    { // one line graph
-                    label: 'Number of Moons',
-                    data: [],
-                    backgroundColor: [],
-                    borderColor: [],
-                    borderWidth: 3
-                    },
-                
+                    labels: [],
+                    datasets: [{
+                        label: '# Login ranking',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
                 },
                 options: {
-                responsive: true,
-                lineTension: 1,
-                scales: {
-                    yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        padding: 25,
+                    responsive: true,
+                    lineTension: 1,
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                padding: 10
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                padding: 20
+                            }
+                        }]
+                    },
+                    animation: {
+                        animateScale: true
                     }
-                    }]
-                }
                 }
             }
         }
     },
-   async created () {
+    async created () {
         await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
             console.log(response)
             let res = response.data
+            let dataArray = res.data
+            const allNama = []
+            const allLogin = []
+            dataArray.forEach((element, length) => {
+                let nama = element.detail_user.name
+                let totalLogin = element.total_login
+                allNama.push(nama)
+                allLogin.push(totalLogin)
+            })
+            this.planetChartData.data.labels = allNama
+            this.planetChartData.data.datasets[0].data = allLogin
+            console.log("planet",this.planetChartData)
+
             this.players = res.data.length
             this.rank = res
+            const userData = []
             this.rank.data.forEach(element => {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/detail/' + element.detail_user.id)
                     .then(response => {
                         let res = response
-                        this.user.push(res)
+                        userData.push(res)
                     })
             });
+            this.user = userData
             console.log('user',this.user)
-            const data = response.data.data
-            data.forEach((element, length) => {
-                let questName = element.detail_user.name
-                let totalQuest = element.total_login
-                this.planetChartData.labels.push(questName)
-                this.planetChartData.datasets.data.push(totalQuest)
-            });
         })
     },
 
     mounted(){
-        this.createChart('planet-chart', this.planetChartData)
+      setTimeout(()=> this.createChart('planet-chart', this.planetChartData), 1000)
     },
 
     methods: {
@@ -187,7 +213,7 @@ export default {
                             <div class="card-img-bottom">
                                 <canvas id="planet-chart">
 
-                        </canvas>
+                                </canvas>
                             </div>
                         </div>
                     </div>

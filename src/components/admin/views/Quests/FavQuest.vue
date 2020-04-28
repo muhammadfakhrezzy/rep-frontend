@@ -2,65 +2,106 @@
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import router from '../../../../router'
+import Chart from 'chart.js'
 
 export default {
     data() {
         return {
         labels: ["Favorite Quest"],
         types: [],
-        totalQuest: ''
-        };
+        totalQuest: '',
+        dataCharts : {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: '# Quest Favorite',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    lineTension: 1,
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                padding: 10
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                padding: 20
+                            }
+                        }]
+                    },
+                    animation: {
+                        animateScale: true
+                    }
+                }
+            }
+        }
+    },
+    methods:{
+        createChart(chartId, chartData) {
+            const ctx = document.getElementById(chartId);
+            const myChart = new Chart(ctx, {
+            type: chartData.type,
+            data: chartData.data,
+            options: chartData.options,
+            });
+        }
     },
     created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/top/quests')
         .then(response =>{
-            console.log("data", response)
+            console.log("favorite", response)
             const data = response.data
-            const total = response.data.length
-            this.totalQuest = total
+            const questName = []
+            const questTotal = []
             data.forEach(element => {
-                let questName = element.detail_quest.name
-                let totalQuest = element.total
-                let color
-                switch(questName) {
-                    case "Absensi":
-                        color = "red"
-                        break
-                    case "BBC Post":
-                        color = "yellow"
-                        break
-                    case "Membuat Cermi":
-                        color = "black"
-                        break
-                    case "VLC":
-                        color = "green"
-                        break
-                    case "Social Media":
-                        color = "cyan"
-                        break
-                    case "Zoom":
-                        color = "purple"
-                        break
-                    case "Tridarma Pengabdian":
-                        color = "gray"
-                        break
-                    case "Melakukan LTAI":
-                        color = "maroon"
-                        break
-                    default:
-                        color = "white"
-                        break
-                }
-                let type = {
-                    bgColor: color,
-                    borderColor: "030c0c",
-                    data: [totalQuest],
-                    dataLabel: questName
-                }
-                this.types.push(type)
+                let name = element.detail_quest.name
+                let total = element.total
+                questName.push(name)
+                questTotal.push(total)
             });
+            this.dataCharts.data.labels = questName
+            this.dataCharts.data.datasets[0].data = questTotal
+            console.log(this.dataCharts)
         })
-    } 
+    },
+    mounted(){
+        setTimeout(() => this.createChart('planet-chart', this.dataCharts),1000)
+    }
 }
 </script>
 
@@ -84,17 +125,9 @@ export default {
                                 <h2 class="card-title">Bar</h2>
                             </div>
                             <div class="card-img-bottom">
-                                <canvas id="fooCanvas" :count="totalQuest" />
-                                    <chartjs-bar
-                                        v-for="(item, index) in types" :key="index"
-                                        :backgroundcolor="item.bgColor"
-                                        :bind="true"
-                                        :bordercolor="item.borderColor"
-                                        :data="item.data"
-                                        :datalabel="item.dataLabel"
-                                        :labels="labels"
-                                        target="fooCanvas"
-                                    />
+                                <canvas id="planet-chart">
+
+                                </canvas>
                             </div>
                         </div>
                     </div>

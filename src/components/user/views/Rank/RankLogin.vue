@@ -6,40 +6,98 @@ import Swal from 'sweetalert2'
 export default {
     data() {
         return {
-           login:'',
-           mylogin:'',
-           labels: ["Login"],
-           types: [],
-           totalQuest: '',
-           warna:["blue","green","red","purple","yellow","black"]
+            login:'',
+            mylogin:'',
+            labels: ["Login"],
+            types: [],
+            totalQuest: '',
+            warna:["blue","green","red","purple","yellow","black"],
+            planetChartData :  {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: '# Login ranking',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    lineTension: 1,
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                padding: 10
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                padding: 20
+                            }
+                        }]
+                    },
+                    animation: {
+                        animateScale: true
+                    }
+                }
+            }
         }
     },
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
-            console.log('statistic',response)
+            console.log('login',response)
             this.login = response.data.data
-
-            const data = response.data.data
-            console.log('data',data)
-            const total = response.data.data.length
-            this.totalQuest = total
-            data.forEach((element, length) => {
-                let questName = element.detail_user.name
-                let totalQuest = element.total_login
-                let type = {
-                    bgColor:this.warna[length+1] ,
-                    borderColor: "030c0c",
-                    data: [totalQuest],
-                    dataLabel: questName
-                }
-                this.types.push(type)
-            });
+            let res = response.data
+            let dataArray = res.data
+            const allNama = []
+            const allLogin = []
+            dataArray.forEach((element, length) => {
+                let nama = element.detail_user.name
+                let totalLogin = element.total_login
+                allNama.push(nama)
+                allLogin.push(totalLogin)
+            })
+            this.planetChartData.data.labels = allNama
+            this.planetChartData.data.datasets[0].data = allLogin
+            console.log("planet",this.planetChartData)
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/login/history')
             .then(response => {
                 console.log('history',response)
             })
         })
+    },
+    mounted(){
+        setTimeout(()=> this.createChart('planet-chart', this.planetChartData), 1000)
+    },
+
+    methods: {
+        createChart(chartId, chartData) {
+            const ctx = document.getElementById(chartId);
+            const myChart = new Chart(ctx, {
+            type: chartData.type,
+            data: chartData.data,
+            options: chartData.options,
+            });
+        }
     }
 }
 </script>
@@ -77,7 +135,7 @@ export default {
                                                 <tr v-for="(value, length) in login" :key="length">
                                                     <td>{{length + 1}}</td>
                                                     <td>{{ value.detail_user.name }}</td>
-                                                    <td>{{ value.total_value }}</td>
+                                                    <td>{{ value.total_login }}</td>
                                                     <td>{{ value.lastlogin }}</td>
                                                 </tr>
                                             </tbody>
@@ -96,16 +154,9 @@ export default {
                             </div>
                             <div class="card-img-bottom">
                                 <canvas id="fooCanvas" :count="totalQuest" />
-                                    <chartjs-bar
-                                        v-for="(item, index) in types" :key="index"
-                                        :backgroundcolor="item.bgColor"
-                                        :bind="true"
-                                        :bordercolor="item.borderColor"
-                                        :data="item.data"
-                                        :datalabel="item.dataLabel"
-                                        :labels="labels"
-                                        target="fooCanvas"
-                                    />
+                                    <canvas id="planet-chart">
+
+                                    </canvas>
                             </div>
                         </div>
                     </div>
