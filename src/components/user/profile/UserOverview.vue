@@ -9,7 +9,8 @@ export default {
             user:'',
             detail:'',
             hasil:'',
-            badge:''
+            badge:'',
+            persen:''
 
         }
     },
@@ -24,13 +25,14 @@ export default {
             this.detail = response.data
             let rumus = this.detail.total_value - this.detail.detail_level.min_value
             let bagi = (rumus / 50) * 100
+            this.persen = bagi
             this.hasil = 'width:' + bagi + '%'
             console.log(this.detail)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/achievement')
         .then(response => {
-            console.log(response)
             this.badge = response.data
+            console.log(this.badge)
         })
     },
     mounted () {
@@ -82,7 +84,7 @@ export default {
                                     </li>
                                 </ul>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil">{{detail.total_value}}</div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated text-center" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil">{{persen}}%</div>
                                 </div>
                                 <div>
                                     
@@ -143,7 +145,7 @@ export default {
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div  v-for="index in badge" :key="index.badge.id" class="col-md-4" data-toggle="modal" :data-target="['#modal' + index.badge.id]" style="cursor:pointer;">
-                                        <img :src="index.media" alt="badge" style="height:100px; width:100px;">
+                                        <img :class="{warna:index.total === 0 }" :src="index.media" alt="badge" style="height:100px; width:100px;">
                                         <p>{{index.badge.name}}</p>
                                         <p>{{index.total}}</p>
                                     </div>
@@ -191,3 +193,10 @@ export default {
         </div>
     </div>
 </template>
+
+<style scoped>
+.warna {
+    /* opacity:0.2; */
+    filter:grayscale(100%);
+}
+</style>

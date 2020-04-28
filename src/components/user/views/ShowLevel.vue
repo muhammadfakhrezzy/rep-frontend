@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             user:'',
-            
+            level:''
         }
     },
     
@@ -12,6 +12,7 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/level')
         .then(response => {
             console.log(response)
+            this.level = response.data.detail_user.level_id
             this.user = response.data
         })
     }
@@ -31,16 +32,10 @@ export default {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-
-                <div class="card-tools">
-                    
-                </div>
-              </div>
+                      <div class="card">
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+                <table class="table table-striped">
                   <thead>
                     <tr> 
                       <th>Name</th>
@@ -50,10 +45,10 @@ export default {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="value in user" :key="value.id">
+                    <tr :class="{warna:level=== value.id}" v-for="value in user.levels" :key="value.id">
                         <td>{{ value.name }}</td>
                         <td>{{ value.min_value }}</td>
-                        <td>{{ value.max_value }}</td>
+                        <td>{{value.max_value}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -69,3 +64,9 @@ export default {
     </div>
 
 </template>
+
+<style scoped>
+.warna {
+  background-color:green !important;
+}
+</style>

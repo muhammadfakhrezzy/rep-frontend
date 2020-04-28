@@ -191,6 +191,11 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                                    <router-link to="/admin/likes" class="nav-link text-white">
+                                        <p>Likes</p>
+                                    </router-link>
+                                </li>
+                        <li class="nav-item">
                             <router-link to="/admin/allplayers" class="nav-link text-white">
                                 <p>
                                     Viewboard Admin

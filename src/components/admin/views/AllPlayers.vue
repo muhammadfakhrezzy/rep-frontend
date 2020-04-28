@@ -1,16 +1,45 @@
 <script>
 import axios from 'axios'
+import Chart from 'chart.js'
 export default {
     data() {
         return {
-            user:[],
+            user:'',
+            players:'',
             rank:'',
-            total_value: '',
-            players:''
+            colorBorder:'#36495d',
+            warna:["blue","#fc85ae","red","purple","yellow","black"],
+            planetChartData :  {
+                type: 'bar',
+                data: {
+                labels: [],
+                datasets: 
+                    { // one line graph
+                    label: 'Number of Moons',
+                    data: [],
+                    backgroundColor: [],
+                    borderColor: [],
+                    borderWidth: 3
+                    },
+                
+                },
+                options: {
+                responsive: true,
+                lineTension: 1,
+                scales: {
+                    yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        padding: 25,
+                    }
+                    }]
+                }
+                }
+            }
         }
     },
-   created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
+   async created () {
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
             console.log(response)
             let res = response.data
@@ -24,8 +53,30 @@ export default {
                     })
             });
             console.log('user',this.user)
+            const data = response.data.data
+            data.forEach((element, length) => {
+                let questName = element.detail_user.name
+                let totalQuest = element.total_login
+                this.planetChartData.labels.push(questName)
+                this.planetChartData.datasets.data.push(totalQuest)
+            });
         })
-    }
+    },
+
+    mounted(){
+        this.createChart('planet-chart', this.planetChartData)
+    },
+
+    methods: {
+  createChart(chartId, chartData) {
+    const ctx = document.getElementById(chartId);
+    const myChart = new Chart(ctx, {
+      type: chartData.type,
+      data: chartData.data,
+      options: chartData.options,
+    });
+  }
+}
 }
 </script>
 <template>
@@ -45,7 +96,6 @@ export default {
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{ rank.total_record }}</h3>
-
                 <p>Submitted Quests</p>
               </div>
               <div class="icon">
@@ -128,6 +178,20 @@ export default {
                 <!--/.card -->
               </div>
               </div>
+              <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Total Login Players</h2>
+                            </div>
+                            <div class="card-img-bottom">
+                                <canvas id="planet-chart">
+
+                        </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -268,7 +268,7 @@ export default {
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <router-link to="/underConstruction" class="text-white" style="cursor: pointer">
+                            <router-link to="/chart" class="text-white" style="cursor: pointer">
                             <p>
                                 <p>Secret Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
@@ -289,15 +289,42 @@ export default {
                                 </li> -->
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
+                            <a class="nav-link text-white" style="cursor: pointer">
+                                <font-awesome-icon icon="angle-left" class="right" />
+                                <p>
+                                    All Rank
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/ranklogin" class="nav-link text-white">
+                                        <font-awesome-icon icon="sign-in-alt" class="nav-icon" />
+                                        <p>Rank Login</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/myhistory" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>My Login History</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/likes" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Rank Likes</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- <li class="nav-item">
                             <router-link to="/underConstruction" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
                                     <i>All Rank</i>
                                 </p>
                             </router-link>
-                        </li>
-
+                        </li> -->
                         <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
                             <router-link to="/underConstruction" class="nav-link text-white">

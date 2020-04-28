@@ -18,7 +18,8 @@ export default new Vuex.Store({
         token: '',
         user: {},
         like: false,
-        dislike: false
+        dislike: false,
+        detail:''
     },
     mutations: {
         AUTH_LOAD(state) {
@@ -56,16 +57,17 @@ export default new Vuex.Store({
         tombol({commit}) {
             commit('SERAH')
         },
-        ssoGoogle({commit}, access) {
+        ssoGoogle({commit,state}, access) {
             commit('AUTH_LOAD')
             axios.post("https://dev.alphabetincubator.id/rep-backend/public/api/auth/callback/google", access)
                 .then(response => {
                     console.log(response)
+                    this.detail = response.data.name
                     commit('AUTH_SUCCESS', response.data.access_token)
                     axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
                     Swal.fire({
                         position: 'top',
-                        title:'Welcome to REP',
+                        title:'Welcome back, '+ response.data.name,
                         icon:'success',
                         // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
                         // imageWidth: 150,

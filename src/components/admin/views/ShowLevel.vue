@@ -47,7 +47,7 @@ export default {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="value in user" :key="value.id">
+                    <tr v-for="value in user.levels" :key="value.id">
                         <td>{{ value.name }}</td>
                         <td>{{ value.min_value }}</td>
                         <td>{{ value.max_value }}</td>

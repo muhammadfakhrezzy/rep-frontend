@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '@/components/login/Login'
+import chart from '@/components/charts'
 
 import UserNavbar from '@/components/user/navbar/UserNavbar'
 import UserOverview from '@/components/user/profile/UserOverview'
@@ -17,6 +18,10 @@ import rankWeekly from '@/components/user/rank/RankWeekly'
 import rankMonthly from '@/components/user/rank/RankMonthly'
 import rankGlobal from '@/components/user/rank/RankGlobal'
 import rankAll from '@/components/user/rank/RankAll'
+
+import rankLogin from '@/components/user/views/Rank/RankLogin'
+import myHistory from '@/components/user/views/Rank/MyHistory'
+import Likes from '@/components/user/views/Rank/Likes'
 
 import dailyList from '@/components/user/views/daily-quest/DailyList'
 import dailyStart from '@/components/user/views/daily-quest/DailyStart'
@@ -68,6 +73,10 @@ const routes = [
             {
                 path: 'whyrep',
                 component: whyRep
+            },
+            {
+                path:'chart',
+                component:chart
             },
 
 
@@ -171,6 +180,20 @@ const routes = [
             {
                 path:'showlevel',
                 component:Level
+            },
+
+            //Rank
+            {
+                path:'ranklogin',
+                component:rankLogin
+            },
+            {
+                path:'myhistory',
+                component:myHistory
+            },
+            {
+                path:'likes',
+                component:Likes
             }
         ]
     },
@@ -239,6 +262,10 @@ const routes = [
             {
                 path: 'showlevel',
                 component: () => import('@/components/admin/views/ShowLevel')
+            },
+            {
+                path: 'likes',
+                component: () => import('@/components/admin/views/Likes/Daily')
             }
         ]
     },
