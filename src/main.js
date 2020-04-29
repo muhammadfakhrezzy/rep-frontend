@@ -5,6 +5,11 @@ import store from './store'
 import axios from 'axios'
 import "chart.js"
 import "hchs-vue-charts"
+import VueGtag from "vue-gtag";
+
+Vue.use(VueGtag, {
+  config: { id: "UA-164786966-1" }
+});
 Vue.use(window.VueCharts);
 
 import Loading from '@/components/admin/views/Loading'

@@ -172,7 +172,7 @@ export default {
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
             </div>
           </div>
           <!-- ./col -->
@@ -212,7 +212,6 @@ export default {
                             </div>
                             <div class="card-img-bottom">
                                 <canvas id="planet-chart">
-
                                 </canvas>
                             </div>
                         </div>

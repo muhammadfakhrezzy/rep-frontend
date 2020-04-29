@@ -67,11 +67,10 @@ export default new Vuex.Store({
                     axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
                     Swal.fire({
                         position: 'top',
-                        title:'Welcome back, '+ response.data.name,
-                        icon:'success',
-                        // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
-                        // imageWidth: 150,
-                        // imageHeight: 60,
+                        text:'Welcome back, '+ response.data.name,
+                        imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                        imageWidth: 150,
+                        imageHeight: 60,
                         showConfirmButton: false,
                         timer: 3500
                     })

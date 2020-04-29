@@ -268,7 +268,7 @@ export default {
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <router-link to="/chart" class="text-white" style="cursor: pointer">
+                            <router-link to="/underConstruction" class="text-white" style="cursor: pointer">
                             <p>
                                 <p>Secret Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->

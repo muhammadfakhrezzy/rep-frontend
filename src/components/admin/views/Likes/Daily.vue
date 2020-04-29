@@ -65,7 +65,7 @@ export default {
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane" id="daily">
+                                <div class="active tab-pane" id="daily">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>

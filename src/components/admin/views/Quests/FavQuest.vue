@@ -11,7 +11,7 @@ export default {
         types: [],
         totalQuest: '',
         dataCharts : {
-                type: 'bar',
+                type: 'doughnut',
                 data: {
                     labels: [],
                     datasets: [{
@@ -98,6 +98,10 @@ export default {
             this.dataCharts.data.datasets[0].data = questTotal
             console.log(this.dataCharts)
         })
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/top/quests/own')
+        .then(response => {
+            console.log('quest',response)
+        })
     },
     mounted(){
         setTimeout(() => this.createChart('planet-chart', this.dataCharts),1000)
@@ -122,7 +126,6 @@ export default {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">Bar</h2>
                             </div>
                             <div class="card-img-bottom">
                                 <canvas id="planet-chart">

@@ -112,7 +112,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item user-panel pb-2" style="border-color: #fff">
-                            <router-link to="/myoverview" class="nav-link text-white">
+                            <router-link to="/admin/construction" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fas', 'user-circle']" class="nav-icon" />
                                 <p>
                                     My Viewboard
@@ -190,11 +190,31 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white">
+                                <p>
+                                    Rank
+                                    <font-awesome-icon :icon="['fas', 'angle-left']" class="right" />
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
                                     <router-link to="/admin/likes" class="nav-link text-white">
                                         <p>Likes</p>
                                     </router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/adminhistory" class="nav-link text-white">
+                                        <p>My History</p>
+                                    </router-link>
+                                </li>
+                                <li class="nav-item">
+                                    <router-link to="/admin/adminrank" class="nav-link text-white">
+                                        <p>Rank Login</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <router-link to="/admin/allplayers" class="nav-link text-white">
                                 <p>
@@ -202,15 +222,15 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <!-- <li class="nav-item has-treeview">
                             <a href="#" class="nav-link text-white">
                                 <p>
                                     Admin Ranking
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <router-link to="/allranking" class="nav-link text-white">
+                            <router-link to="/admin/dailyrank" class="nav-link text-white">
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
                                     Player Ranking
@@ -220,7 +240,7 @@
 
                         <li class="header mt-5 text-white">Documentation</li>
                         <li class="nav-item mb-5">
-                            <router-link to="/admin/faqadmin" class="nav-link text-white">
+                            <router-link to="/admin/construction" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
                                 <p>Help Center</p>
                             </router-link>
@@ -265,11 +285,10 @@ export default {
     methods: {
         logout() {
             Swal.fire({
-                title: "Are you sure to logout?",
-                icon: 'warning',
-                // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
-                // imageWidth: 150,
-                // imageHeight: 60,
+                text: "Are you sure to logout?",
+                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                imageWidth: 150,
+                imageHeight: 60,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -279,10 +298,10 @@ export default {
                     if(result.value) {
                         Swal.fire(
                             {
-                        // imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
-                        // imageWidth: 150,
-                        // imageHeight: 60,
-                        title:'Success'
+                        imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                        imageWidth: 150,
+                        imageHeight: 60,
+                        text:'Success'
                             }
                         )
                         this.$store.dispatch('logout')

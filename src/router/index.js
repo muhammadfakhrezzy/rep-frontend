@@ -42,6 +42,7 @@ import secretStart from '@/components/user/views/secret-quest/SecretStart'
 import store from '../store'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -266,7 +267,39 @@ const routes = [
             {
                 path: 'likes',
                 component: () => import('@/components/admin/views/Likes/Daily')
-            }
+            },
+            {
+                path: 'adminrank',
+                component: () => import('@/components/admin/views/Rank/RankLogin')
+            },
+            {
+                path: 'adminhistory',
+                component: () => import('@/components/admin/views/Rank/MyHistory')
+            },
+            {
+                path: 'construction',
+                component: () => import('@/components/user/views/Construction')
+            },
+            {
+                path: 'dailyrank',
+                component: () => import('@/components/admin/views/PlayerRank/AdminRankDaily')
+            },
+            {
+                path: 'weeklyrank',
+                component: () => import('@/components/admin/views/PlayerRank/AdminRankWeekly')
+            },
+            {
+                path: 'monthlyrank',
+                component: () => import('@/components/admin/views/PlayerRank/AdminRankMonthly')
+            },
+            {
+                path: 'globalrank',
+                component: () => import('@/components/admin/views/PlayerRank/AdminRankGlobal')
+            },
+            {
+                path: 'allranking',
+                component: rankAll
+            },
         ]
     },
     
