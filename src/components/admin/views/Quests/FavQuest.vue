@@ -115,7 +115,6 @@ export default {
                             },
                             data: [...response.data]
                         }
-                        console.log('resData', resData)
                         this.user.push(resData)
                     })
             });
