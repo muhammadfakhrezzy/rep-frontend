@@ -4,6 +4,7 @@ export default {
     data() {
         return {
             user:'',
+            level:''
         }
     },
    created () {
@@ -11,6 +12,10 @@ export default {
         .then(response => {
             console.log(response)
             this.user = response.data
+        })
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/user/level/all')
+        .then(response => {
+          console.log(response)
         })
     }
 }
@@ -29,31 +34,56 @@ export default {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-
-                <div class="card-tools">
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
-                  <thead>
-                    <tr> 
-                      <th>Name</th>
-                      <th>Min Value</th>
-                      <th>Max Value</th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="value in user.levels" :key="value.id">
-                        <td>{{ value.name }}</td>
-                        <td>{{ value.min_value }}</td>
-                        <td>{{ value.max_value }}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                      <div class="card">
+                        <div class="card-header p-2">
+                          <ul class="nav nav-pills">
+                            <li class="nav-item">
+                              <a href="#list" class="nav-link" data-toggle="tab">List Level</a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#rank" class="nav-link" data-toggle="tab">Rank Level</a>
+                            </li>
+                          </ul>
+                          <div class="card-body">
+                            <div class="tab-content">
+                              <div class="active tab-pane" id="list">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr> 
+                                      <th>Name</th>
+                                      <th>Min Value</th>
+                                      <th>Max Value</th>
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr v-for="value in user.levels" :key="value.id">
+                                        <td>{{ value.name }}</td>
+                                        <td>{{ value.min_value }}</td>
+                                        <td>{{ value.max_value }}</td>
+                                    </tr>
+                                  </tbody>
+                                  </table>
+                              </div>
+                              <div class="tab-pane" id="rank">
+                                <table class="table table-hover">
+                              <thead>
+                                <tr> 
+                                  <th>Name</th>
+                                  <th>Level</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr v-for="index in level" :key="index.detail_user.id">
+                                    <td>{{ index.detail_user.name }}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+              <!-- /.card-header -->       
               </div>
               <!-- /.card-body -->
             </div>
@@ -63,6 +93,5 @@ export default {
                 </div>
             </div>
         </div>
-    </div>
 
 </template>

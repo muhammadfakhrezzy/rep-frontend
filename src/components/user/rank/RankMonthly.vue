@@ -8,7 +8,8 @@ export default {
             rank : '',
         detail:'',
             latest_rank: '',
-            all_quest: []
+            all_quest: [],
+            badge:''
         }
     },
     methods: {
@@ -22,10 +23,11 @@ export default {
     }
     },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/monthly')
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/experience/monthly')
         .then(response => {
             console.log(response)
-            let res = response.data
+            let res = response.data.details
+            this.badge = response.data.media_badge
             this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
             ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
             this.rank.forEach(element => {
@@ -80,6 +82,9 @@ export default {
                                 <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-50%) translateY(-50%)">
                                     <img src="@/assets/img/Monthly-Silver.png" style="border: none; width: 160px; cursor: pointer" data-toggle="modal" :data-target="['#modal' + rank[1].detail_user.id]">
                                 </div>
+                                <div style="position: absolute; top: 0" class="widget-user-badge">
+                                    <img style="width: 40px" :src="badge[1]" alt="badge">
+                                </div>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm-4 border-right">
@@ -116,6 +121,9 @@ export default {
                                 <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[0].detail_user.id]">
                                     <img src="@/assets/img/Monthly-Gold.png" style="border: none; width: 160px; cursor:pointer">
                                 </div>
+                                <div style="position: absolute; top: 0" class="widget-user-badge">
+                                    <img style="width: 60px" :src="badge[0]" alt="badge">
+                                </div>
                                 <div class="card-footer">
                                     <div class="row">
                                     <div class="col-sm-4 border-right">
@@ -151,6 +159,9 @@ export default {
                                 </div>
                                 <div class="widget-user-image" style="margin-left: 0; top: 50%; transform: translateX(-50%) translateY(-50%)" data-toggle="modal" :data-target="['#modal' + rank[2].detail_user.id]">
                                     <img src="@/assets/img/Monthly-Bronze.png" style="border: none; width: 160px; cursor:pointer;">
+                                </div>
+                                <div style="position: absolute; top: 0" class="widget-user-badge">
+                                    <img style="width: 50px" :src="badge[2]" alt="badge">
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">

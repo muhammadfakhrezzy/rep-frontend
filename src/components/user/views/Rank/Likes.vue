@@ -116,7 +116,7 @@ mounted(){
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
-                                <p>Rank Likes</p>
+                        <p>Rank Likes</p>
                         <div class="card">
                             <div class="card-header p-2">
                             <ul class="nav nav-pills">

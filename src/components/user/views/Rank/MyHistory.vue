@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { OrbitSpinner } from 'epic-spinners'
 const swalWithBootstrap = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success py-2 px-4',
@@ -11,56 +12,50 @@ const swalWithBootstrap = Swal.mixin({
 
 
 export default {
+    components: {
+        OrbitSpinner
+    },
     data() {
         return {
-            review_data: [],
-            record_id: '',
-            date: new Date(),
-            page:1,
-            loading:false,
-            perPage: 10
-            
+            dataArray: '',
+            loading: false,
+            page: 1
         }
     },
     methods: {
-        getData(){
-            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own' + this.page)
-            .then(response => {
-                console.log(response)
-                const dataRes =  response.data
-                this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
-                console.log(this.review_data)
-                this.loading = false
-            })
-        },
         prevPage () {
-            // this.loading = true
+            this.loading = true
             this.page--
-            window.scrollTo({top: 0, behavior: 'smooth'})
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=' + this.page)
+                .then(response => {
+                    this.dataArray = response.data.login_history,
+                    this.page = this.dataArray.current_page
+                    this.loading = false
+                })
             },
         nextPage () {
-            // this.loading = true
+            this.loading = true
             this.page++
-            window.scrollTo({top: 0, behavior: 'smooth'})
-},
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=' + this.page)
+                .then(response => {
+                    this.dataArray = response.data.login_history,
+                    this.page = this.dataArray.current_page
+                    this.loading = false
+                })
+        }
+    },
     created() {
         this.loading = true
-        this.getData()
-    },
-    computed : {
-        showRepos () {
-            let start = (this.page - 1) * this.perPage
-            let end = start + this.perPage
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=')
+        .then(response => {
+            console.log('history own',response)
+            this.dataArray = response.data.login_history,
+            this.page = this.dataArray.current_page
             this.loading = false
-            return this.review_data.slice(start, end)
-  },
-        lastPage () {
-            let length = this.review_data.length 
-            return Math.ceil(length / this.perPage)
-            }
+        })
     },
 }
-}
+
 </script>
 
 <template>
@@ -69,7 +64,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">Quests Review</h1>
+                        <h1 class="m-0 text-dark">My History Login</h1>
                     </div>
                 </div>
             </div>
@@ -79,64 +74,57 @@ export default {
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+                            <div class="overlay" v-if="loading">
+                                <orbit-spinner style="display: block; margin: auto"
+                                        :animation-duration="1200"
+                                        :size="55"
+                                        color="black"
+                                        />
+                            </div>
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Quest Name</th>
-                                            <th>User</th>
-                                            <th>Submit Date</th>
-                                            <th>Link</th>
-                                            <th>Like</th>
+                                            <th>Ip address</th>
+                                            <th>Platform</th>
+                                            <th>OS</th>
+                                            <th>Browser</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- <div class="d-flex justify-content-center"> -->
-                                        <Loading v-if="loading" />
-                                        <!-- </div> -->
-                                        <tr v-else v-for="(index, length) in showRepos" :key="index.detail_record.id">
+                                        <tr v-for="(value, length) in dataArray.data" :key="value.id">
                                             <td>{{ length + 1 }}.</td>
-                                            <td>{{ index.quest }}</td>
-                                            <td>{{ index.user }}</td>
-                                            <td>{{ index.detail_record.created_at }}</td>
-                                            <td><a :href="index.detail_record.link">Click Here</a></td>
-                                            <td>
-                                                <a @click="funcLike(index.detail_record.id)" class="mr-3" type="submit" >
-                                                <font-awesome-icon  style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
-                                                </a>{{index.likes}}
-                                            </td>
+                                            <td>{{ value.ip }}</td>
+                                            <td>{{ value.platform }}</td>
+                                            <td>{{ value.os }}</td>
+                                            <td>{{ value.browser }}</td>
                                         </tr>
-                                        <!-- </div> -->
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="my-4"> <!-- Pagination -->
+                            <!-- Pagination -->
+                            <div class="my-4"> 
                                 <ul class="pagination pagination-md justify-content-center text-center">
-                                    <li  class="page-item"
-                                        :class="page === 1 ? 'disabled' : ''"
+                                    <li class="page-item"
+                                        :class="dataArray.current_page === 1 ? 'disabled' : ''"
                                     >
-                                    <a 
-                                        class="page-link" 
-                                        @click="prevPage" 
-                                    >
-                                        Previous
-                                    </a>
+                                        <a class="page-link" @click="prevPage">
+                                            Previous
+                                        </a>
                                     </li>
                                     <li class="page-link" style="background-color: inherit"> 
-                                    {{ page }} of {{ lastPage }}
+                                        {{ dataArray.current_page }} of {{ dataArray.last_page }}
                                     </li>
                                     <li  class="page-item" 
-                                        :class="page === lastPage ? 'disabled' : ''"
+                                        :class="dataArray.current_page === dataArray.last_page ? 'disabled' : ''"
                                     >
-                                    <a class="page-link" 
-                                        @click="nextPage"
-                                    >
-                                        Next
-                                    </a>
+                                        <a class="page-link" @click="nextPage">
+                                            Next
+                                        </a>
                                     </li>
                                 </ul>
-                            </div><!--./Pagination -->
+                            </div>
                         </div>
                     </div>
                 </div>
