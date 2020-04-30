@@ -222,11 +222,10 @@ export default {
                 <!-- /.container-fluid -->
                 </div>
             <!-- /.content -->
-                 <div class="modal fade" v-for="value in all_quest" :key="value.data.detail_user.id" :id="['modal' + value.data.detail_user.id]">
+                <div class="modal fade" v-for="value in all_quest" :key="value.data.detail_user.id" :id="['modal' + value.data.detail_user.id]">
                     <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <!-- <h4 class="modal-title">#Rank 2</h4> -->
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <font-awesome-icon icon="times" aria-hidden="true" />
                                 </button>
@@ -238,7 +237,9 @@ export default {
                                             <img :src="value.data.media[0].path" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
                                         <h3 class="profile-username text-center">{{ value.data.detail_user.name }}</h3>
-                                        <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
+                                        <router-link :to="{name: 'view-profile', params: {id: value.data.detail_user.id, email: value.data.detail_user.email}}">
+                                            <button class="btn btn-primary btn-sm d-block mx-auto" data-dismiss="modal" aria-label="Close">View Profile</button>
+                                        </router-link>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <b>Rank</b>
