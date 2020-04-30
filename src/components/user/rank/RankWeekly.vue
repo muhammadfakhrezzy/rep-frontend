@@ -238,6 +238,9 @@ export default {
                                             <img :src="value.data.media[0].path" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                         </div>
                                         <h3 class="profile-username text-center">{{ value.data.detail_user.name }}</h3>
+                                        <router-link :to="{name: 'view-profile', params: {id: value.data.detail_user.id, email: value.data.detail_user.email}}">
+                                            <button class="btn btn-primary btn-sm d-block mx-auto" data-dismiss="modal" aria-label="Close">View Profile</button>
+                                        </router-link>
                                         <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">

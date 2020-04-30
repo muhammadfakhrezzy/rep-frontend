@@ -310,6 +310,11 @@ const routes = [
                 path: 'ranklevel',
                 component: () => import('@/components/admin/views/Rank/AdminRankLevel')
             },
+            {
+                path: '/profile/:id/:email',
+                name: 'admin-view',
+                component: () => import('@/components/admin/views/AdminViewProfile')
+            },
         ]
     },
     
