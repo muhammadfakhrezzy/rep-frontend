@@ -8,7 +8,7 @@ import "hchs-vue-charts"
 import VueGtag from "vue-gtag";
 
 Vue.use(VueGtag, {
-  config: { id: "UA-164786966-1" }
+    config: { id: "UA-164786966-1" }
 });
 Vue.use(window.VueCharts);
 
