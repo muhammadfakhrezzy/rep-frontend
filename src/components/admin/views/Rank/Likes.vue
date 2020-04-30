@@ -1,7 +1,6 @@
 <script>
 import axios from 'axios'
 import router from '../../../../router'
-import Chart from 'chart.js'
 export default {
     data() {
         return {
@@ -9,53 +8,10 @@ export default {
             weekly:'',
             monthly:'',
             global:'',
-            planetChartData :  {
-                type: 'doughnut',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: '# Login ranking',
-                        data: [],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    lineTension: 1,
-                    scales: {
-                        xAxes: [{
-                            ticks: {
-                                padding: 10
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                padding: 20
-                            }
-                        }]
-                    },
-                    animation: {
-                        animateScale: true
-                    }
-                }
-            }
+            admindaily:'',
+            adminweekly:'',
+            adminmonthly:'',
+            adminglobal:''
         }
     },
     created () {
@@ -63,19 +19,6 @@ export default {
         .then(response => {
             this.like = response.data
             console.log('daily',this.like)
-            let res = response.data
-            let dataArray = res
-            const allNama = []
-            const allLogin = []
-            dataArray.forEach((element, length) => {
-                let nama = element.detail_user.name
-                let totalLogin = element.total_feedback
-                allNama.push(nama)
-                allLogin.push(totalLogin)
-            })
-            this.planetChartData.data.labels = allNama
-            this.planetChartData.data.datasets[0].data = allLogin
-            console.log("planet",this.planetChartData)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/weekly')
         .then(response => {
@@ -91,22 +34,29 @@ export default {
         .then(response => {
             this.global = response.data
             console.log('global',this.global)
+        }) 
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/daily/all')
+        .then(response => {
+            this.admindaily = response.data
+            console.log('admindaily',this.admindaily)
+        })
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/weekly/all')
+        .then(response => {
+            this.adminweekly = response.data
+            console.log('admindaily',this.adminweekly)
+        })
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/monthly/all')
+        .then(response => {
+            this.adminmonthly = response.data
+            console.log('admindaily',this.adminmonthly)
+        })
+        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/global/all')
+        .then(response => {
+            this.adminglobal = response.data
+            console.log('admindaily',this.adminglobal)
         })
         
     },
-mounted(){
-      setTimeout(()=> this.createChart('planet-chart', this.planetChartData), 1000)
-    },
-    methods: {
-  createChart(chartId, chartData) {
-    const ctx = document.getElementById(chartId);
-    const myChart = new Chart(ctx, {
-      type: chartData.type,
-      data: chartData.data,
-      options: chartData.options,
-    });
-  }
-}
 }
 </script>
 
@@ -135,11 +85,27 @@ mounted(){
                                     <a href="#global" class="nav-link" data-toggle="tab">Global
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#admindaily" class="nav-link" data-toggle="tab">All User Daily
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#adminweekly" class="nav-link" data-toggle="tab">All User Weekly
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#adminmonthly" class="nav-link" data-toggle="tab">All User Monthly
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#adminglobal" class="nav-link" data-toggle="tab">All User Global
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane" id="daily">
+                                <div class="active tab-pane" id="daily">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
@@ -158,19 +124,6 @@ mounted(){
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title">Rank Daily</h2>
-                            </div>
-                            <div class="card-img-bottom">
-                                <canvas id="planet-chart">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
                                 </div>
                                 <div class="tab-pane" id="weekly">
                                     <table class="table table-hover">
@@ -232,9 +185,88 @@ mounted(){
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="tab-pane" id="admindaily">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Date</th>
+                                                <th>Total Likes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(index, length) in admindaily" :key="length">
+                                                <td>{{length+1}}</td>
+                                                <td>{{index.detail_user.name}}</td>
+                                                <td>{{index.date}}</td>
+                                                <td>{{index.total_feedback}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="adminweekly">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Date From</th>
+                                                <th>Date To</th>
+                                                <th>Total Likes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(index, length) in adminweekly" :key="length">
+                                                <td>{{length+1}}</td>
+                                                <td>{{index.detail_user.name}}</td>
+                                                <td>{{index.date_from}}</td>
+                                                <td>{{index.date_to}}</td>
+                                                <td>{{index.total_feedback}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="adminmonthly">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Date</th>
+                                                <th>Total Likes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(index, length) in adminmonthly" :key="length">
+                                                <td>{{length+1}}</td>
+                                                <td>{{index.detail_user.name}}</td>
+                                                <td>{{index.date}}</td>
+                                                <td>{{index.total_feedback}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="adminglobal">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Total Likes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(index, length) in adminglobal" :key="length">
+                                                <td>{{length+1}}</td>
+                                                <td>{{index.detail_user.name}}</td>
+                                                <td>{{index.total_feedback}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>   

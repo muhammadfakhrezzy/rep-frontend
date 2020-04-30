@@ -18,11 +18,12 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience')
         .then(response => {
                 this.data_mahasiswa = response.data
-                console.log(this.data_mahasiswa)
+                console.log('mahasiswa',this.data_mahasiswa)
             })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/experience/user/' + this.$store.state.user.id + '/progress')
         .then(response => {
             this.detail = response.data
+            console.log('exp',this.detail)
             let rumus = this.detail.total_value - this.detail.detail_level.min_value
             let bagi = (rumus / 50) * 100
             this.persen = bagi

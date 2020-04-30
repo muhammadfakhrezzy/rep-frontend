@@ -314,6 +314,12 @@ export default {
                                         <p>Rank Likes</p>
                                     </router-link>
                                 </li>
+                                <li class="nav-item">
+                                    <router-link to="/ranklevel" class="nav-link text-white">
+                                        <font-awesome-icon icon="tasks" class="nav-icon" />
+                                        <p>Rank Level</p>
+                                    </router-link>
+                                </li>
                             </ul>
                         </li>
                         <!-- <li class="nav-item">

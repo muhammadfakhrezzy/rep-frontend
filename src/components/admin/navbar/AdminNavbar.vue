@@ -213,6 +213,11 @@
                                         <p>Rank Login</p>
                                     </router-link>
                                 </li>
+                                 <li class="nav-item">
+                                    <router-link to="/admin/ranklevel" class="nav-link text-white">
+                                        <p>Rank Level</p>
+                                    </router-link>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">

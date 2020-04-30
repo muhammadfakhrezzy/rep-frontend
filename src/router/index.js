@@ -22,6 +22,7 @@ import rankAll from '@/components/user/rank/RankAll'
 import rankLogin from '@/components/user/views/Rank/RankLogin'
 import myHistory from '@/components/user/views/Rank/MyHistory'
 import Likes from '@/components/user/views/Rank/Likes'
+import rankLevel from '@/components/user/views/Rank/RankLevel'
 
 import dailyList from '@/components/user/views/daily-quest/DailyList'
 import dailyStart from '@/components/user/views/daily-quest/DailyStart'
@@ -195,6 +196,10 @@ const routes = [
             {
                 path:'likes',
                 component:Likes
+            },
+            {
+                path:'ranklevel',
+                component:rankLevel
             }
         ]
     },
@@ -266,7 +271,7 @@ const routes = [
             },
             {
                 path: 'likes',
-                component: () => import('@/components/admin/views/Likes/Daily')
+                component: () => import('@/components/admin/views/Rank/Likes')
             },
             {
                 path: 'adminrank',
@@ -297,8 +302,8 @@ const routes = [
                 component: () => import('@/components/admin/views/PlayerRank/AdminRankGlobal')
             },
             {
-                path: 'allranking',
-                component: rankAll
+                path: 'ranklevel',
+                component: () => import('@/components/admin/views/Rank/AdminRankLevel')
             },
         ]
     },

@@ -8,11 +8,6 @@ export default {
         }
     },
    created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/level')
-        .then(response => {
-            console.log(response)
-            this.user = response.data
-        })
         axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/user/level/all')
         .then(response => {
           console.log('all',response)
@@ -39,34 +34,12 @@ export default {
                         <div class="card-header p-2">
                           <ul class="nav nav-pills">
                             <li class="nav-item">
-                              <a href="#list" class="nav-link" data-toggle="tab">List Level</a>
-                            </li>
-                            <li class="nav-item">
                               <a href="#rank" class="nav-link" data-toggle="tab">Rank Level</a>
                             </li>
                           </ul>
                           <div class="card-body">
                             <div class="tab-content">
-                              <div class="active tab-pane" id="list">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr> 
-                                      <th>Name</th>
-                                      <th>Min Value</th>
-                                      <th>Max Value</th>
-                                      
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr v-for="value in user.levels" :key="value.id">
-                                        <td>{{ value.name }}</td>
-                                        <td>{{ value.min_value }}</td>
-                                        <td>{{ value.max_value }}</td>
-                                    </tr>
-                                  </tbody>
-                                  </table>
-                              </div>
-                              <div class="tab-pane" id="rank">
+                              <div class="active tab-pane" id="rank">
                                 <table class="table table-hover">
                               <thead>
                                 <tr> 
