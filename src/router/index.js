@@ -59,6 +59,11 @@ const routes = [
                 path: 'myoverview',
                 component: UserOverview
             },
+            {
+                path: '/profile/:id/:email',
+                name: 'view-profile',
+                component: () => import('@/components/user/profile/ViewProfile')
+            },
 
 
             {
