@@ -27,7 +27,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.put('https://dytlan.alphabetincubator.id/api/secretchamber/quests/' + id, {name: this.update_name}, {code: this.update_code}, {description: this.update_description}, {value: this.update_value}, {daily: this.update_daily_limit}, {expires: this.update_expires_in})
+                        axios.put('https://https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests/' + id, {name: this.update_name}, {code: this.update_code}, {description: this.update_description}, {value: this.update_value}, {daily: this.update_daily_limit}, {expires: this.update_expires_in})
                             .then(response => {
                                 console.log(response)
                                 Swal.fire({
@@ -58,7 +58,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.delete('https://dytlan.alphabetincubator.id/api/superuser/quests/' + id)
+                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/superuser/quests/' + id)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire({

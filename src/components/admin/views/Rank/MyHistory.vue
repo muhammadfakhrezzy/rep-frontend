@@ -22,45 +22,50 @@ export default {
             
         }
     },
-    methods: {
-        getData(){
-            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own' + this.page)
-            .then(response => {
-                console.log(response)
-                const dataRes =  response.data
-                this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
-                console.log(this.review_data)
-                this.loading = false
-            })
-        },
-        prevPage () {
-            // this.loading = true
-            this.page--
-            window.scrollTo({top: 0, behavior: 'smooth'})
-            },
-        nextPage () {
-            // this.loading = true
-            this.page++
-            window.scrollTo({top: 0, behavior: 'smooth'})
-},
+    // methods: {
+    //     getData(){
+    //         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=' + this.page)
+    //         .then(response => {
+    //             console.log(response)
+                // const dataRes =  response.data
+                // this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
+                // console.log(this.review_data)
+                // this.loading = false
+        //     })
+        // },
+//         prevPage () {
+//             // this.loading = true
+//             this.page--
+//             window.scrollTo({top: 0, behavior: 'smooth'})
+//             },
+//         nextPage () {
+//             // this.loading = true
+//             this.page++
+//             window.scrollTo({top: 0, behavior: 'smooth'})
+// },
     created() {
         this.loading = true
-        this.getData()
+        // this.getData()
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=')
+        .then(response => {
+            console.log(response)
+        })
     },
-    computed : {
-        showRepos () {
-            let start = (this.page - 1) * this.perPage
-            let end = start + this.perPage
-            this.loading = false
-            return this.review_data.slice(start, end)
-  },
-        lastPage () {
-            let length = this.review_data.length 
-            return Math.ceil(length / this.perPage)
-            }
-    },
+//     computed : {
+//         showRepos () {
+//             let start = (this.page - 1) * this.perPage
+//             let end = start + this.perPage
+//             this.loading = false
+//             return this.review_data.slice(start, end)
+//   },
+//         lastPage () {
+//             let length = this.review_data.length 
+//             return Math.ceil(length / this.perPage)
+//             }
+//     },
+// }
 }
-}
+
 </script>
 
 <template>
@@ -69,7 +74,7 @@ export default {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark">Quests Review</h1>
+                        <h1 class="m-0 text-dark">My History Login</h1>
                     </div>
                 </div>
             </div>
@@ -95,7 +100,7 @@ export default {
                                         <!-- <div class="d-flex justify-content-center"> -->
                                         <Loading v-if="loading" />
                                         <!-- </div> -->
-                                        <tr v-else v-for="(index, length) in showRepos" :key="index.detail_record.id">
+                                        <!-- <tr v-else v-for="(index, length) in showRepos" :key="index.detail_record.id">
                                             <td>{{ length + 1 }}.</td>
                                             <td>{{ index.quest }}</td>
                                             <td>{{ index.user }}</td>
@@ -106,12 +111,13 @@ export default {
                                                 <font-awesome-icon  style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
                                                 </a>{{index.likes}}
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- </div> -->
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="my-4"> <!-- Pagination -->
+                            <!-- Pagination -->
+                            <!-- <div class="my-4"> 
                                 <ul class="pagination pagination-md justify-content-center text-center">
                                     <li  class="page-item"
                                         :class="page === 1 ? 'disabled' : ''"
@@ -136,7 +142,7 @@ export default {
                                     </a>
                                     </li>
                                 </ul>
-                            </div><!--./Pagination -->
+                            </div>./Pagination -->
                         </div>
                     </div>
                 </div>

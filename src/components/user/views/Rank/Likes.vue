@@ -158,19 +158,6 @@ mounted(){
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title">Rank Daily</h2>
-                            </div>
-                            <div class="card-img-bottom">
-                                <canvas id="planet-chart">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
                                 </div>
                                 <div class="tab-pane" id="weekly">
                                     <table class="table table-hover">

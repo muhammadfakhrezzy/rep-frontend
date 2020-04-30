@@ -205,7 +205,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <router-link to="/admin/adminhistory" class="nav-link text-white">
-                                        <p>My History</p>
+                                        <p>My History Login</p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
@@ -315,8 +315,9 @@ export default {
                 console.log(response)
                 if(response.data.error){
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
+                        imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                        imageWidth: 150,
+                        imageHeight: 60,
                         text: 'Your token has been expired!.'
                     })
                     this.$store.dispatch('logout')
