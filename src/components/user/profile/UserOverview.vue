@@ -145,7 +145,7 @@ export default {
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div  v-for="index in badge" :key="index.badge.id" class="col-md-4" data-toggle="modal" :data-target="['#modal' + index.badge.id]" style="cursor:pointer;">
-                                        <img :class="{warna:index.total === 0 }" :src="index.media" alt="badge" style="height:100px; width:100px;">
+                                        <img :class="{warna:index.total === 0 }" :src="index.media" alt="badge" style="height:100px;">
                                         <p>{{index.badge.name}}</p>
                                         <p>{{index.total}}</p>
                                     </div>
@@ -168,7 +168,7 @@ export default {
                                 <div class="card card-olive card-outline mb-0">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img :src="index.media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
+                                            <img :src="index.media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85; height:150px; width:200px;">
                                         </div>
                                         <h3 class="profile-username text-center mt-4 mb-4">{{index.badge.name}}</h3>
                                         <!-- <p class="text-muted text-center">Sistem Informasi</p> -->

@@ -116,6 +116,7 @@ mounted(){
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
+                                <p>Rank Likes</p>
                         <div class="card">
                             <div class="card-header p-2">
                             <ul class="nav nav-pills">
@@ -139,7 +140,7 @@ mounted(){
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane" id="daily">
+                                <div class="active tab-pane" id="daily">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
