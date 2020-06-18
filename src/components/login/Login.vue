@@ -78,9 +78,9 @@ export default {
     methods: {
         onSuccess(googleUser) {
             const accessToken = {
-                access_token: googleUser.tc.access_token
+                access_token: googleUser.wc.access_token
             }
-            console.log(accessToken)
+
             this.$store.dispatch("ssoGoogle", accessToken)
         },
         onFailure(error) {

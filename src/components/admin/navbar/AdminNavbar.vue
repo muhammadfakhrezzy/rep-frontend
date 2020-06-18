@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <router-link to="/admin" class="nav-link mb-0" style="color: #fff">Admin Page</router-link>
+                    <router-link to="/admin" class="nav-link mb-0" style="color: #fff">Secret Chamber</router-link>
                 </li>
             </ul>
 
@@ -101,8 +101,8 @@
                             {{dateNow}}
                             <digital-clock :blink="true" />
                         </p>
-                        <p class="text-center mb-0"><q style="font-size: 13px">If you cannot do great things, do small things in a great way.</q></p>
-                        <i class="text-right" style="font-size: 13px">-Napoleon Hill</i>
+                        <p class="text-center mb-0"><q style="font-size: 13px">{{ motivationText.motivation }}</q></p>
+                        <i class="text-right" style="font-size: 13px">-{{ motivationText.person}}</i>
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
                         <li class="nav-item">
                             <router-link to="/admin/allplayers" class="nav-link text-white">
                                 <p>
-                                    Viewboard Admin
+                                    Secret Chamber
                                 </p>
                             </router-link>
                         </li>
@@ -239,6 +239,14 @@
                                 <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
                                 <p>
                                     Player Ranking
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/dailyrank" class="nav-link text-white">
+                                <font-awesome-icon :icon="['fab', 'hackerrank']" class="nav-icon" />
+                                <p>
+                                    Player's Page
                                 </p>
                             </router-link>
                         </li>
@@ -267,11 +275,20 @@
 import axios from 'axios'
 import DigitalClock from 'vue-digital-clock'
 import Swal from 'sweetalert2'
+import motivationWord from '../../Quotes/MotivationWord'
 export default {
     data() {
         return {
+            motivationText : [...motivationWord],
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo
+        }
+    },
+
+    mounted () {
+        const numberRandom = Math.floor(Math.random() * 10);
+        this.motivationText = {
+            ...this.motivationText[numberRandom]
         }
     },
     components: {
@@ -315,9 +332,9 @@ export default {
         }
     },
     async created() {
-        await axios.post('https://dytlan.alphabetincubator.id/api/auth/user')
+        await axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/auth/user')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 if(response.data.error){
                     Swal.fire({
                         imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",

@@ -2,11 +2,19 @@
 import axios from 'axios'
 import DigitalClock from 'vue-digital-clock'
 import Swal from 'sweetalert2'
+import motivationWord from '../../Quotes/MotivationWord'
 export default {
     data() {
         return {
+            motivationText : [...motivationWord],
             name: this.$store.state.user.name,
             photo: this.$store.state.user.photo
+        }
+    },
+    mounted () {
+        const numberRandom = Math.floor(Math.random() * 10);
+        this.motivationText = {
+            ...this.motivationText[numberRandom]
         }
     },
     components: {
@@ -52,7 +60,7 @@ export default {
     async created() {
         await axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/auth/user')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 if(response.data.error){
                     Swal.fire({
                         imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
@@ -175,8 +183,8 @@ export default {
                             {{dateNow}}
                             <digital-clock :blink="true" />
                         </p>
-                        <p class="text-center mb-0"><q style="font-size: 13px">If you cannot do great things, do small things in a great way.</q></p>
-                        <i class="text-right" style="font-size: 13px">-Napoleon Hill</i>
+                        <p class="text-center mb-0"><q style="font-size: 13px">{{motivationText.motivation}}</q></p>
+                        <i class="text-right" style="font-size: 13px">{{motivationText.person}}</i>
                     </div>
                 </div>
 

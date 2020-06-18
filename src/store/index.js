@@ -22,6 +22,7 @@ export default new Vuex.Store({
         detail:''
     },
     mutations: {
+        
         AUTH_LOAD(state) {
             state.status = 'loading'
         },
@@ -48,6 +49,12 @@ export default new Vuex.Store({
         },
         SERAH(state){
             state.dislike = true
+        }
+    },
+    getters: {
+        getScore(state) {
+            var total = state.results.correct_answers + state.results.incorrect_answers;
+            return state.results.correct_answers + " / " + total
         }
     },
     actions: {

@@ -58,7 +58,7 @@ export default {
                             <div class="card-header">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item">
-                                        <a href="#student" class="nav-link" data-toggle="tab">Rank Login</a>
+                                        <a href="#student" class="nav-link active" data-toggle="tab">Rank Login</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#all" class="nav-link" data-toggle="tab">User Rank All</a>

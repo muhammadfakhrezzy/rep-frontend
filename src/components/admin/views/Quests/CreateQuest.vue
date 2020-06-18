@@ -36,7 +36,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.post('https://dytlan.alphabetincubator.id/api/secretchamber/quests', questData)
+                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests', questData)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -54,7 +54,7 @@ export default {
         }
     },
     async created() {
-        await axios.get('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties')
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties')
             .then(response => {
                 console.log(response.data)
                 for(let key in response.data){

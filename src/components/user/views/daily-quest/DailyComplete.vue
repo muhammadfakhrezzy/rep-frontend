@@ -1,15 +1,19 @@
 <script>
 import axios from 'axios'
 import Countdown from '../../../countdown/countdown'
+import Datepicker from 'vuejs-datepicker'
+import Swal from 'sweetalert2'
 export default {
     components: {
-        'countdown' : Countdown
+        'countdown' : Countdown,
+        Datepicker
     },
     data() {
         return {
             all_data: '',
             user_id: this.$store.state.user.id,
-            value:''
+            value:'',
+            date: new Date()
         }
     },
     computed: {
@@ -20,7 +24,7 @@ export default {
             let minutes = ("0" + getDate.getMinutes()).slice(-2)
             let seconds = ("0" + getDate.getSeconds()).slice(-2)
             let dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds
-            console.log(dateString)
+            // console.log(dateString)
             return dateString.toString()
         },
         getTimeEnd() {
@@ -30,26 +34,92 @@ export default {
             let minutes = ("0" + getDate.getMinutes()).slice(-2)
             let seconds = ("0" + getDate.getSeconds()).slice(-2)
             let dateString = month[getDate.getMonth()] + ' ' + getDate.getDate() + ', ' + getDate.getFullYear() + ' ' + '23:59:59'
-            console.log(dateString)
+            // console.log(dateString)
             return dateString.toString()
         }
     },
-    created() {
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
+
+    methods: {
+        Submit() {
+            this.loading = true
+            const tanggal = String(this.date)
+            const baru = tanggal.split(' ')
+            let bulan 
+            switch (baru[1]){
+                case  "Jan":
+                bulan = '01';
+                break;
+                case  "Feb":
+                bulan = '02';
+                break;
+                case  "Mar":
+                bulan = '03';
+                break;
+                case  "Apr":
+                bulan = '04';
+                break;
+                case  "May":
+                bulan = '05';
+                break;
+                case  "Jun":
+                bulan = '06';
+                break;
+                case  "July":
+                bulan = '07';
+                break;
+                case  "Aug":
+                bulan = '08';
+                break;
+                case  "Sep":
+                bulan = '09';
+                break;
+                case  "Oct":
+                bulan = '10';
+                break;
+                case  "Nov":
+                bulan = '11';
+                break;
+                case  "Des":
+                bulan = '12';
+                break;
+                default: 
+                bulan = null
+                break;   
+            }
+            
+            const lala = [baru[3], bulan, baru[2]].join('-')
+            // console.log(lala)
+            axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1', {date:lala})
+                .then(response => {
+                    // console.log('tanggal',response)
+                    const dataRes =  response.data.Data
+                    this.all_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
+                    // console.log('tanggal ambil data',this.all_data)
+                    this.loading = false
+                })
+                .catch(error => {
+                    Swal.fire({
+                                position: 'center',
+                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                                imageWidth: 150,
+                                imageHeight: 60,
+                                text: 'There is no record',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                })
+        }
+    },
+    
+    mounted (){
+        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.all_data = response.data.Data
             })
             .catch(error => {
-                console.log
-                (error)
+                
             })
-    },
-    mounted (){
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1')
-        .then(response => {
-            this.value=response.data
-        })
     }
 }
 </script>
@@ -91,24 +161,13 @@ export default {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">History</h3>
-                                <div class="card-tools">
-                                    <div class="pagination pagination-sm float-right">
-                                        <div class="page-item">
-                                            <a class="page-link">«</a>
-                                        </div>
-                                        <div class="page-item">
-                                            <a class="page-link">1</a>
-                                        </div>
-                                        <div class="page-item">
-                                            <a class="page-link">2</a>
-                                        </div>
-                                        <div class="page-item">
-                                            <a class="page-link">3</a>
-                                        </div>
-                                        <div class="page-item">
-                                            <a class="page-link">»</a>
-                                        </div>
+                                <div class="card-tools" style="float:left;">
+                                    <div class="input-group input-group-sm"> 
+                                        <label>
+                                            <datepicker v-model="date">
+                                            </datepicker>
+                                        </label>
+                                        <button @click="Submit()" class="btn btn-sm btn-primary ml-4">Submit</button>
                                     </div>
                                 </div>
                             </div>

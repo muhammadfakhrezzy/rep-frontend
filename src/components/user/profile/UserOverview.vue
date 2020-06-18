@@ -72,7 +72,7 @@ export default {
                                     <img :src="photo" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                 </div>
                                 <h3 class="profile-username text-center">{{ name }}</h3>
-                                <p class="text-muted text-center">Sistem Informasi</p>
+                                <p class="text-muted text-center">{{user.prodi}}</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Total ECP</b>

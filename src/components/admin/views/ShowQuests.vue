@@ -31,7 +31,7 @@ export default {
         getData(){
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records?page=' + this.page)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 const dataRes =  response.data
                 this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                 console.log(this.review_data)
@@ -99,7 +99,7 @@ export default {
             console.log(lala)
             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic/quests/difficulty/1', {date:lala})
                 .then(response => {
-                    console.log('tanggal',response)
+                    // console.log('tanggal',response)
                     const dataRes =  response.data
                     this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                     console.log('tanggal ambil data',this.review_data)
@@ -112,12 +112,19 @@ export default {
         funcLike(id) {
             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/records/' + id + '/feedback', {like: 1.0}, {dislike:0})
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     this.getData()
                 })
                 .catch(error => {
-                    console.log(error)
-                    alert('Sudah Like')
+                     Swal.fire({
+                                position: 'center',
+                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
+                                imageWidth: 150,
+                                imageHeight: 60,
+                                text: 'Liked',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                 })
         },
     },
@@ -194,7 +201,8 @@ export default {
                                             <td><a :href="index.detail_record.link">Click Here</a></td>
                                             <td>
                                                 <a @click="funcLike(index.detail_record.id)" class="mr-3" type="submit" >
-                                                <font-awesome-icon  style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
+                                                <font-awesome-icon  v-if="index.status === 0" style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> 
+                                                <font-awesome-icon  v-else style="cursor: pointer; color:red;" :icon="['fa', 'thumbs-up']" /> 
                                                 </a>{{index.likes}}
                                             </td>
                                         </tr>

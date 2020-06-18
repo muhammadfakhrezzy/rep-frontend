@@ -1,6 +1,7 @@
 <script>
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import router from '../../../../router'
 export default {
     data() {
         return {
@@ -18,7 +19,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.post('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties', {name: this.data})
+                        axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties', {name: this.data})
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -27,6 +28,7 @@ export default {
                                     'success'
                                 )
                                 this.data = ''
+                                router.push('/createdifficulty')
                             })
                             .catch(error => {
                                 console.log(error)

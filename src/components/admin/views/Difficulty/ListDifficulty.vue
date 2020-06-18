@@ -1,6 +1,7 @@
 <script>
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import router from '../../../../router'
 export default {
     data() {
         return {
@@ -44,7 +45,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.delete('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties/' + id)
+                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties/' + id)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire(
@@ -52,6 +53,7 @@ export default {
                                     'Your difficulty has been deleted',
                                     'success'
                                 )
+                                router.push('/listdifficulty')
                             })
                             .catch(error => {
                                 console.log(error)
@@ -61,7 +63,7 @@ export default {
         }
     },
     created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties')
             .then(response => {
                 console.log(response)
                 this.difficulty_list = response.data

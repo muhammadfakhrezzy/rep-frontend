@@ -14,7 +14,7 @@ export default {
         }
     },
     async created () {
-        await axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/experience/user/' + this.$route.params.id)
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/user/' + this.$route.params.id)
         .then(response => {
             console.log('experience',response)
                 this.data_mahasiswa = response.data
@@ -31,7 +31,7 @@ export default {
             console.log('detail',this.detail)
         })
 
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/user/achievement/' + this.$route.params.id)
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/achievement/' + this.$route.params.id)
         .then(response => {
             this.badge = response.data
             console.log(this.badge)

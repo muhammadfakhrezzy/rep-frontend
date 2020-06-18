@@ -35,22 +35,22 @@ export default {
             this.global = response.data
             console.log('global',this.global)
         }) 
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/daily/all')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/daily/all')
         .then(response => {
             this.admindaily = response.data
             console.log('admindaily',this.admindaily)
         })
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/weekly/all')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/weekly/all')
         .then(response => {
             this.adminweekly = response.data
             console.log('admindaily',this.adminweekly)
         })
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/monthly/all')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/monthly/all')
         .then(response => {
             this.adminmonthly = response.data
             console.log('admindaily',this.adminmonthly)
         })
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/feedback/global/all')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/global/all')
         .then(response => {
             this.adminglobal = response.data
             console.log('admindaily',this.adminglobal)
@@ -82,7 +82,7 @@ export default {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#global" class="nav-link" data-toggle="tab">Global
+                                    <a href="#global" class="nav-link active" data-toggle="tab">Global
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -105,7 +105,7 @@ export default {
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="active tab-pane" id="daily">
+                                <div class="tab-pane" id="daily">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
@@ -167,7 +167,7 @@ export default {
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="global">
+                                <div class="tab-pane active" id="global">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>

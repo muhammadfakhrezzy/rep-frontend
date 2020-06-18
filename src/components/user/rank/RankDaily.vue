@@ -23,7 +23,7 @@ export default {
     }
     },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/experience/daily')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/daily')
         .then(response => {
             console.log('experiece_daily',response)
             let res = response.data.details
@@ -238,7 +238,7 @@ export default {
                                         </div>
                                         <h3 class="profile-username text-center">{{ value.data.detail_user.name }}</h3>
                                         <router-link :to="{name: 'view-profile', params: {id: value.data.detail_user.id, email: value.data.detail_user.email}}">
-                                            <button class="btn btn-primary btn-sm d-block mx-auto" data-dismiss="modal" aria-label="Close">View Profile</button>
+                                            <button class="btn btn-primary btn-sm d-block mx-auto mb-3" data-dismiss="modal" aria-label="Close">View Profile</button>
                                         </router-link>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">

@@ -23,7 +23,7 @@ export default {
     }
     },
     created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/experience/monthly')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/monthly')
         .then(response => {
             console.log(response)
             let res = response.data.details

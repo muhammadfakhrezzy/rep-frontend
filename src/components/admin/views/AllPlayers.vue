@@ -197,7 +197,7 @@ export default {
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer text-center">
-                    <a href="javascript::">View All Users</a>
+                    <!-- <a href="javascript::">View All Users</a> -->
                   </div>
                   <!-- /.card-footer -->
                 </div>
@@ -237,6 +237,9 @@ export default {
                                             <img :src="index.data.media[0].path" class="profile-user-img img-fluid img-circle" style="border-color: #619E85; cursor:pointer">
                                         </div>
                                         <h3 class="profile-username text-center">{{ index.data.detail_user.name }}</h3>
+                                        <router-link :to="{name: 'admin-view', params: {id: index.data.detail_user.id, email: index.data.detail_user.email}}">
+                                            <button class="btn btn-primary btn-sm d-block mx-auto mb-2" data-dismiss="modal" aria-label="Close">View Profile</button>
+                                        </router-link>
                                         <!-- <p class="text-muted text-center">Sistem Informasi</p> -->
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">

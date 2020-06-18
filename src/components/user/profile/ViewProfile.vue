@@ -14,7 +14,7 @@ export default {
         }
     },
     async created () {
-        await axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/experience/user/' + this.$route.params.id)
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/user/' + this.$route.params.id)
         .then(response => {
             console.log('experience',response)
                 this.data_mahasiswa = response.data
@@ -31,7 +31,7 @@ export default {
             console.log('detail',this.detail)
         })
 
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/user/achievement/' + this.$route.params.id)
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/achievement/' + this.$route.params.id)
         .then(response => {
             this.badge = response.data
             console.log(this.badge)
@@ -70,7 +70,7 @@ export default {
                                     <img :src="data_mahasiswa.media" class="profile-user-img img-fluid img-circle" style="border-color: #619E85">
                                 </div>
                                 <h3 class="profile-username text-center">{{ data_mahasiswa.detail_exp.user.name }}</h3>
-                                <p class="text-muted text-center">Sistem Informasi</p>
+                                <p class="text-muted text-center">{{ user.prodi }}</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Total ECP</b>

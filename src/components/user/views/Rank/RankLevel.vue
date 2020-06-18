@@ -8,7 +8,7 @@ export default {
         }
     },
    created () {
-        axios.get('https://dev.alphabetincubator.id/rep-backend1/public/api/user/level/all')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/level/all')
         .then(response => {
           console.log('all',response)
           this.level = response.data
@@ -34,7 +34,7 @@ export default {
                         <div class="card-header p-2">
                           <ul class="nav nav-pills">
                             <li class="nav-item">
-                              <a href="#rank" class="nav-link" data-toggle="tab">Rank Level</a>
+                              <a href="#rank" class="nav-link active" data-toggle="tab">Rank Level</a>
                             </li>
                           </ul>
                           <div class="card-body">
@@ -64,7 +64,6 @@ export default {
               </div>
               <!-- /.card-body -->
             </div>
-            <router-link to="/admin" class="btn btn-sm btn-primary mr-2">Back</router-link>
             <!-- /.card -->
           </div>
                 </div>
