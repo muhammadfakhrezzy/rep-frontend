@@ -14,13 +14,13 @@ export default {
         }
     },
     async created () {
-        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/user/' + this.$route.params.id)
+        await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/copy/experience/user/' + this.$route.params.id)
         .then(response => {
-            console.log('experience',response)
+            // console.log('experience',response)
                 this.data_mahasiswa = response.data
                 console.log('mahasiswa',this.data_mahasiswa)
             })
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/experience/user/' + this.$route.params.id + '/progress')
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/copy/experience/user/' + this.$route.params.id + '/progress')
         .then(response => {
             this.detail = response.data
             this.name_level = response.data.detail_level.name
@@ -31,7 +31,7 @@ export default {
             console.log('detail',this.detail)
         })
 
-        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/achievement/' + this.$route.params.id)
+        axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/copy/achievement/' + this.$route.params.id)
         .then(response => {
             this.badge = response.data
             console.log(this.badge)

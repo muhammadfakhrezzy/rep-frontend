@@ -27,7 +27,7 @@ export default {
         getData(){
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/reviewer/difficulty/1/records?page=' + this.page)
             .then(response => {
-                // console.log(response)
+                console.log(response)
                 const dataRes =  response.data
                 this.review_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                 // console.log(this.review_data)
@@ -68,7 +68,7 @@ export default {
                 case  "Jun":
                 bulan = '06';
                 break;
-                case  "July":
+                case  "Jul":
                 bulan = '07';
                 break;
                 case  "Aug":

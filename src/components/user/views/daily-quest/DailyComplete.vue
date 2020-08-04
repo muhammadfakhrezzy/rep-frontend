@@ -64,7 +64,7 @@ export default {
                 case  "Jun":
                 bulan = '06';
                 break;
-                case  "July":
+                case  "Jul":
                 bulan = '07';
                 break;
                 case  "Aug":
@@ -88,10 +88,10 @@ export default {
             }
             
             const lala = [baru[3], bulan, baru[2]].join('-')
-            // console.log(lala)
+            console.log(lala)
             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/user/difficulty/user/1', {date:lala})
                 .then(response => {
-                    // console.log('tanggal',response)
+                    console.log('tanggal',response)
                     const dataRes =  response.data.Data
                     this.all_data = [].slice.call(dataRes).sort((a,b) => (a.detail_record.id > b.detail_record.id) ? 1 : -1)
                     // console.log('tanggal ambil data',this.all_data)

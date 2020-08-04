@@ -42,6 +42,9 @@ import secretComplete from '@/components/user/views/secret-quest/SecretComplete'
 import secretStart from '@/components/user/views/secret-quest/SecretStart'
 import store from '../store'
 
+import faq from '@/components/user/help-center/FAQ/FAQIndex' 
+import createFaq from '@/components/user/help-center/FAQ/CreateQuestion' 
+
 
 
 Vue.use(VueRouter)
@@ -60,11 +63,13 @@ const routes = [
                 path: 'myoverview',
                 component: UserOverview
             },
+
             {
                 path: '/profile/:id/:email',
                 name: 'view-profile',
                 component: () => import('@/components/user/profile/ViewProfile')
             },
+            
 
 
             {
@@ -205,8 +210,27 @@ const routes = [
             {
                 path:'ranklevel',
                 component:rankLevel
-            }
+            },
+            {
+                path:'faq',
+                component:faq
+            },
+            {
+                path:'createfaq',
+                component:createFaq
+            },
+            {
+                path: '/questions/:question_id',
+                name: 'question-detail',
+                component: () => import('@/components/user/help-center/FAQ/QuestionDetail')
+            },
         ]
+    },
+    {
+        path: '/profile/:id/:email',
+        name: 'view-profile-copy',
+        meta: { user: false},
+        component: () => import('@/components/user/profile/ViewProfile copy')
     },
     {
         path: '/login',
@@ -245,10 +269,6 @@ const routes = [
             {
                 path: 'listdifficulty',
                 component: () => import('@/components/admin/views/Difficulty/ListDifficulty')
-            },
-            {
-                path: 'faqadmin',
-                component: () => import('@/components/admin/views/FAQ/FAQAdmin')
             },
             {
                 path: 'adduser',
@@ -314,6 +334,21 @@ const routes = [
                 path: '/profile/:id/:email',
                 name: 'admin-view',
                 component: () => import('@/components/admin/views/AdminViewProfile')
+            },
+            {
+                path: 'faq',
+                name: 'faq-admin',
+                component: () => import('@/components/admin/views/FAQ/FAQIndex')
+            },
+            {
+                path:'createfaq',
+                name: 'create-faq-admin',
+                component: () => import('@/components/admin/views/FAQ/CreateQuestion')
+            },
+            {
+                path: '/questions/:question_id',
+                name: 'admin-question-detail',
+                component: () => import('@/components/admin/views/FAQ/CreateQuestion')
             },
         ]
     },

@@ -340,9 +340,10 @@ export default {
                         </li> -->
                         <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
-                            <router-link to="/underConstruction" class="nav-link text-white">
+                            <router-link to="/faq" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
-                                <p>Help Center</p>
+                                <p>Help Center 
+                                </p>
                             </router-link>
                         </li>
                         <li class="nav-item mb-5">
@@ -369,4 +370,14 @@ export default {
      margin-top:150px;
  color:white;
  }
+ .blinking{
+	animation:blinkingText 0.8s infinite;
+}
+@keyframes blinkingText{
+	0%{		color: #000;	}
+	49%{	color: red;	}
+	50%{	color: blue;	}
+	99%{	color:green;	}
+	100%{	color: #000;	}
+}
 </style>

@@ -44,7 +44,7 @@ export default {
                                     'Quest has been created',
                                     'success'
                                 )
-                            router.push('/createquest')
+                            router.push('/admin')
                             })
                             .catch(error => {
                                 console.log(error)

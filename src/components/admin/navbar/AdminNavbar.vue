@@ -253,9 +253,11 @@
 
                         <li class="header mt-5 text-white">Documentation</li>
                         <li class="nav-item mb-5">
-                            <router-link to="/admin/construction" class="nav-link text-white">
+                            <router-link to="/admin/faq" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
-                                <p>Help Center</p>
+                                <p>Help Center
+                                    
+                                </p>
                             </router-link>
                         </li>
                         
@@ -353,3 +355,16 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.blinking{
+	animation:blinkingText 0.8s infinite;
+}
+@keyframes blinkingText{
+	0%{		color: #000;	}
+	49%{	color: red;	}
+	50%{	color: blue;	}
+	99%{	color:green;	}
+	100%{	color: #000;	}
+}
+</style>

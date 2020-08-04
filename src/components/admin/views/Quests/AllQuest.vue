@@ -13,11 +13,19 @@ export default {
             update_expires_in:'',
             update_difficulty_id:''
         }
-    },methods: {
+    },
+    methods: {
+        quest() {
+            axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests')
+            .then(response => {
+                console.log(response)
+                this.dataQuest = response.data
+                console.log(this.dataQuest)
+            })
+        },
         update_quest(id) {
             Swal.fire({
                 title: 'Are you sure update quest',
-                icon: 'warning',
                 imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
                 imageWidth: 150,
                 imageHeight: 60,
@@ -48,7 +56,6 @@ export default {
         delete_quest(id) {
             Swal.fire({
                 title: 'Are you sure delete this quest?',
-                icon: 'warning',
                 showCancelButton: true,
                 imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
                 imageWidth: 150,
@@ -58,7 +65,7 @@ export default {
                 confirmButtonText: 'Yes'
             })  .then(result => {
                     if(result.value) {
-                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/superuser/quests/' + id)
+                        axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests/' + id)
                             .then(response => {
                                 console.log(response)
                                 Swal.fire({
@@ -67,8 +74,8 @@ export default {
                                 imageHeight: 60,
                                 title:'Success !',
                                 text:'Your quest has been Deleted'
-                                }
-                                )
+                                })
+                                this.quest()
                             })
                             .catch(error => {
                                 console.log(error)
@@ -77,12 +84,8 @@ export default {
             })
         }
     },
-    created() {
-        axios.get('https://dytlan.alphabetincubator.id/api/superuser/quests')
-            .then(response => {
-                this.dataQuest = response.data
-                console.log(this.dataQuest)
-            })
+    mounted() {
+        this.quest()
     }
 }
 </script>
@@ -117,7 +120,7 @@ export default {
                                             <th>Point</th>
                                             <th>Daily Limit</th>
                                             <th>Expires in</th>
-                                            <th>Difficulty ID</th>
+                                            <th>Difficulty</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -130,7 +133,7 @@ export default {
                                             <td>{{ index.value }}</td>
                                             <td>{{ index.daily_limit }}</td>
                                             <td>{{ index.expires_in}}</td>
-                                            <td>{{ index.difficulty_id }}</td>
+                                            <td>{{ index.difficulty.name }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-primary mr-2" data-toggle="modal" :data-target="['#' + 'quest' + index.id]">Update</button>
                                             </td>

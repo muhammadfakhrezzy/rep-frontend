@@ -33,7 +33,7 @@ export default {
                 case  "Jun":
                 bulan = '06';
                 break;
-                case  "July":
+                case  "Jul":
                 bulan = '07';
                 break;
                 case  "Aug":
@@ -81,7 +81,7 @@ export default {
                 case  "Jun":
                 month = '06';
                 break;
-                case  "July":
+                case  "Jul":
                 month = '07';
                 break;
                 case  "Aug":

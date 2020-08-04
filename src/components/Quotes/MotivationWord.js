@@ -1,43 +1,43 @@
 const motivationWord = [
     {
-        motivation: 'He who is not courageous enough to take risks will accomplish nothing in life.',
-        person: 'Muhammad Ali'
+        motivation: 'Masa depan tergantung pada apa yang kamu lakukan hari ini',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Knowing is not enough; we must apply. Willing is not enough; we must do.',
-        person: 'Johann Wolfgang von Goethe'
+        motivation: 'You are successfull because, other people around you succeed',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Do you want to know who you are? Don’t ask. Act! Action will delineate and define you.',
-        person: 'Thomas Jefferson'
+        motivation: 'In the moment of crisis, the wise build bridges and the foolish build dams. Through lifelong education. UR build bridges to a better future',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'The path to success is to take massive, determined actions.',
-        person: 'Tony Robbins'
+        motivation: `Life isn't about finding yourself. Life is about creating yourself`,
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Ambition is the path to success. Persistence is the vehicle you arrive in.',
-        person: 'Bill Bradley'
+        motivation: `The World is not what it is. The World is what we build upon the foundation of our philosophy. Let's build our world together transforming Infinite Possibilities With Green Synthetic Technology `,
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Ambition is enthusiasm with a purpose.',
-        person: 'Frank Tyger'
+        motivation: 'In any realm. I deliver my best',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'A man’s worth is no greater than his ambitions.',
-        person: 'Marcus Aurelius'
+        motivation: 'You must do What you love',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'A lack of clarity could put the brakes on any journey to success.',
-        person: 'Steve Maraboli'
+        motivation: 'The future is conquered by those who believe in themselves and the beauty of their dreams.',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Commitment is an act, not a word.',
-        person: 'Jean-Paul Sartre'
+        motivation: `To make something special. You have just to believe it's special`,
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     },
     {
-        motivation: 'Without self-confidence, we are as babes in the cradle.',
-        person: 'Virginia Woolf'
+        motivation: 'Learning is Earning',
+        person: 'Assoc. Prof. Dr. Ir. Untung Rahardja., M.T.I., MM'
     }
 ];
 

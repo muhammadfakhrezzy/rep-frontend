@@ -6,6 +6,9 @@ import axios from 'axios'
 import "chart.js"
 import "hchs-vue-charts"
 import VueGtag from "vue-gtag";
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing);
 
 Vue.use(VueGtag, {
     config: { id: "UA-164786966-1" }
@@ -19,17 +22,18 @@ import {
     faFile, faTasks, faList, faAngleLeft, faSignOutAlt, faBars, faCircle, 
     faArrowCircleRight, faTimes, faQuestionCircle, faInfoCircle, faUserCircle, 
     faBook, faMapMarkerAlt, faPencilAlt,  faPlus, faSpinner,faQuoteLeft, faQuestion,
-    faSyncAlt, faThumbsUp,faThumbsDown, faSignInAlt
+    faSyncAlt, faThumbsUp,faThumbsDown, faSignInAlt, faComment, faComments
     } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faHackerrank, faGoogle } from '@fortawesome/free-brands-svg-icons'
-import {faBell, faFileAlt, faCheckCircle} from '@fortawesome/free-regular-svg-icons'
+import { faHackerrank, faGoogle, faFacebook, faTwitter, faWhatsapp, faLine, faFacebookSquare, } from '@fortawesome/free-brands-svg-icons'
+import {faBell, faFileAlt, faCheckCircle, } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faFile, faHackerrank, faTasks, faList, faAngleLeft, faBell, 
     faSignOutAlt, faBars, faCircle, faGoogle, faArrowCircleRight, faTimes, 
     faQuestionCircle, faInfoCircle, faUserCircle, faBook, faMapMarkerAlt, 
     faPencilAlt, faFileAlt, faPlus, faSpinner, faQuoteLeft, faQuestion,
-    faSyncAlt,faThumbsUp,faThumbsDown, faCheckCircle, faSignInAlt
+    faSyncAlt,faThumbsUp,faThumbsDown, faCheckCircle, faSignInAlt, faComment, 
+    faComments, faFacebook, faTwitter, faWhatsapp, faLine, faFacebookSquare
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('Loading', Loading)

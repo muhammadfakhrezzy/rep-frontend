@@ -1,17 +1,59 @@
 <script>
 import axios from 'axios';
+import motivationWord from '../../Quotes/MotivationWord'
 export default {
     data() {
         return {
             name: this.$store.state.user.name,
+            id: this.$store.state.user.id,
+            email: this.$store.state.user.email,
             photo: this.$store.state.user.photo,
+            motivationText : [...motivationWord],
             data_mahasiswa:'',
             user:'',
             detail:'',
             hasil:'',
             badge:'',
             persen:'',
-            name_level: ''
+            name_level: '',
+            sharing: {
+            url: 'https://rep.raharja.ac.id/profile/' + this.$store.state.user.id + '/' + this.$store.state.user.email,
+            title: 'Heyyy Sahabat REP',
+            description: 'This is my overview',
+            hashtags: 'REP',
+            twitterUser: 'youyuxi'
+            },
+            networks: [
+            // { network: 'baidu', name: 'Baidu', icon: 'fas fah fa-lg fa-paw', color: '#2529d8' },
+            // { network: 'buffer', name: 'Buffer', icon: 'fab fah fa-lg fa-buffer', color: '#323b43' },
+            { network: 'email', name: 'Email', icon: 'far fa-envelope', color: '#333333' },
+            // { network: 'evernote', name: 'Evernote', icon: 'fab fah fa-lg fa-evernote', color: '#2dbe60' },
+            { network: 'facebook', name: 'Facebook', icon: 'fab fa-facebook-square', color: '#1877f2' },
+            // { network: 'flipboard', name: 'Flipboard', icon: 'fab fah fa-lg fa-flipboard', color: '#e12828' },
+            // { network: 'hackernews', name: 'HackerNews', icon: 'fab fah fa-lg fa-hacker-news', color: '#ff4000' },
+            // { network: 'instapaper', name: 'Instapaper', icon: 'fas fah fa-lg fa-italic', color: '#428bca' },
+            { network: 'line', name: 'Line', icon: 'far fa-line', color: '#00c300' },
+            // { network: 'linkedin', name: 'LinkedIn', icon: 'fab fah fa-lg fa-linkedin', color: '#007bb5' },
+            // { network: 'odnoklassniki', name: 'Odnoklassniki', icon: 'fab fah fa-lg fa-odnoklassniki', color: '#ed812b' },
+            // { network: 'pinterest', name: 'Pinterest', icon: 'fab fah fa-lg fa-pinterest', color: '#bd081c' },
+            // { network: 'pocket', name: 'Pocket', icon: 'fab fah fa-lg fa-get-pocket', color: '#ef4056' },
+            // { network: 'quora', name: 'Quora', icon: 'fab fah fa-lg fa-quora', color: '#a82400' },
+            // { network: 'reddit', name: 'Reddit', icon: 'fab fah fa-lg fa-reddit-alien', color: '#ff4500' },
+            // { network: 'skype', name: 'Skype', icon: 'fab fah fa-lg fa-skype', color: '#00aff0' },
+            // { network: 'sms', name: 'SMS', icon: 'far fah fa-lg fa-comment-dots', color: '#333333' },
+            // { network: 'stumbleupon', name: 'StumbleUpon', icon: 'fab fah fa-lg fa-stumbleupon', color: '#eb4924' },
+            // { network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane', color: '#0088cc' },
+            // { network: 'tumblr', name: 'Tumblr', icon: 'fab fah fa-lg fa-tumblr', color: '#35465c' },
+            { network: 'twitter', name: 'Twitter', icon: 'far fa-twitter', color: '#1da1f2' },
+            // { network: 'viber', name: 'Viber', icon: 'fab fah fa-lg fa-viber', color: '#59267c' },
+            // { network: 'vk', name: 'Vk', icon: 'fab fah fa-lg fa-vk', color: '#4a76a8' },
+            // { network: 'weibo', name: 'Weibo', icon: 'fab fah fa-lg fa-weibo', color: '#e9152d' },
+            { network: 'whatsapp', name: 'Whatsapp', icon: 'far fa-whatsapp', color: '#25d366' },
+            // { network: 'wordpress', name: 'Wordpress', icon: 'fab fah fa-lg fa-wordpress', color: '#21759b' },
+            // { network: 'xing', name: 'Xing', icon: 'fab fah fa-lg fa-xing', color: '#026466' },
+            // { network: 'yammer', name: 'Yammer', icon: 'fab fah fa-lg fa-yammer', color: '#0072c6' },
+            // { network: 'fakeblock', name: 'Custom Network', icon: 'fab fah fa-lg fa-vuejs', color: '#41b883' }
+        ]
         }
     },
     created () {
@@ -46,7 +88,13 @@ export default {
                 this.user = response.data.results
                 console.log(this.user)
             })
+
+            const numberRandom = Math.floor(Math.random() * 10);
+        this.motivationText = {
+            ...this.motivationText[numberRandom]
+        }
     },
+    
     
 }
 </script>
@@ -87,9 +135,22 @@ export default {
                                         <span class="float-right">{{name_level}}</span>
                                     </li>
                                 </ul>
-                                <div class="progress">
+                                <div class="progress mb-4">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated text-center" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" :style="hasil">{{persen}}%</div>
                                 </div>
+                                    <div class="share-network-list">
+                                        <ShareNetwork
+                                            network="facebook"
+                                            :url="sharing.url"
+                                            title="Haiiiii"
+                                            description="asd"
+                                            :quote="[motivationText.motivation , '  ', motivationText.person]"
+                                            hashtags="REP"
+                                            >
+                                            <font-awesome-icon :icon="['fab', 'facebook']" />
+                                            <span class="ml-2">Share on Facebook</span>
+                                        </ShareNetwork>
+                                    </div>
                                 <div>
                                     
                                 </div>
@@ -203,4 +264,42 @@ export default {
     /* opacity:0.2; */
     filter:grayscale(100%);
 }
+ body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  h1 {
+    text-align: center;
+    margin: 50px 0 80px;
+  }
+  .share-network-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: auto;
+  }
+  a[class^="share-network-"] {
+    flex: none;
+    color: #FFFFFF;
+    background-color: blue;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+  }
+  a[class^="share-network-"] .fah {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    flex: 0 1 auto;
+  }
+  a[class^="share-network-"] span {
+    padding: 0 10px;
+    flex: 1 1 0%;
+    font-weight: 500;
+  }
 </style>
