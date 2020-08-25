@@ -118,26 +118,9 @@ export default {
                     console.log(response)
                     this.like = response.data.data
                     this.getData()
-                    Swal.fire({
-                                position: 'center',
-                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
-                                imageWidth: 150,
-                                imageHeight: 60,
-                                text: `Liked`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
                 })
                 .catch(error => {
-                    Swal.fire({
-                                position: 'center',
-                                imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
-                                imageWidth: 150,
-                                imageHeight: 60,
-                                text: `Liked`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
+                    console.log(error)
                 })
         },
     },
@@ -149,7 +132,8 @@ export default {
             let start = (this.page - 1) * this.perPage
             let end = start + this.perPage
             this.loading = false
-            return this.review_data.slice(start, end)
+            // return this.review_data.slice(start, end)
+            return this.review_data.sort((a, b) => a.likes - b.likes ).slice(start,end);
   },
         lastPage () {
             let length = this.review_data.length 

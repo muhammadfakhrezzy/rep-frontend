@@ -84,7 +84,7 @@ export default {
     mounted () {
         axios.get('https://sisplus.raharja.me/web/index.php?r=api/rep&key=$2y$10$6zeQKZ8dBvAOW1omT2ft6OJT7Iu34bHtgtqph.s5nwMDPv3IjxlRG&email=' + this.$store.state.user.email)
         .then(response => {
-            // console.log(response)
+            console.log('mahasiswa',response)
                 this.user = response.data.results
                 console.log(this.user)
             })
@@ -152,6 +152,7 @@ export default {
                                         </ShareNetwork>
                                     </div>
                                 <div>
+                                    
                                     
                                 </div>
                                 

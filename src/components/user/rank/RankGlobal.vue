@@ -9,7 +9,11 @@ export default {
             detail:'',
             latest_rank: '',
             all_quest: [],
-            progress:''
+            progress:'',
+            nama:[],
+            rank1:'',
+            rank2:'',
+            rank3:''
         }
     },
     methods: {
@@ -27,6 +31,7 @@ export default {
         .then(response => {
             console.log(response)
             let res = response.data
+            let test = []
             this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
             ((a.detail_user.name > b.detail_user.name) ? 1 : -1) : -1)
             this.rank.forEach(element => {
@@ -36,6 +41,15 @@ export default {
                         this.all_quest.push(res)
                     })
             });
+            this.nama = res
+            console.log('test', this.nama)
+            this.nama.forEach(e => {
+                test.push(e)
+            })
+            this.rank1 = test[0].detail_user.name.split(" ").slice(0, 3).join(" ")
+            this.rank2 = test[1].detail_user.name.split(" ").slice(0, 3).join(" ")
+            this.rank3 = test[2].detail_user.name.split(" ").slice(0, 3).join(" ")
+
             console.log('all_quest',this.all_quest)
             let a = [...this.rank]
             a.splice(0, 3)
@@ -79,7 +93,7 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BFBFBF">
                                     <h3 class="widget-user-username">RANK 2</h3>
-                                    <h5 class="widget-user-desc">{{rank[1].detail_user.name}}</h5>
+                                    <h5 class="widget-user-desc">{{rank2}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[1].media" class="img-circle elevation-2">
@@ -115,7 +129,7 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #E7AB30">
                                     <h3 class="widget-user-username">RANK 1</h3>
-                                    <h5 class="widget-user-desc">{{rank[0].detail_user.name}}</h5>
+                                    <h5 class="widget-user-desc">{{rank1}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[0].media" style="cursor: pointer" class="img-circle elevation-2">
@@ -151,7 +165,7 @@ export default {
                             <div class="card card-widget widget-user m-3">
                                 <div class="widget-user-header" style="background-color: #BF814D">
                                     <h3 class="widget-user-username">RANK 3</h3>
-                                    <h5 class="widget-user-desc">{{rank[2].detail_user.name}}</h5>
+                                    <h5 class="widget-user-desc">{{rank3}}</h5>
                                 </div>
                                 <div class="widget-user-image" style="top: 33%">
                                     <img :src="rank[2].media" style="cursor: pointer" class="img-circle elevation-2">

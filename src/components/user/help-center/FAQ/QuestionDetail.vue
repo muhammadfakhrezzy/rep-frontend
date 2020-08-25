@@ -49,7 +49,7 @@
                     </div>
                     <p>
                        <a @click="LikeAnswer(answer.data.id)">
-                        <button v-if="answer.likes === 1" class="btn btn-danger btn-sm mt-3">
+                        <button v-if="answer.likes > 0" class="btn btn-danger btn-sm mt-3">
                             <font-awesome-icon style="cursor: pointer" :icon="['fa', 'thumbs-up']" /> Liked
                         </button>
                         <button v-else class="btn btn-default btn-sm mt-3">

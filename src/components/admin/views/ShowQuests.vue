@@ -38,6 +38,8 @@ export default {
                 this.loading = false
             })
         },
+        sortedLikes() {
+        },
         prevPage () {
             // this.loading = true
             this.page--
@@ -140,7 +142,9 @@ export default {
             let start = (this.page - 1) * this.perPage
             let end = start + this.perPage
             this.loading = false
-            return this.review_data.slice(start, end)
+            // return this.review_data.slice(start, end)
+            return this.review_data.sort((a, b) => a.likes - b.likes ).slice(start,end);
+
   },
         lastPage () {
             let length = this.review_data.length 

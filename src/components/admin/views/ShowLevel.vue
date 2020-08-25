@@ -47,10 +47,11 @@ export default {
                           </ul>
                           <div class="card-body">
                             <div class="tab-content">
-                              <div class="active tab-pane" id="list">
+                              <div class="tab-pane" id="list">
                                 <table class="table table-hover">
                                   <thead>
                                     <tr> 
+                                      <th>No</th>
                                       <th>Name</th>
                                       <th>Min Value</th>
                                       <th>Max Value</th>
@@ -58,7 +59,8 @@ export default {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr v-for="value in user.levels" :key="value.id">
+                                    <tr v-for="(value, length) in user.levels" :key="value.id">
+                                        <td>{{ length + 1 }}</td>
                                         <td>{{ value.name }}</td>
                                         <td>{{ value.min_value }}</td>
                                         <td>{{ value.max_value }}</td>
@@ -70,13 +72,15 @@ export default {
                                 <table class="table table-hover">
                               <thead>
                                 <tr> 
+                                  <th>No</th>
                                   <th>Name</th>
                                   <th>Level</th>
                                   <th>EXP</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr v-for="index in level" :key="index.detail_user.id">
+                                <tr v-for="(index, length) in level" :key="index.detail_user.id">
+                                    <td>{{ length + 1 }}</td>
                                     <td>{{ index.detail_user.name }}</td>
                                     <td>{{index.level.name}}</td>
                                     <td>{{index.exp}}</td>

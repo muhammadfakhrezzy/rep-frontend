@@ -19,7 +19,7 @@ export default {
         return {
             dataArray: '',
             loading: false,
-            page: 1
+            page: ''
         }
     },
     methods: {
@@ -65,6 +65,7 @@ export default {
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <h1 class="m-0 text-dark">My History Login</h1>
+                        <p class="m-0 text-dark">Total Login : {{dataArray.total}}</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +95,7 @@ export default {
                                     </thead>
                                     <tbody>
                                         <tr v-for="(value, length) in dataArray.data" :key="value.id">
-                                            <td>{{ length + 1 }}.</td>
+                                            <td>{{ length }}.</td>
                                             <td>{{ value.ip }}</td>
                                             <td>{{ value.platform }}</td>
                                             <td>{{ value.os }}</td>
