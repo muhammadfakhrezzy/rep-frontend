@@ -28,7 +28,6 @@ import dailyList from '@/components/user/views/daily-quest/DailyList'
 import dailyStart from '@/components/user/views/daily-quest/DailyStart'
 import dailyComplete from '@/components/user/views/daily-quest/DailyComplete'
 import dailyReview from '@/components/user/views/daily-quest/DailyReview'
-import test from '@/components/user/views/daily-quest/test'
 
 import mainList from '@/components/user/views/main-quest/MainList'
 import mainComplete from '@/components/user/views/main-quest/MainComplete'
@@ -133,10 +132,6 @@ const routes = [
             {
                 path: 'dailyreview',
                 component: dailyReview
-            },
-            {
-                path: 'test',
-                component: test
             },
 
 
