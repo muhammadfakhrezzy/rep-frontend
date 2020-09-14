@@ -26,13 +26,13 @@ export default {
             networks: [
             // { network: 'baidu', name: 'Baidu', icon: 'fas fah fa-lg fa-paw', color: '#2529d8' },
             // { network: 'buffer', name: 'Buffer', icon: 'fab fah fa-lg fa-buffer', color: '#323b43' },
-            { network: 'email', name: 'Email', icon: 'far fa-envelope', color: '#333333' },
+            // { network: 'email', name: 'Email', icon: 'far fa-envelope', color: '#333333' },
             // { network: 'evernote', name: 'Evernote', icon: 'fab fah fa-lg fa-evernote', color: '#2dbe60' },
-            { network: 'facebook', name: 'Facebook', icon: 'fab fa-facebook-square', color: '#1877f2' },
+            { network: 'facebook', name: 'Facebook', icon: ['fab', 'facebook'], color: '#1877f2' },
             // { network: 'flipboard', name: 'Flipboard', icon: 'fab fah fa-lg fa-flipboard', color: '#e12828' },
             // { network: 'hackernews', name: 'HackerNews', icon: 'fab fah fa-lg fa-hacker-news', color: '#ff4000' },
             // { network: 'instapaper', name: 'Instapaper', icon: 'fas fah fa-lg fa-italic', color: '#428bca' },
-            { network: 'line', name: 'Line', icon: 'far fa-line', color: '#00c300' },
+            // { network: 'line', name: 'Line', icon: 'far fa-line', color: '#00c300' },
             // { network: 'linkedin', name: 'LinkedIn', icon: 'fab fah fa-lg fa-linkedin', color: '#007bb5' },
             // { network: 'odnoklassniki', name: 'Odnoklassniki', icon: 'fab fah fa-lg fa-odnoklassniki', color: '#ed812b' },
             // { network: 'pinterest', name: 'Pinterest', icon: 'fab fah fa-lg fa-pinterest', color: '#bd081c' },
@@ -44,11 +44,11 @@ export default {
             // { network: 'stumbleupon', name: 'StumbleUpon', icon: 'fab fah fa-lg fa-stumbleupon', color: '#eb4924' },
             // { network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane', color: '#0088cc' },
             // { network: 'tumblr', name: 'Tumblr', icon: 'fab fah fa-lg fa-tumblr', color: '#35465c' },
-            { network: 'twitter', name: 'Twitter', icon: 'far fa-twitter', color: '#1da1f2' },
+            // { network: 'twitter', name: 'Twitter', icon: 'far fa-twitter', color: '#1da1f2' },
             // { network: 'viber', name: 'Viber', icon: 'fab fah fa-lg fa-viber', color: '#59267c' },
             // { network: 'vk', name: 'Vk', icon: 'fab fah fa-lg fa-vk', color: '#4a76a8' },
             // { network: 'weibo', name: 'Weibo', icon: 'fab fah fa-lg fa-weibo', color: '#e9152d' },
-            { network: 'whatsapp', name: 'Whatsapp', icon: 'far fa-whatsapp', color: '#25d366' },
+            { network: 'whatsapp', name: 'Whatsapp', icon: ['fab', 'whatsapp'], color: '#25d366' },
             // { network: 'wordpress', name: 'Wordpress', icon: 'fab fah fa-lg fa-wordpress', color: '#21759b' },
             // { network: 'xing', name: 'Xing', icon: 'fab fah fa-lg fa-xing', color: '#026466' },
             // { network: 'yammer', name: 'Yammer', icon: 'fab fah fa-lg fa-yammer', color: '#0072c6' },
@@ -140,21 +140,20 @@ export default {
                                 </div>
                                     <div class="share-network-list">
                                         <ShareNetwork
-                                            network="facebook"
+                                            v-for="network in networks"
+                                            :network="network.network"
+                                            :key="network.network"
+                                            :style="{backgroundColor: network.color}"
                                             :url="sharing.url"
-                                            title="Haiiiii"
-                                            description="asd"
-                                            :quote="[motivationText.motivation , '  ', motivationText.person]"
-                                            hashtags="REP"
-                                            >
-                                            <font-awesome-icon :icon="['fab', 'facebook']" />
-                                            <span class="ml-2">Share on Facebook</span>
+                                            :title="sharing.title"
+                                            :description="sharing.description"
+                                            :quote="sharing.quote"
+                                            :hashtags="sharing.hashtags"
+                                            :twitterUser="sharing.twitterUser">
+                                            <font-awesome-icon :icon="network.icon" />
+                                            <span>{{ network.name }}</span>
                                         </ShareNetwork>
                                     </div>
-                                <div>
-                                    
-                                    
-                                </div>
                                 
                             </div>
                         </div>
