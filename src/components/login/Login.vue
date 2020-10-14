@@ -80,7 +80,7 @@ export default {
             const accessToken = {
                 access_token: googleUser.wc.access_token
             }
-            console.log(accessToken)
+            console.log(googleUser)
 
             this.$store.dispatch("ssoGoogle", accessToken)
         },
