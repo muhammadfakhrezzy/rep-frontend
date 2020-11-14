@@ -31,7 +31,6 @@
                         </a>
                     </GoogleLogin>
                 </div>
-                
             </div>
             
         </div>
@@ -80,7 +79,7 @@ export default {
             const accessToken = {
                 access_token: googleUser.wc.access_token
             }
-            console.log(googleUser)
+            console.log(accessToken)
 
             this.$store.dispatch("ssoGoogle", accessToken)
         },

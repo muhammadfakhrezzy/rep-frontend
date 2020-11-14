@@ -62,17 +62,17 @@ export default {
 <template>
     <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            <div class="content-header text-center">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col">
                             <h1 class="m-0 text-dark mb-1">Top Ranking</h1>
                         </div>
                     </div><!-- /.row -->
-                    <router-link to="/dailyrank" class="btn btn-outline-warning mr-2">Daily Rank</router-link>
-                    <router-link to="/weeklyrank" class="btn btn-outline-info mr-2">Weekly Rank</router-link>
-                    <router-link to="/monthlyrank" class="btn btn-success mr-2">Monthly Rank</router-link>
-                    <router-link to="/globalrank" class="btn btn-outline-success">Global Rank</router-link>
+                    <router-link to="/dailyrank" class="btn btn-outline-danger mr-2">Daily Rank</router-link>
+                    <router-link to="/weeklyrank" class="btn btn-outline-secondary mr-2">Weekly Rank</router-link>
+                    <router-link to="/monthlyrank" class="btn btn-outline-info mr-2">Monthly Rank</router-link>
+                    <router-link to="/globalrank" class="btn btn-outline-success button-glow">Global Rank</router-link>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
@@ -306,5 +306,16 @@ width:100%;
 text-align: center;
 right: 0;
 z-index: 999;
+}
+@keyframes glowing {
+  0% { box-shadow: 0 0 -10px #c4a300; }
+  40% { box-shadow: 0 0 20px #c4a300; }
+  60% { box-shadow: 0 0 20px #c4a300; }
+  100% { box-shadow: 0 0 -10px #c4a300; }
+}
+
+.button-glow {
+  animation: glowing 5000ms infinite;
+  
 }
 </style>

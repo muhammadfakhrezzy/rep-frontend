@@ -19,7 +19,8 @@ export default new Vuex.Store({
         user: {},
         like: false,
         dislike: false,
-        detail:''
+        detail:'',
+        role:''
     },
     mutations: {
         
@@ -29,9 +30,10 @@ export default new Vuex.Store({
         AUTH_ERROR(state) {
             state.status = 'error'
         },
-        AUTH_SUCCESS(state, token) {
+        AUTH_SUCCESS(state, token, role) {
             state.status = 'success'
             state.token = token
+            state.role = role
         },
         AUTH_LOGOUT(state) {
             state.token = '',
@@ -70,7 +72,8 @@ export default new Vuex.Store({
                 .then(response => {
                     console.log(response)
                     this.detail = response.data.name
-                    commit('AUTH_SUCCESS', response.data.access_token)
+                    this.role = response.data.role
+                    commit('AUTH_SUCCESS', response.data.access_token, response.data.role)
                     axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
                     Swal.fire({
                         position: 'top',

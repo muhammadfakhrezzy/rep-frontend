@@ -8,7 +8,8 @@ export default {
         return {
             motivationText : [...motivationWord],
             name: this.$store.state.user.name,
-            photo: this.$store.state.user.photo
+            photo: this.$store.state.user.photo,
+            // role: this.$store.state.user.role
         }
     },
     mounted () {
@@ -231,7 +232,7 @@ export default {
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <router-link to="/underConstruction" class=" text-white" style="cursor: pointer">
+                            <router-link to="/main" class=" text-white" style="cursor: pointer">
                             <p>
                                 <p>Main Quest</p>
                                 <!-- <font-awesome-icon icon="angle-left" class="right" /> -->
@@ -338,6 +339,13 @@ export default {
                                 </p>
                             </router-link>
                         </li> -->
+                        <li v-if="role === administrator" class="nav-item">
+                            <router-link to="/admin" class="nav-link text-white">
+                                <font-awesome-icon icon="question-circle" class="nav-icon" />
+                                <p>Secret Chamber 
+                                </p>
+                            </router-link>
+                        </li>
                         <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
                             <router-link to="/faq" class="nav-link text-white">
@@ -350,6 +358,7 @@ export default {
                             <!-- <router-link to="/whyrep" class="nav-link text-white"> -->
                                 <!-- <font-awesome-icon :icon="['fas', 'question']" class="nav-icon" /> -->
                                 <a class="nav-link text-white" href="https://rep.alphabetincubator.id/why-rep/" target="_blank">Why REP ?</a>
+                                <a class="nav-link text-white" href="https://alphabetincubator.id/2020/11/07/%e2%9c%a8skup-pra-startup-research-enrichment-program-rep%e2%9c%a8-2/" target="_blank">SKuP Pra StartUp 2020</a>
                             <!-- </router-link> -->
                         </li>
 
