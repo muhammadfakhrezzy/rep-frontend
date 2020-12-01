@@ -31,7 +31,7 @@ export default {
                 if(result.value) {
                     axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/attach/' + this.$store.state.user.id, {difficulty_id : this.choose})
                         .then(response => {
-                            console.log(response)
+                            // console.log(response)
                             Swal.fire(
                                 'Success!',
                                 'Your choose has been sended.',
@@ -52,7 +52,7 @@ export default {
         this.loading = 'loading'
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 for(let key in response.data){
                     const obj = response.data[key]
                     this.difficulty.push(obj)

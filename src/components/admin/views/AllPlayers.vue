@@ -65,7 +65,7 @@ export default {
     async created () {
         await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
-            console.log(response)
+            // console.log(response)
             let res = response.data
             let dataArray = res.data
             const allNama = []
@@ -78,7 +78,7 @@ export default {
             })
             this.planetChartData.data.labels = allNama
             this.planetChartData.data.datasets[0].data = allLogin
-            console.log("planet",this.planetChartData)
+            // console.log("planet",this.planetChartData)
 
             this.players = res.data.length
             this.rank = res
@@ -91,7 +91,7 @@ export default {
                     })
             });
             this.user = userData
-            console.log('user',this.user)
+            // console.log('user',this.user)
         })
     },
 

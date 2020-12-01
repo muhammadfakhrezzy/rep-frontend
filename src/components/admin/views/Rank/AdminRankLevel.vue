@@ -10,7 +10,7 @@ export default {
    created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/level/all')
         .then(response => {
-          console.log('all',response)
+          // console.log('all',response)
           this.level = response.data
         })
     }

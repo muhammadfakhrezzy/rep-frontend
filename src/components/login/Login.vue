@@ -76,12 +76,13 @@ export default {
     },
     methods: {
         onSuccess(googleUser) {
+            // console.log(googleUser)
             const accessToken = {
-                access_token: googleUser.wc.access_token
+                access_token: googleUser.xc.access_token
             }
-            console.log(accessToken)
 
             this.$store.dispatch("ssoGoogle", accessToken)
+
         },
         onFailure(error) {
             console.log(error);

@@ -48,7 +48,7 @@ export default {
         this.loading = true
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/history/own?page=')
         .then(response => {
-            console.log('history own',response)
+            // console.log('history own',response)
             this.dataArray = response.data.login_history,
             this.page = this.dataArray.current_page
             this.loading = false

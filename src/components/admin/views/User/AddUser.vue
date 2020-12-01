@@ -19,7 +19,7 @@ export default {
                 role_id:this.role_id,
                 pengguna:this.pengguna
             }
-            console.log(questData)
+            // console.log(questData)
             Swal.fire({
                 title: 'Are you sure want to add this User ?',
                 icon: 'warning',
@@ -31,7 +31,7 @@ export default {
                     if(result.value) {
                         axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users', questData)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'User has been Added',
@@ -48,7 +48,7 @@ export default {
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/create')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                this.user = response.data.dropdown_list
             })
     }

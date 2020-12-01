@@ -18,42 +18,42 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/daily')
         .then(response => {
             this.like = response.data
-            console.log('daily',this.like)
+            // console.log('daily',this.like)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/weekly')
         .then(response => {
             this.weekly = response.data
-            console.log('weekly',this.weekly)
+            // console.log('weekly',this.weekly)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/monthly')
         .then(response => {
             this.monthly = response.data
-            console.log('monthly',this.monthly)
+            // console.log('monthly',this.monthly)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/global')
         .then(response => {
             this.global = response.data
-            console.log('global',this.global)
+            // console.log('global',this.global)
         }) 
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/daily/all')
         .then(response => {
             this.admindaily = response.data
-            console.log('admindaily',this.admindaily)
+            // console.log('admindaily',this.admindaily)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/weekly/all')
         .then(response => {
             this.adminweekly = response.data
-            console.log('admindaily',this.adminweekly)
+            // console.log('admindaily',this.adminweekly)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/monthly/all')
         .then(response => {
             this.adminmonthly = response.data
-            console.log('admindaily',this.adminmonthly)
+            // console.log('admindaily',this.adminmonthly)
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/feedback/global/all')
         .then(response => {
             this.adminglobal = response.data
-            console.log('admindaily',this.adminglobal)
+            // console.log('admindaily',this.adminglobal)
         })
         
     },

@@ -13,7 +13,7 @@ export default {
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/rank/student')
         .then(response => {
-            console.log('login',response)
+            // console.log('login',response)
             this.login = response.data
             
         })
@@ -22,20 +22,20 @@ export default {
             this.all = response.data
         })
     },
-    mounted(){
-        setTimeout(()=> this.createChart('planet-chart', this.planetChartData), 1000)
-    },
+    // mounted(){
+    //     setTimeout(()=> this.createChart('planet-chart', this.planetChartData), 1000)
+    // },
 
-    methods: {
-        createChart(chartId, chartData) {
-            const ctx = document.getElementById(chartId);
-            const myChart = new Chart(ctx, {
-            type: chartData.type,
-            data: chartData.data,
-            options: chartData.options,
-            });
-        }
-    }
+    // methods: {
+    //     createChart(chartId, chartData) {
+    //         const ctx = document.getElementById(chartId);
+    //         const myChart = new Chart(ctx, {
+    //         type: chartData.type,
+    //         data: chartData.data,
+    //         options: chartData.options,
+    //         });
+    //     }
+    // }
 }
 </script>
 

@@ -26,7 +26,7 @@ export default {
                 expires_in: this.expires_in,
                 difficulty_id: this.difficulty_id
             }
-            console.log(questData)
+            // console.log(questData)
             Swal.fire({
                 title: 'Are you sure create this quest ?',
                 icon: 'warning',
@@ -38,7 +38,7 @@ export default {
                     if(result.value) {
                         axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests', questData)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'Quest has been created',
@@ -56,7 +56,7 @@ export default {
     async created() {
         await axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties')
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 for(let key in response.data){
                     const obj = response.data[key]
                     this.difficulty.push(obj)

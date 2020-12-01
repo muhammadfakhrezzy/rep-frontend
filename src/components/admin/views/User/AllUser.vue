@@ -18,7 +18,7 @@ export default {
             this.name = value
         },
         update_user(id, name, email, role_id) {
-            console.log(name, email, role_id)
+            // console.log(name, email, role_id)
             Swal.fire({
                 title: 'Are you sure want to update the User ?',
                 icon: 'warning',
@@ -36,10 +36,10 @@ export default {
                             email: email,
                             role_id: role_id
                         }
-                        console.log(data)
+                        // console.log(data)
                         axios.put('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/' + id, data)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'User has been updated',
@@ -67,7 +67,7 @@ export default {
                     if(result.value) {
                         axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/' + id)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'User has been deleted',
@@ -83,7 +83,7 @@ export default {
         getAllData() {
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.all_data = response.data
             })
             .catch(error => {
@@ -98,7 +98,7 @@ export default {
     mounted() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/users/create')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.user = response.data.dropdown_list
             })
     }

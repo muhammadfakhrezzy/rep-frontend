@@ -339,13 +339,13 @@ export default {
                                 </p>
                             </router-link>
                         </li> -->
-                        <li v-if="role === administrator" class="nav-item">
+                        <!-- <li v-if="role === administrator" class="nav-item">
                             <router-link to="/admin" class="nav-link text-white">
                                 <font-awesome-icon icon="question-circle" class="nav-icon" />
                                 <p>Secret Chamber 
                                 </p>
                             </router-link>
-                        </li>
+                        </li> -->
                         <li class="header mt-5" style="color: rgba(255,255,255,.7)">Documentation</li>
                         <li class="nav-item">
                             <router-link to="/faq" class="nav-link text-white">

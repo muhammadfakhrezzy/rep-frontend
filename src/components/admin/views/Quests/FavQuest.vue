@@ -102,7 +102,7 @@ export default {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/statistic')
         .then(response => {
             this.rank = response.data
-            console.log('rank', this.rank)
+            // console.log('rank', this.rank)
             const userData = []
             this.rank.data.forEach(element => {
                 axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/top/quests/' + element.detail_user.id)

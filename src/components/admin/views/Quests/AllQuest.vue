@@ -18,9 +18,9 @@ export default {
         quest() {
             axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.dataQuest = response.data
-                console.log(this.dataQuest)
+                // console.log(this.dataQuest)
             })
         },
         update_quest(id) {
@@ -37,7 +37,7 @@ export default {
                     if(result.value) {
                         axios.put('https://https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests/' + id, {name: this.update_name}, {code: this.update_code}, {description: this.update_description}, {value: this.update_value}, {daily: this.update_daily_limit}, {expires: this.update_expires_in})
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire({
                                 imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
                                 imageWidth: 150,
@@ -67,7 +67,7 @@ export default {
                     if(result.value) {
                         axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/quests/' + id)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire({
                                 imageUrl: "https://lh3.googleusercontent.com/-L0L0yfE5VpA/XpfifMdyIXI/AAAAAAAABFU/ZrtQpPoKXHsAj0kgc70Gn8IwWsybi0nbACK8BGAsYHg/s0/2020-04-15.png",
                                 imageWidth: 150,

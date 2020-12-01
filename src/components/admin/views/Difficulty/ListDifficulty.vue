@@ -22,7 +22,7 @@ export default {
                     if(result.value) {
                         axios.put('https://dytlan.alphabetincubator.id/api/secretchamber/difficulties/' + id, {name: this.update_name})
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'Difficulty has been updated',
@@ -47,7 +47,7 @@ export default {
                     if(result.value) {
                         axios.delete('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties/' + id)
                             .then(response => {
-                                console.log(response)
+                                // console.log(response)
                                 Swal.fire(
                                     'Success!',
                                     'Your difficulty has been deleted',
@@ -65,7 +65,7 @@ export default {
     created() {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/secretchamber/difficulties')
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.difficulty_list = response.data
             })
     }

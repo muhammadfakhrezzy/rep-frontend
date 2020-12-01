@@ -18,14 +18,14 @@ export default {
             .then(response => {
                 this.detail = response.data
                 this.all_quest = detail.quests
-                console.log('user_detail',this.detail)
+                // console.log('user_detail',this.detail)
             })
     }
     },
     created () {
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/experience/daily')
         .then(response => {
-            console.log('experiece_daily',response)
+            // console.log('experiece_daily',response)
             let res = response.data.details
             this.badge = response.data.media_badge
             this.rank = res.sort((a, b) => (a.total_value < b.total_value) ? 1 : (a.total_value === b.total_value) ?
@@ -37,7 +37,7 @@ export default {
                         this.all_quest.push(res)
                     })
             });
-            console.log('all_quest',this.all_quest)
+            // console.log('all_quest',this.all_quest)
             let a = [...this.rank]
             a.splice(0, 3)
             this.latest_rank = a

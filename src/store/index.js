@@ -17,10 +17,10 @@ export default new Vuex.Store({
         status: '',
         token: '',
         user: {},
-        like: false,
-        dislike: false,
-        detail:'',
-        role:''
+        // like: false,
+        // dislike: false,
+        // detail:'',
+        // role:''
     },
     mutations: {
         
@@ -30,10 +30,10 @@ export default new Vuex.Store({
         AUTH_ERROR(state) {
             state.status = 'error'
         },
-        AUTH_SUCCESS(state, token, role) {
+        AUTH_SUCCESS(state, token) {
             state.status = 'success'
             state.token = token
-            state.role = role
+            // state.role = role
         },
         AUTH_LOGOUT(state) {
             state.token = '',
@@ -46,12 +46,12 @@ export default new Vuex.Store({
             state.user.email = userData.Detail_user.email
             state.user.photo = userData.Media[0].path
         },
-        BEBAS(state){
-            state.like = true
-        },
-        SERAH(state){
-            state.dislike = true
-        }
+        // BEBAS(state){
+        //     state.like = true
+        // },
+        // SERAH(state){
+        //     state.dislike = true
+        // }
     },
     getters: {
         getScore(state) {
@@ -60,20 +60,20 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        button({commit}) {
-            commit('BEBAS')
-        },
-        tombol({commit}) {
-            commit('SERAH')
-        },
+        // button({commit}) {
+        //     commit('BEBAS')
+        // },
+        // tombol({commit}) {
+        //     commit('SERAH')
+        // },
         ssoGoogle({commit,state}, access) {
             commit('AUTH_LOAD')
             axios.post("https://dev.alphabetincubator.id/rep-backend/public/api/auth/callback/google", access)
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     this.detail = response.data.name
-                    this.role = response.data.role
-                    commit('AUTH_SUCCESS', response.data.access_token, response.data.role)
+                    // this.role = response.data.role
+                    commit('AUTH_SUCCESS', response.data.access_token)
                     axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
                     Swal.fire({
                         position: 'top',
@@ -100,7 +100,7 @@ export default new Vuex.Store({
         logout({commit}){
             axios.post('https://dev.alphabetincubator.id/rep-backend/public/api/auth/logout')
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                 })
                 .catch(error => {
                     console.log(error)

@@ -33,7 +33,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="content">
+        <div v-if="main.length" class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-6" v-for="index in main" :key="index.quest.id">
@@ -85,7 +85,7 @@ export default {
             </div>
 
 
-            <div class="modal fade" :id="['quest' + index.quest.id]" v-for="index in daily" :key="index.quest.id">
+            <div class="modal fade" :id="['quest' + index.quest.id]" v-for="index in main" :key="index.quest.id">
                 <div class="modal-dialog" style="margin-top: 50vh; transform: translateY(-50%)">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -101,8 +101,11 @@ export default {
                     </div>
                 </div>
             </div>
-
-
+        </div>
+        <div v-else class="row" style="margin-top:25%;">
+            <div class="col text-center">
+                <strong>Sorry there are no quests avaliable yet</strong>
+            </div>
         </div>
     </div>
 </template>
