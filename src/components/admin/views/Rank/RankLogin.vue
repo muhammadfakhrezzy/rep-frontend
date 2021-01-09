@@ -19,6 +19,7 @@ export default {
         })
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/user/login/rank/all')
         .then(response => {
+            console.log(response)
             this.all = response.data
         })
     },

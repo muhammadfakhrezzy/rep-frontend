@@ -87,6 +87,10 @@ export default new Vuex.Store({
                     if(response.data.role === 'administrator'|| response.data.role === 'lecturer') {
                         router.push('/admin')
                   }
+                  else
+                  {
+                      router.push('/')
+                  }
                 })
                 .catch(error => {
                     console.log(error)
