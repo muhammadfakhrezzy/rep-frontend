@@ -31,10 +31,14 @@
                         </a>
                     </GoogleLogin>
                 </div>
+                
             </div>
-            
         </div>
-        
+        <div class="footer">
+            <div class="text-1">
+                <h3>REP Apps Merupakan Pendanaan Dari PDUPT</h3>
+            </div>
+        </div>
     </div>
     
 </template>
@@ -46,11 +50,37 @@
   min-width: 100%;
   min-height: 100%;
 }
+
 .text {
   position: relative;
 
   color: #f1f1f1;
   width: 100%;
+  
+}
+
+@keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+}
+
+.footer {
+    position: absolute; 
+    bottom: 0px;
+    width: 100%;
+
+}
+
+.text-1 {
+    position: relative;
+    color: white;
+    vertical-align: bottom;
+    text-align:center;
+    animation-name: blinker;
+ animation-duration: 1s;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
 }
 </style>
 <script>
@@ -76,9 +106,9 @@ export default {
     },
     methods: {
         onSuccess(googleUser) {
-            // console.log(googleUser)
+            console.log(googleUser)
             const accessToken = {
-                access_token: googleUser.Bc.access_token
+                access_token: googleUser.uc.access_token
             }
 
             this.$store.dispatch("ssoGoogle", accessToken)

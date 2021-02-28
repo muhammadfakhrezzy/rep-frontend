@@ -27,8 +27,10 @@ export default {
             let rumus = this.detail.total_value - this.detail.detail_level.min_value
             let bagi = (rumus / 50) * 100
             this.persen = bagi
+            
             this.hasil = 'width:' + bagi + '%'
-            console.log('detail',this.detail)
+            console.log('persen',this.persen)
+            console.log('detail', this.detail)
         })
 
         axios.get('https://dev.alphabetincubator.id/rep-backend/public/api/copy/achievement/' + this.$route.params.id)
