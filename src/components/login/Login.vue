@@ -31,7 +31,6 @@
                         </a>
                     </GoogleLogin>
                 </div>
-                
             </div>
         </div>
         <div class="footer">
@@ -108,7 +107,7 @@ export default {
         onSuccess(googleUser) {
             console.log(googleUser)
             const accessToken = {
-                access_token: googleUser.uc.access_token
+                access_token: googleUser.tc.access_token
             }
 
             this.$store.dispatch("ssoGoogle", accessToken)
